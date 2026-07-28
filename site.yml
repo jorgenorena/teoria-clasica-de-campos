@@ -1,5 +1,5 @@
 site:
-  title: Asymptotic Symmetries of Inflation
+  title: Teoría clásica de campos
   output: public
   static: static
 
@@ -39,13 +39,9 @@ templates:
 assets:
   - from: site/static
     to: static
-  - from: results
-    to: results
   - from: notes/figures
     to: figures
-  - from: algebra
-    to: algebra
 
 index:
-  title: Notes
-  description: Course and project notes
+  title: Teoría clásica de campos
+  description: Enlaces a las notas de clase
