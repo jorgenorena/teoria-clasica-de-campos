@@ -30,4 +30,5 @@ __pycache__/
 /site/
 /sync_to_notes_repo.sh
 /.gitignore_alt
+/notes/.auctex-auto
 # <<< org-project-template machinery <<<
