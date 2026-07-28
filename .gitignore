@@ -1,0 +1,33 @@
+# >>> org-project-template machinery (managed by sync_to_notes_repo.sh) >>>
+# For dropping this template's rendering machinery on top of an existing
+# repo (notes/, code/, algebra/, whatever it already tracks) without that
+# repo tracking the machinery itself. sync_to_notes_repo.sh merges this block
+# into the destination's .gitignore, replacing any previous copy of it and
+# leaving the destination's own rules alone. Keep your own rules outside the
+# markers; anything between them is overwritten on the next sync.
+#
+# Everything already in the destination repo is left alone; only the
+# specific files/dirs this template brings in are ignored below.
+
+# Generated output this template produces when built in place.
+/public/
+/build/
+__pycache__/
+*.pyc
+.DS_Store
+*~
+.#*
+
+# This template's own top-level files and directories.
+# (README/docs, agent files, and references/ are not copied by
+# sync_to_notes_repo.sh, so they are not listed here: the destination keeps
+# its own README, AGENT, and bibliography. The CSL citation style ships under
+# site/csl/ and is covered by the /site/ rule below.)
+/build_site.py
+/export-fragments.el
+/export_tex.py
+/serve_site.py
+/site/
+/sync_to_notes_repo.sh
+/.gitignore_alt
+# <<< org-project-template machinery <<<

@@ -1,0 +1,51 @@
+site:
+  title: Asymptotic Symmetries of Inflation
+  output: public
+  static: static
+
+notes:
+  root: notes
+  public_prefix: ""
+  # The site menu, written in the order it renders. Each entry is either a
+  # note slug (its path under notes/ without the .org/.tex extension) or a
+  # subfolder to show as a submenu. Only subfolders named here are scanned
+  # for notes; any other subfolder (e.g. notes/figures/) is treated as
+  # assets and left alone.
+  #
+  # Anything you leave out still appears: an unlisted note is appended
+  # alphabetically, inside its own submenu if it lives in a listed folder,
+  # otherwise at the end of the menu. So an empty menu just lists every
+  # top-level note alphabetically.
+  menu: []
+    # - intro                    # a top-level note
+    # - flrw-background
+    # - dir: cosmology           # a subfolder, as its own submenu
+    #   title: Cosmology         # optional; defaults to the folder name
+    #   notes:                   # optional; may be partial
+    #     - perturbations
+    # - algebra                  # a bare folder name works too
+
+fragments:
+  root: build
+
+latex:
+  root: build/latex
+  header: site/latex/header.tex
+
+templates:
+  page: site/templates/page.html
+  index: site/templates/index.html
+
+assets:
+  - from: site/static
+    to: static
+  - from: results
+    to: results
+  - from: notes/figures
+    to: figures
+  - from: algebra
+    to: algebra
+
+index:
+  title: Notes
+  description: Course and project notes
