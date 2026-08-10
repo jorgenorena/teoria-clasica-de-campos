@@ -1,0 +1,974 @@
+/* =========================
+   Reset and document basics
+   ========================= */
+
+html {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--fg);
+}
+
+/* =========================
+   Top bar
+   ========================= */
+
+.site-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  max-width: 100%;
+  height: var(--topbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-topbar-left,
+.site-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.site-topbar-left {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.site-topbar-right {
+  flex: 0 0 auto;
+}
+
+.site-title {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--heading);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  font-size: 1.24rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.site-title:hover,
+.site-title:focus {
+  color: var(--heading);
+  text-decoration: underline;
+}
+
+.menu-toggle,
+.theme-toggle {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  padding: 0.2rem 0 0.2rem 0.7rem;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus,
+.theme-toggle:hover,
+.theme-toggle:focus {
+  border-left-color: var(--accent-green);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-toggle-icon {
+  display: inline-block;
+  width: 1rem;
+  height: 0.8rem;
+  position: relative;
+  border-top: 2px solid currentColor;
+}
+
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-top: 2px solid currentColor;
+}
+
+.menu-toggle-icon::before {
+  top: 0.22rem;
+}
+
+.menu-toggle-icon::after {
+  top: 0.46rem;
+}
+
+.theme-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 1.25rem;
+  line-height: 1;
+  font-size: 1.15rem;
+}
+
+html[data-theme="dark"] .theme-toggle-icon::before {
+  content: "☀";
+  display: block;
+  line-height: 1;
+  font-size: 1.15rem;
+}
+
+html[data-theme="light"] .theme-toggle-icon::before {
+  content: "☾";
+  display: block;
+  line-height: 1;
+  font-size: 1.15rem;
+}
+
+.theme-toggle-label,
+.menu-toggle-label {
+  line-height: 1;
+}
+
+/* =========================
+   Main layout
+   ========================= */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, var(--nav-width)) minmax(0, 1fr);
+  gap: 2.25rem;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: calc(100vh - var(--topbar-height));
+}
+
+.sidebar {
+  position: sticky;
+  top: var(--topbar-height);
+  height: calc(100vh - var(--topbar-height));
+  overflow-y: auto;
+  padding: 1.4rem 1rem 2rem 1.1rem;
+  background: var(--nav-bg);
+  border-right: 1px solid var(--rule);
+}
+
+.page {
+  width: min(100%, var(--page-width));
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 2rem var(--content-pad) 5rem;
+  overflow-wrap: break-word;
+}
+
+.page-header {
+  margin: 0 0 2rem;
+}
+
+.page-date,
+.note-date {
+  color: var(--fg-muted);
+  margin-top: -0.2rem;
+  font-size: 0.96rem;
+}
+
+/* =========================
+   Typography
+   ========================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading);
+  font-family: var(--font-serif);
+  line-height: 1.2;
+  font-weight: 700;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+}
+
+h1 {
+  font-size: 1.7rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.4rem;
+}
+
+h6 {
+  font-size: 1.3rem;
+}
+
+p,
+li,
+dd {
+  max-width: none;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul,
+ol {
+  margin: 0 0 1.1rem 1.6rem;
+  padding: 0;
+}
+
+li + li {
+  margin-top: 0.3rem;
+}
+
+blockquote {
+  margin: 1.4rem 0;
+  padding: 0 0 0 1rem;
+  border-left: 3px solid var(--rule);
+  color: var(--fg-muted);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2rem 0;
+}
+
+/* =========================
+   Links
+   ========================= */
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+  overflow-wrap: anywhere;
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover);
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+/* =========================
+   Org inline markup
+   ========================= */
+
+code.org-code {
+  color: var(--inline-code-fg);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+
+code.org-verbatim {
+  color: var(--verbatim-fg);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.1em;
+}
+
+/* =========================
+   Display math
+   ========================= */
+
+.math-display {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 1.2rem 0;
+  padding: 0.35rem 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  background: transparent;
+}
+
+.math-display mjx-container[display="true"] {
+  width: max-content;
+  max-width: none;
+  margin: 0 auto !important;
+}
+
+.math-display svg {
+  max-width: none;
+  height: auto;
+}
+
+/* =========================
+   Code blocks and examples
+   ========================= */
+
+pre,
+pre.src,
+pre.example {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 1.4rem 0;
+  tab-size: 4;
+}
+
+pre code {
+  font-family: inherit;
+  background: transparent;
+}
+
+pre.src::before {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--fg-muted);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  text-align: right;
+}
+
+/* org-html language labels */
+pre.src-python::before {
+  content: "python";
+}
+pre.src-jupyter-python::before {
+  content: "python";
+}
+pre.src-emacs-lisp::before {
+  content: "emacs-lisp";
+}
+pre.src-shell::before {
+  content: "shell";
+}
+pre.src-bash::before {
+  content: "bash";
+}
+pre.src-sh::before {
+  content: "sh";
+}
+pre.src-julia::before {
+  content: "julia";
+}
+pre.src-R::before {
+  content: "R";
+}
+pre.src-latex::before {
+  content: "latex";
+}
+pre.src-html::before {
+  content: "html";
+}
+pre.src-css::before {
+  content: "css";
+}
+pre.src-javascript::before {
+  content: "javascript";
+}
+pre.src-typescript::before {
+  content: "typescript";
+}
+pre.src-sql::before {
+  content: "sql";
+}
+
+/* =========================
+   Htmlize / font-lock colors
+   ========================= */
+
+/* htmlize / org export spans inside code blocks */
+
+pre .org-keyword,
+pre code .org-keyword,
+pre .font-lock-keyword-face {
+  color: var(--syntax-keyword) !important;
+}
+
+pre .org-string,
+pre code .org-string,
+pre .font-lock-string-face,
+pre .font-lock-doc-face {
+  color: var(--syntax-string) !important;
+}
+
+pre .org-comment,
+pre code .org-comment,
+pre .org-comment-delimiter,
+pre .font-lock-comment-face,
+pre .font-lock-comment-delimiter-face {
+  color: var(--syntax-comment) !important;
+  font-style: italic;
+}
+
+pre .org-builtin,
+pre code .org-builtin,
+pre .font-lock-builtin-face {
+  color: var(--syntax-builtin) !important;
+}
+
+pre .org-function-name,
+pre code .org-function-name,
+pre .font-lock-function-name-face {
+  color: var(--syntax-function) !important;
+}
+
+pre .org-variable-name,
+pre code .org-variable-name,
+pre .font-lock-variable-name-face {
+  color: var(--syntax-variable) !important;
+}
+
+pre .org-type,
+pre code .org-type,
+pre .font-lock-type-face {
+  color: var(--syntax-type) !important;
+}
+
+pre .org-constant,
+pre code .org-constant,
+pre .font-lock-constant-face {
+  color: var(--syntax-constant) !important;
+}
+
+pre .org-warning,
+pre code .org-warning,
+pre .font-lock-warning-face {
+  color: var(--syntax-warning) !important;
+}
+
+pre .org-operator,
+pre code .org-operator {
+  color: var(--fg-muted) !important;
+}
+
+/* =========================
+   Pandoc / skylighting colors
+   ========================= */
+
+/* LaTeX notes are converted by pandoc, which highlights code with short
+   "skylighting" token classes instead of htmlize's org-* classes. Alias
+   those onto the same syntax variables so Org and LaTeX code blocks match. */
+
+pre.sourceCode .kw, /* keyword */
+pre.sourceCode .cf, /* control flow */
+pre.sourceCode .im, /* import */
+pre.sourceCode .pp {
+  /* preprocessor */
+  color: var(--syntax-keyword) !important;
+}
+
+pre.sourceCode .st, /* string */
+pre.sourceCode .ch, /* character */
+pre.sourceCode .vs, /* verbatim string */
+pre.sourceCode .ss {
+  /* special string */
+  color: var(--syntax-string) !important;
+}
+
+pre.sourceCode .co, /* comment */
+pre.sourceCode .do, /* documentation */
+pre.sourceCode .an, /* annotation */
+pre.sourceCode .cv {
+  /* comment variable */
+  color: var(--syntax-comment) !important;
+  font-style: italic;
+}
+
+pre.sourceCode .bu {
+  color: var(--syntax-builtin) !important;
+}
+
+pre.sourceCode .fu {
+  color: var(--syntax-function) !important;
+}
+
+pre.sourceCode .va, /* variable */
+pre.sourceCode .at {
+  /* attribute */
+  color: var(--syntax-variable) !important;
+}
+
+pre.sourceCode .dt {
+  color: var(--syntax-type) !important;
+}
+
+pre.sourceCode .dv, /* decimal */
+pre.sourceCode .bn, /* base-n */
+pre.sourceCode .fl, /* float */
+pre.sourceCode .cn, /* constant */
+pre.sourceCode .sc {
+  /* special char */
+  color: var(--syntax-constant) !important;
+}
+
+pre.sourceCode .op {
+  color: var(--fg-muted) !important;
+}
+
+pre.sourceCode .wa, /* warning */
+pre.sourceCode .er {
+  /* error */
+  color: var(--syntax-warning) !important;
+}
+
+/* pandoc line-number anchors: keep them invisible, not dark-red links. */
+pre.sourceCode a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Language label, echoing org's pre.src-*::before. */
+div.sourceCode[data-language]::before {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--fg-muted);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  text-align: right;
+  content: attr(data-language);
+}
+
+/* Inline code from LaTeX notes (\texttt, \verb) uses the mono font. */
+:not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  background: transparent;
+}
+
+/* =========================
+   Tables
+   ========================= */
+
+table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  width: auto;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+th,
+td {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+th {
+  color: var(--heading);
+  font-weight: 600;
+}
+
+thead th {
+  border-bottom: 2px solid var(--rule);
+}
+
+/* =========================
+   Figures and images
+   ========================= */
+
+figure {
+  margin: 1.6rem 0;
+}
+
+figure img,
+figure svg {
+  display: block;
+}
+
+figcaption,
+.caption {
+  margin-top: 0.55rem;
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+}
+
+.org-center {
+  text-align: center;
+}
+
+.org-left {
+  text-align: left;
+}
+
+.org-right {
+  text-align: right;
+}
+
+/* =========================
+   Info / theorem-like blocks
+   ========================= */
+
+.info,
+.warning,
+.remark,
+.definition,
+.theorem,
+.proof,
+.note,
+.tip {
+  max-width: 100%;
+  min-width: 0;
+  margin: 1.4rem 0;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid var(--accent-green);
+  background: var(--surface-info);
+}
+
+.warning {
+  border-left-color: var(--verbatim-fg);
+}
+
+.proof {
+  background: var(--surface-1);
+}
+
+/* =========================
+   Navigation sidebar
+   ========================= */
+
+.notes-nav {
+  margin: 0;
+  padding: 0;
+}
+
+.notes-nav .nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: notes;
+}
+
+/* Subfolder submenus: a titled group with its own numbered list. */
+.nav-group {
+  margin-top: 1.1rem;
+}
+
+.nav-group-title {
+  margin: 0 0 0.25rem 0.95rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fg-muted);
+}
+
+.notes-nav .nav-list > li {
+  counter-increment: notes;
+  position: relative;
+  margin: 0.15rem 0;
+  padding: 0 0 0 0.95rem;
+}
+
+.notes-nav .nav-list > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.18rem;
+  bottom: 0.18rem;
+  width: 3px;
+  background: transparent;
+}
+
+.notes-nav .nav-list > li.active::before {
+  background: var(--accent-green);
+}
+
+.notes-nav .nav-list > li > a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  color: var(--link);
+  text-decoration: none;
+  padding: 0.28rem 0;
+}
+
+.notes-nav .nav-list > li > a::before {
+  content: counter(notes) ".";
+  flex: 0 0 1.9rem;
+  text-align: right;
+  color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.notes-nav .nav-list > li.active > a::before {
+  color: var(--accent-green);
+}
+
+.notes-nav a:hover,
+.notes-nav a:focus {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.note-sections {
+  margin: 0.1rem 0 0.65rem 2.45rem;
+  padding: 0;
+  list-style: none;
+}
+
+.note-sections li,
+.note-sections li + li {
+  margin: 0;
+  padding: 0;
+}
+
+.note-sections .section-level-3 {
+  padding-left: 0.8rem;
+}
+
+.note-sections .section-level-4 {
+  padding-left: 1.6rem;
+}
+
+.notes-nav .note-sections a {
+  display: block;
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  padding: 0.16rem 0;
+}
+
+.notes-nav .note-sections a:hover,
+.notes-nav .note-sections a:focus {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* =========================
+   Index page cards
+   ========================= */
+
+.note-card {
+  margin: 0 0 2rem;
+  padding: 0 0 1.2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.note-card h2 {
+  margin-top: 0;
+}
+
+.note-description {
+  margin-bottom: 0;
+}
+
+/* =========================
+   Bibliography
+   ========================= */
+
+.csl-bib-body,
+#bibliography,
+.references {
+  margin-top: 2rem;
+}
+
+.csl-entry {
+  margin: 0 0 0.8rem;
+}
+
+.csl-left-margin,
+.csl-right-inline,
+.csl-indent {
+  font-size: 0.98rem;
+}
+
+/* =========================
+   Footnotes
+   ========================= */
+
+.footpara {
+  display: inline;
+}
+
+.footdef {
+  margin: 0.8rem 0;
+  color: var(--fg-muted);
+  font-size: 0.96rem;
+}
+
+/* =========================
+   Responsive layout
+   ========================= */
+
+body.layout-collapsed .menu-toggle {
+  display: inline-flex;
+}
+
+body.layout-collapsed .layout {
+  display: block;
+}
+
+body.layout-collapsed .sidebar {
+  position: fixed;
+  top: var(--topbar-height);
+  left: 0;
+  bottom: 0;
+  width: min(19rem, 88vw);
+  height: auto;
+  transform: translateX(-100%);
+  transition: transform 0.18s ease;
+  z-index: 40;
+  border-right: 1px solid var(--rule);
+}
+
+body.layout-collapsed.menu-open .sidebar {
+  transform: translateX(0);
+}
+
+body.layout-collapsed .page {
+  width: auto;
+  max-width: none;
+  padding: 1.6rem 1.25rem 4rem;
+}
+
+@media (max-width: calc(16rem + 2.25rem + 105ch)) {
+  body:not(.layout-measured) .menu-toggle {
+    display: inline-flex;
+  }
+
+  body:not(.layout-measured) .layout {
+    display: block;
+  }
+
+  body:not(.layout-measured) .sidebar {
+    position: fixed;
+    top: var(--topbar-height);
+    left: 0;
+    bottom: 0;
+    width: min(19rem, 88vw);
+    height: auto;
+    transform: translateX(-100%);
+    transition: transform 0.18s ease;
+    z-index: 40;
+    border-right: 1px solid var(--rule);
+  }
+
+  body:not(.layout-measured).menu-open .sidebar {
+    transform: translateX(0);
+  }
+
+  body:not(.layout-measured) .page {
+    width: auto;
+    max-width: none;
+    padding: 1.6rem 1.25rem 4rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-topbar {
+    position: fixed;
+    inset: 0 0 auto;
+  }
+
+  .layout {
+    padding-top: var(--topbar-height);
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 17px;
+  }
+
+  .site-topbar {
+    padding: 0 0.75rem;
+  }
+
+  .site-title {
+    font-size: 1.12rem;
+  }
+
+  .menu-toggle,
+  .theme-toggle {
+    padding: 0.35rem;
+  }
+
+  .menu-toggle-label,
+  .theme-toggle-label {
+    display: none;
+  }
+
+  .page {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

@@ -1,0 +1,19 @@
+\usepackage{mathtools}
+\usepackage[most]{tcolorbox}
+\definecolor{infobg}{gray}{0.94}
+\newtcolorbox{info}[1][]{%
+  enhanced,
+  breakable,
+  colback=infobg,
+  colframe=infobg,
+  boxrule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  left=6pt,
+  right=6pt,
+  top=6pt,
+  bottom=6pt,
+  before skip=0.75\baselineskip,
+  after skip=0.75\baselineskip,
+  parbox=false,
+  #1}

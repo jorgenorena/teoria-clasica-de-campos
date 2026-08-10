@@ -1,0 +1,89 @@
+:root {
+  --font-serif:
+    "IBM Plex Serif", "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    Palatino, Georgia, serif;
+  --font-mono: "Fira Code", "Iosevka", "JetBrains Mono", Consolas, monospace;
+
+  --bg: #1f1e1b;
+  --fg: #ede0ce;
+  --fg-muted: #b9ad9c;
+  --heading: #ffffff;
+
+  --link: #8f2f2f;
+  --link-hover: #b84a4a;
+  --link-visited: #7b2a2a;
+
+  --accent-green: #26a6a6;
+  --accent-green-soft: rgba(38, 166, 166, 0.18);
+
+  --border: #3a3732;
+  --rule: #4a453d;
+
+  --surface-0: #1f1e1b;
+  --surface-1: #262521;
+  --surface-2: #1a1b22;
+  --surface-info: #1f2f45;
+
+  --code-bg: #16171d;
+  --code-fg: #ede0ce;
+  --inline-code-fg: #5fbf5f;
+  --verbatim-fg: #8f2f2f;
+
+  --selection: #a60033;
+  --nav-bg: var(--bg);
+
+  --page-width: 105ch;
+  --nav-width: 16rem;
+  --content-pad: 1.6rem;
+  --topbar-height: 3.2rem;
+
+  --syntax-string: #98be65;
+  --syntax-comment: #6c6a68;
+  --syntax-keyword: #c678dd;
+  --syntax-builtin: #51afef;
+  --syntax-function: #46d9ff;
+  --syntax-variable: #ede0ce;
+  --syntax-type: #5699af;
+  --syntax-constant: #bcd42a;
+  --syntax-warning: #ff6c6b;
+}
+
+html[data-theme="light"] {
+  --bg: #fdf6e3;
+  --fg: #586e75;
+  --fg-muted: #657b83;
+  --heading: #073642;
+
+  --link: #8b2f2f;
+  --link-hover: #a83b3b;
+  --link-visited: #7d2c2c;
+
+  --accent-green: #859900;
+  --accent-green-soft: rgba(133, 153, 0, 0.18);
+
+  --border: #e3dcc8;
+  --rule: #d8cfb3;
+
+  --surface-0: #fdf6e3;
+  --surface-1: #f7f0db;
+  --surface-2: #eee8d5;
+  --surface-info: #e8f0f8;
+
+  --code-bg: #eee8d5;
+  --code-fg: #586e75;
+  --inline-code-fg: #859900;
+  --verbatim-fg: #8b2f2f;
+
+  --selection: #eee8d5;
+  --nav-bg: var(--bg);
+
+  --syntax-string: #2aa198;
+  --syntax-comment: #93a1a1;
+  --syntax-keyword: #859900;
+  --syntax-builtin: #268bd2;
+  --syntax-function: #268bd2;
+  --syntax-variable: #586e75;
+  --syntax-type: #b58900;
+  --syntax-constant: #cb4b16;
+  --syntax-warning: #dc322f;
+}

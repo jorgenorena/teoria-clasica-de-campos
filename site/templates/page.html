@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    <link rel="stylesheet" href="{{ static }}/fonts.css" />
+    <link rel="stylesheet" href="{{ static }}/themes.css" />
+    <link rel="stylesheet" href="{{ static }}/base.css" />
+    <script defer src="{{ static }}/theme.js"></script>
+    <script defer src="{{ static }}/menu.js"></script>
+    <script>
+      window.MathJax = {
+        loader: {
+          load: ["[tex]/ams", "[tex]/mathtools"],
+        },
+        tex: {
+          packages: { "[+]": ["ams", "mathtools"] },
+          inlineMath: [
+            ["\\(", "\\)"],
+            ["$", "$"],
+          ],
+          displayMath: [
+            ["\\[", "\\]"],
+            ["$$", "$$"],
+          ],
+        },
+        startup: {
+          pageReady() {
+            return MathJax.startup.defaultPageReady().then(() => {
+              document
+                .querySelectorAll('mjx-container[display="true"]')
+                .forEach((math) => {
+                  if (math.closest(".math-display")) {
+                    return;
+                  }
+
+                  const wrapper = document.createElement("div");
+                  wrapper.className = "math-display";
+                  const parent = math.parentNode;
+
+                  if (!parent) {
+                    return;
+                  }
+
+                  if (parent.nodeName === "P") {
+                    const contentNodes = Array.from(parent.childNodes).filter(
+                      (node) =>
+                        node.nodeType !== Node.TEXT_NODE ||
+                        node.textContent.trim() !== "",
+                    );
+
+                    if (contentNodes.length === 1 && contentNodes[0] === math) {
+                      parent.replaceWith(wrapper);
+                      wrapper.appendChild(math);
+                      return;
+                    }
+                  }
+
+                  parent.insertBefore(wrapper, math);
+                  wrapper.appendChild(math);
+                });
+            });
+          },
+        },
+      };
+    </script>
+    <script defer src="{{ static }}/vendor/mathjax/es5/tex-svg.js"></script>
+  </head>
+  <body>
+    <header class="site-topbar">
+      <div class="site-topbar-left">
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-controls="site-sidebar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="menu-toggle-icon" aria-hidden="true"></span>
+          <span class="menu-toggle-label">Menu</span>
+        </button>
+
+        <a class="site-title" href="{{ home }}">{{ site_title }}</a>
+      </div>
+
+      <div class="site-topbar-right">
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Switch theme"
+        >
+          <span class="theme-toggle-icon" aria-hidden="true"></span>
+          <span class="theme-toggle-label">light</span>
+        </button>
+      </div>
+    </header>
+    <div class="layout">
+      <aside id="site-sidebar" class="sidebar">{{ nav }}</aside>
+      <main class="page">
+        <header class="page-header">
+          <h1>{{ title }}</h1>
+        </header>
+        {{ body }}
+      </main>
+    </div>
+  </body>
+</html>

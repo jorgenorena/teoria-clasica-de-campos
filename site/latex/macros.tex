@@ -1,0 +1,12 @@
+% Shared math macros for notes written directly in LaTeX.
+%
+% These are used natively when compiling a PDF and are expanded by pandoc
+% when building the website, so MathJax never needs to know about them.
+% Prefer plain \newcommand definitions: pandoc expands those reliably,
+% including inside math and with arguments. Exotic macros (\def, xparse,
+% optional arguments) may not be expanded -- see AGENT.md.
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\PL}{P_{\mathrm{L}}}
+\newcommand{\avg}[1]{\langle #1 \rangle}

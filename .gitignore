@@ -32,3 +32,9 @@ __pycache__/
 /.gitignore_alt
 /notes/.auctex-auto
 # <<< org-project-template machinery <<<
+
+# The site is published by GitHub Actions, so its reproducible build inputs
+# must remain tracked even though the template sync machinery ignores them.
+!/build_site.py
+!/export_tex.py
+!/site/

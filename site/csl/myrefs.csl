@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl"
+       version="1.0"
+       class="in-text"
+       default-locale="en-US">
+
+  <info>
+    <title>Numeric (brackets) with URL at end</title>
+    <id>http://www.zotero.org/styles/numeric-url-end</id>
+    <category citation-format="numeric"/>
+    <updated>2026-01-27T00:00:00+00:00</updated>
+  </info>
+
+  <!-- ===================== MACROS ===================== -->
+
+  <macro name="author">
+    <names variable="author" delimiter=", ">
+      <name name-as-sort-order="all"
+            sort-separator=" "
+            initialize-with="."
+            delimiter=", "/>
+      <et-al prefix=", " font-style="italic"/>
+    </names>
+  </macro>
+
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+
+  <macro name="journal">
+    <text variable="container-title" font-style="italic"/>
+  </macro>
+
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+
+  <macro name="volume-pages">
+    <group delimiter="">
+      <text variable="volume" prefix=" "/>
+      <text variable="page" prefix=":"/>
+    </group>
+  </macro>
+
+  <macro name="doi">
+    <text variable="DOI" prefix=" doi:"/>
+  </macro>
+
+  <macro name="url">
+    <text variable="URL" prefix=" "/>
+  </macro>
+
+  <!-- ===================== CITATION ===================== -->
+
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <!-- ===================== BIBLIOGRAPHY ===================== -->
+
+  <bibliography hanging-indent="true" entry-spacing="0">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+
+    <layout>
+      <text variable="citation-number" suffix=". "/>
+
+      <choose>
+        <if type="article-journal">
+          <group delimiter=". ">
+            <text macro="author"/>
+            <text macro="title"/>
+            <group delimiter=" ">
+              <text macro="journal"/>
+              <text macro="year"/>
+              <text macro="volume-pages"/>
+            </group>
+          </group>
+          <text macro="doi"/>
+          <text macro="url"/>
+          <text value="."/>
+        </if>
+
+        <else>
+          <group delimiter=". ">
+            <text macro="author"/>
+            <text macro="title"/>
+            <text macro="year"/>
+          </group>
+          <text macro="doi"/>
+          <text macro="url"/>
+          <text value="."/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+
+</style>

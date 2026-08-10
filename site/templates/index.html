@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    <link rel="stylesheet" href="{{ static }}/fonts.css" />
+    <link rel="stylesheet" href="{{ static }}/themes.css" />
+    <link rel="stylesheet" href="{{ static }}/base.css" />
+    <script defer src="{{ static }}/theme.js"></script>
+    <script defer src="{{ static }}/menu.js"></script>
+  </head>
+  <body>
+    <header class="site-topbar">
+      <div class="site-topbar-left">
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-controls="site-sidebar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="menu-toggle-icon" aria-hidden="true"></span>
+          <span class="menu-toggle-label">Menu</span>
+        </button>
+
+        <a class="site-title" href="{{ home }}">{{ site_title }}</a>
+      </div>
+
+      <div class="site-topbar-right">
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Switch theme"
+        >
+          <span class="theme-toggle-icon" aria-hidden="true"></span>
+          <span class="theme-toggle-label">light</span>
+        </button>
+      </div>
+    </header>
+    <div class="layout">
+      <aside id="site-sidebar" class="sidebar">{{ nav }}</aside>
+      <main class="page">
+        <header class="page-header">
+          <h1>{{ title }}</h1>
+        </header>
+        {{ content }}
+      </main>
+    </div>
+  </body>
+</html>
