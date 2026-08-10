@@ -94,4 +94,115 @@ En el punto $x_1$ de la figura \ref{fig:minimum}, la función no es mínima. Si 
   f(x_1+\delta x)<f(x_1).
 \]
 
+Algo similar ocurre en $x_3$. Si me desplazo hacia $x_3-\delta x$ encuentro que
+\[
+  f(x_3-\delta x)<f(x_3),
+\]
+tal que $x_3$ no puede ser un mínimo.
+
+En cambio en $x_2$ tengo un mínimo. No importa en cuál dirección me desplazo, siempre encuentro valores mayores que $f(x_2)$.
+
+Estudiemos esos pequeños desplazamientos. Para $\delta x$ muy pequeño,
+\[
+  f(x+\delta x)
+  \approx f(x)+f'(x)\,\delta x+\mathcal O(\delta x^2).
+\]
+Si queremos que $f(x+\delta x)>f(x)$ para cualquier signo de $\delta x$, necesitamos $f'(x)=0$, o también
+\[
+  \delta f(x)\equiv f'(x)\,\delta x=0.
+\]
+
+Hagamos lo mismo con la acción. Para encontrar el mínimo pedimos que un pequeño cambio en la trayectoria $\delta\vec q(t)$ no cambie el valor de la acción. Como fijamos condiciones de borde, consideramos sólo aquellas trayectorias que empiezan en $\vec q(t_i)$ y terminan en $\vec q(t_f)$. Entonces, para ser más precisos, pedimos que la acción sea mínima entre todas las trayectorias que van entre $\vec q(t_i)$ y $\vec q(t_f)$.
+
+\begin{figure}
+  \includegraphics[width=0.28\textwidth]{figures/variacion_trayectoria.png}
+
+  \caption{Trayectoria $\vec q(t)$ y trayectoria deformada
+  $\vec q+\delta\vec q$ con extremos fijos.}
+\end{figure}
+
+Es decir, pedimos que $S$ no cambie si a la trayectoria le agregamos una deformación infinitesimal $\delta\vec q(t)$ tal que
+\[
+  \delta\vec q(t_i)=0,
+  \qquad
+  \delta\vec q(t_f)=0,
+\]
+y por tanto
+\[
+  \delta S[\vec q]=0.
+\]
+
+Partimos de
+\begin{align*}
+  \delta S[\vec q]
+  &=S[\vec q+\delta\vec q]-S[\vec q]\\
+  &=\int_{t_i}^{t_f}dt\,
+  \Bigl\{
+    L(\vec q+\delta\vec q,
+      \dot{\vec q}+\delta\dot{\vec q},t)
+    -L(\vec q,\dot{\vec q},t)
+  \Bigr\}.
+\end{align*}
+Expandiendo a primer orden en $\delta\vec q$,
+\begin{align*}
+  \delta S[\vec q]
+  &=\int_{t_i}^{t_f}dt\,
+  \left\{
+    L(\vec q,\dot{\vec q},t)
+    +\frac{\partial L}{\partial q_i}\delta q_i
+    +\frac{\partial L}{\partial\dot q_i}\delta\dot q_i
+    -L(\vec q,\dot{\vec q},t)
+  \right\}\\
+  &=\int_{t_i}^{t_f}dt\,
+  \left\{
+    \frac{\partial L}{\partial q_i}\delta q_i
+    +\frac{d}{dt}\left(
+      \frac{\partial L}{\partial\dot q_i}\delta q_i
+    \right)
+    -\frac{d}{dt}\left(
+      \frac{\partial L}{\partial\dot q_i}
+    \right)\delta q_i
+  \right\}.
+\end{align*}
+Aquí usamos
+\[
+  \frac{d}{dt}(fg)=\dot f\,g+f\dot g,
+\]
+lo que se llama integrar por partes. Entonces,
+\begin{align*}
+  \delta S[\vec q]
+  &=\int_{t_i}^{t_f}dt\,
+  \left\{
+    \frac{\partial L}{\partial q_i}
+    -\frac{d}{dt}\left(
+      \frac{\partial L}{\partial\dot q_i}
+    \right)
+  \right\}\delta q_i
+  +\left[
+    \frac{\partial L}{\partial\dot q_i}\delta q_i
+  \right]_{t_i}^{t_f}\\
+  &=\int_{t_i}^{t_f}dt\,
+  \left\{
+    \frac{\partial L}{\partial q_i}
+    -\frac{d}{dt}\left(
+      \frac{\partial L}{\partial\dot q_i}
+    \right)
+  \right\}\delta q_i,
+\end{align*}
+porque usamos $\delta\vec q(t_i)=0$ y $\delta\vec q(t_f)=0$.
+
+Pero esto tiene que ser cero para cualquier función $\delta q_i(t)$, por lo que lo que hay entre llaves tiene que ser cero.
+
+Una cantidad que aparece con frecuencia es el \concept{momento canónico conjugado} a la variable $q_i(t)$, definido por
+\[
+  p_i(t)=\frac{\partial L}{\partial\dot q_i}.
+\]
+Para un sistema sencillo,
+\[
+  T=\frac12 mv^2,
+  \qquad
+  V=V(x),
+  \qquad
+  p=mv.
+\]
 \end{document}
