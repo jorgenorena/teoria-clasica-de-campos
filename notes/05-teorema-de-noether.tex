@@ -1,0 +1,186 @@
+%+TITLE: Teorema de Noether
+%+DESCRIPTION: Teorema que conecta simetrías con corrientes conservadas.
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\geometry{margin=2.3cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\setlist[itemize]{leftmargin=1.6em,itemsep=0.25em,topsep=0.25em}
+
+\definecolor{title-red}{RGB}{165,25,20}
+\definecolor{concept-green}{RGB}{20,125,45}
+\newcommand{\concept}[1]{\textcolor{concept-green}{#1}}
+
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\newcommand{\hc}{\mathrm{h.c.}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Diffs}{\mathrm{Diffs}}
+
+\begin{document}
+
+Vimos un ejemplo de una teoría de campo que describe la densidad en una barra y cuyas ecuaciones dinámicas son ondas longitudinales.
+
+En general, describimos uno o varios campos mediante su acción
+\[
+  S=\int d^dx\,
+  \mathcal L(\phi_1,\ldots,\phi_n,
+  \partial_\mu\phi_1,\ldots,\partial_\mu\phi_n),
+\]
+con ecuaciones de movimiento
+\[
+  \partial_\mu\left(
+    \frac{\partial\mathcal L}
+         {\partial(\partial_\mu\phi_i)}
+  \right)
+  -\frac{\partial\mathcal L}{\partial\phi_i}=0.
+\]
+
+Aquí nos hemos adelantado un poco y hemos juntado el espacio y el tiempo. Veremos que la relatividad especial nos lo exige. De este modo el índice $\mu$ va desde $0$ hasta el número de dimensiones espaciales ($1$ en el caso de la barra, $3$ durante la mayor parte del curso). El tiempo es la coordenada $0$, $t=x^0$.
+
+La derivación de las ecuaciones de Euler--Lagrange es análoga a lo que hicimos para la barra. Se obtienen fijando condiciones de borde
+\[
+  \delta\phi_i(t_i)=\delta\phi_i(t_f)=0.
+\]
+
+La ventaja de usar un lagrangiano no es sólo economía del lenguaje. También nos permite tratar fácilmente las simetrías de un sistema. Este curso es básicamente un estudio de simetrías. Las simetrías juegan un papel fundamental en la física de hoy.
+
+Decimos que un sistema tiene una simetría si existe una transformación de los campos y las coordenadas que no modifica la dinámica. Es decir,
+\[
+  x^\mu\longmapsto x'^\mu=x^\mu+\Delta x^\mu,
+  \qquad
+  \phi_i(x)\longmapsto\phi_i'(x')
+  =\phi_i(x)+\Delta\phi_i(x),
+\]
+tal que $\Delta S=0$.
+
+Un punto importante es que la variación $\Delta x^\mu$, $\Delta\phi_i(x)$ no es arbitraria, y no es cero en el borde generalmente (a diferencia de los $\delta\phi$ usados para deducir Euler--Lagrange).
+
+Si el sistema tiene una simetría, demostraremos que tiene entonces una corriente conservada. Este es el famoso \concept{teorema de Nöther}.
+
+Demostrémoslo primero en el caso en que no transformamos las coordenadas, $\Delta x^\mu=0$.
+
+La variación de la acción es
+\begin{align*}
+  \Delta S
+  &=\int d^4x\,
+    \Bigl(
+      \mathcal L(\phi_1+\Delta\phi_1,\ldots,
+      \phi_n+\Delta\phi_n,
+      \partial_\mu\phi_1+\partial_\mu\Delta\phi_1,\ldots,
+      \partial_\mu\phi_n+\partial_\mu\Delta\phi_n)\\
+  &\hspace{7em}
+      -\mathcal L(\phi_1,\ldots,\phi_n,
+      \partial_\mu\phi_1,\ldots,\partial_\mu\phi_n)
+    \Bigr)\\
+  &=\int d^4x\,
+    \left(
+      \frac{\partial\mathcal L}{\partial\phi_i}\Delta\phi_i
+      +\frac{\partial\mathcal L}{\partial(\partial_\mu\phi_i)}
+       \partial_\mu\Delta\phi_i
+    \right)\\
+  &=\int d^4x\,
+    \left[
+      \left(
+        \frac{\partial\mathcal L}{\partial\phi_i}
+        -\partial_\mu\frac{\partial\mathcal L}
+        {\partial(\partial_\mu\phi_i)}
+      \right)\Delta\phi_i
+      +\partial_\mu\left(
+        \frac{\partial\mathcal L}
+        {\partial(\partial_\mu\phi_i)}\Delta\phi_i
+      \right)
+    \right]\\
+  &=\int d^4x\,\partial_\mu\left(
+      \frac{\partial\mathcal L}
+      {\partial(\partial_\mu\phi_i)}\Delta\phi_i
+    \right)
+    +\int d^4x\,
+    \left(
+      \frac{\partial\mathcal L}{\partial\phi_i}
+      -\partial_\mu\frac{\partial\mathcal L}
+      {\partial(\partial_\mu\phi_i)}
+    \right)\Delta\phi_i.
+\end{align*}
+
+Si usamos las ecuaciones de movimiento, el segundo término es cero. En la derivación de Euler--Lagrange el primer término era cero porque tomábamos $\delta\phi=0$ en el borde. Ahora no es cero en general. Pero si la transformación es una simetría, $\Delta S=0$ para cualquier región de integración. Es decir, para una simetría, el primer término también es cero.
+
+En general la transformación depende de parámetros,
+\[
+  \Delta\phi_i=\epsilon^a\delta_a\phi_i,
+\]
+y
+\[
+  \partial_\mu\left(
+    \frac{\partial\mathcal L}{\partial(\partial_\mu\phi_i)}
+    \delta_a\phi_i
+  \right)=0.
+\]
+
+Esto tiene la forma de la \concept{conservación de una corriente}
+\[
+  \partial_\mu j_a^\mu=0
+\]
+por cada $\epsilon^a$.
+
+En particular,
+\[
+  \partial_\mu j^\mu=0
+  \qquad\Longrightarrow\qquad
+  \partial_t j^0+\vec\nabla\cdot\vec j=0,
+\]
+que es la ecuación de continuidad.
+
+La carga es
+\[
+  Q=\int d^3x\,j^0.
+\]
+Por tanto,
+\begin{align*}
+  \dot Q
+  &=\int d^3x\,\partial_tj^0
+   =-\int d^3x\,\vec\nabla\cdot\vec j
+   =-\int_{\partial V}d\vec\Sigma\cdot\vec j.
+\end{align*}
+
+La carga en una región cambia en el tiempo sólo si hay una corriente que atraviesa el borde de la región y se la lleva a otra parte. Es decir, la carga $Q$ se conserva.
+
+Por consiguiente, si bajo
+\[
+  \phi_i'=\phi_i+\Delta\phi_i
+\]
+la acción es invariante, hay una corriente conservada
+\[
+  j_a^\mu
+  =\left(
+    \delta_a\phi_i
+    \frac{\partial\mathcal L}{\partial(\partial_\mu\phi_i)}
+  \right)
+  \qquad \text{on-shell}
+\]
+(usando la ecuación de movimiento).
+
+Ahora consideremos transformaciones que involucran las coordenadas:
+\[
+  x'^\mu=x^\mu+\epsilon^a\delta_ax^\mu,
+  \qquad
+  \phi_i'(x')=\phi_i(x)+\epsilon^a\delta_a\phi_i(x).
+\]
+
+Definimos la variación en un punto
+\[
+  \Delta\phi_i(x)=\phi_i'(x)-\phi_i(x)=
+\]
+\end{document}
