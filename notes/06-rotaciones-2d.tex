@@ -41,7 +41,7 @@ Para ver la forma que tienen $x'$ y $y'$, consideremos primero un punto en el ej
 \[
   x'=x\cos\theta,
   \qquad
-  y'=-x\sen\theta.
+  y'=-x\sin\theta.
 \]
 
 \begin{figure}
@@ -50,7 +50,7 @@ Para ver la forma que tienen $x'$ y $y'$, consideremos primero un punto en el ej
 
 Ahora hagamos lo mismo para un punto sobre el eje $\hat y$:
 \[
-  x'=y\sen\theta,
+  x'=y\sin\theta,
   \qquad
   y'=y\cos\theta.
 \]
@@ -63,30 +63,30 @@ Como cualquier punto se puede escribir como una combinación lineal de los vecto
 
 En el sistema $(x',y')$, tenemos
 \[
-  \hat i=(\cos\theta,-\sen\theta),
+  \hat i=(\cos\theta,-\sin\theta),
   \qquad
-  \hat j=(\sen\theta,\cos\theta),
+  \hat j=(\sin\theta,\cos\theta),
 \]
 es decir,
 \[
-  \hat i=\cos\theta\,\hat i'-\sen\theta\,\hat j',
+  \hat i=\cos\theta\,\hat i'-\sin\theta\,\hat j',
   \qquad
-  \hat j=\sen\theta\,\hat i'+\cos\theta\,\hat j'.
+  \hat j=\sin\theta\,\hat i'+\cos\theta\,\hat j'.
 \]
 
 Ahora tomemos un vector arbitrario:
 \begin{align*}
   \vec v
   &=v_x\hat i+v_y\hat j \\
-  &=\left(v_x\cos\theta+v_y\sen\theta\right)\hat i'
-   +\left(v_y\cos\theta-v_x\sen\theta\right)\hat j'.
+  &=\left(v_x\cos\theta+v_y\sin\theta\right)\hat i'
+   +\left(v_y\cos\theta-v_x\sin\theta\right)\hat j'.
 \end{align*}
 
 En otras palabras,
 \[
-  v_x'=v_x\cos\theta+v_y\sen\theta,
+  v_x'=v_x\cos\theta+v_y\sin\theta,
   \qquad
-  v_y'=v_y\cos\theta-v_x\sen\theta.
+  v_y'=v_y\cos\theta-v_x\sin\theta.
 \]
 
 Esto también lo podemos escribir en notación matricial:
@@ -96,14 +96,14 @@ Esto también lo podemos escribir en notación matricial:
   \end{pmatrix}
   =
   \begin{pmatrix}
-    v_x\cos\theta+v_y\sen\theta\\
-    v_y\cos\theta-v_x\sen\theta
+    v_x\cos\theta+v_y\sin\theta\\
+    v_y\cos\theta-v_x\sin\theta
   \end{pmatrix}
   =
   \underbrace{
   \begin{pmatrix}
-    \cos\theta & \sen\theta\\
-    -\sen\theta & \cos\theta
+    \cos\theta & \sin\theta\\
+    -\sin\theta & \cos\theta
   \end{pmatrix}}_{\text{matriz de rotación }R_\theta}
   \begin{pmatrix}
     v_x\\ v_y
@@ -115,17 +115,17 @@ Notemos que
   R^TR
   &=
   \begin{pmatrix}
-    \cos\theta & -\sen\theta\\
-    \sen\theta & \cos\theta
+    \cos\theta & -\sin\theta\\
+    \sin\theta & \cos\theta
   \end{pmatrix}
   \begin{pmatrix}
-    \cos\theta & \sen\theta\\
-    -\sen\theta & \cos\theta
+    \cos\theta & \sin\theta\\
+    -\sin\theta & \cos\theta
   \end{pmatrix} \\
   &=
   \begin{pmatrix}
-    \cos^2\theta+\sen^2\theta & 0\\
-    0 & \cos^2\theta+\sen^2\theta
+    \cos^2\theta+\sin^2\theta & 0\\
+    0 & \cos^2\theta+\sin^2\theta
   \end{pmatrix}
   =
   \begin{pmatrix}
@@ -136,8 +136,8 @@ Notemos que
 Estas matrices son ortogonales. Además preservan el módulo de los vectores:
 \[
   v_x'^2+v_y'^2
-  =v_x^2(\cos^2\theta+\sen^2\theta)
-   +v_y^2(\cos^2\theta+\sen^2\theta)
+  =v_x^2(\cos^2\theta+\sin^2\theta)
+   +v_y^2(\cos^2\theta+\sin^2\theta)
   =v_x^2+v_y^2.
 \]
 
@@ -156,19 +156,19 @@ Las rotaciones forman un grupo:
   R_{\theta_1}R_{\theta_2}
   &=
   \begin{pmatrix}
-    \cos\theta_1 & \sen\theta_1\\
-    -\sen\theta_1 & \cos\theta_1
+    \cos\theta_1 & \sin\theta_1\\
+    -\sin\theta_1 & \cos\theta_1
   \end{pmatrix}
   \begin{pmatrix}
-    \cos\theta_2 & \sen\theta_2\\
-    -\sen\theta_2 & \cos\theta_2
+    \cos\theta_2 & \sin\theta_2\\
+    -\sin\theta_2 & \cos\theta_2
   \end{pmatrix} \\
   &=
   \begin{pmatrix}
-    \cos\theta_1\cos\theta_2-\sen\theta_1\sen\theta_2
-      & \sen\theta_1\cos\theta_2+\sen\theta_2\cos\theta_1\\
-    -\sen\theta_1\cos\theta_2-\sen\theta_2\cos\theta_1
-      & \cos\theta_1\cos\theta_2-\sen\theta_1\sen\theta_2
+    \cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2
+      & \sin\theta_1\cos\theta_2+\sin\theta_2\cos\theta_1\\
+    -\sin\theta_1\cos\theta_2-\sin\theta_2\cos\theta_1
+      & \cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2
   \end{pmatrix} \\
   &=R_{\theta_1+\theta_2},
 \end{align*}
@@ -195,8 +195,8 @@ Es también un grupo que depende de un parámetro continuo, el ángulo. De hecho
   R_\epsilon
   =
   \begin{pmatrix}
-    \cos\epsilon&\sen\epsilon\\
-    -\sen\epsilon&\cos\epsilon
+    \cos\epsilon&\sin\epsilon\\
+    -\sin\epsilon&\cos\epsilon
   \end{pmatrix}
   \approx
   \begin{pmatrix}
@@ -227,21 +227,21 @@ Por tanto,
   &=\sum_{n=0}^\infty\frac{1}{n!}(i\theta)^nJ^n \\
   &=\sum_{n=0}^\infty\frac{1}{(2n)!}(-1)^n\theta^{2n}J^{2n}
    +i\sum_{n=0}^\infty\frac{1}{(2n+1)!}(-1)^n\theta^{2n+1}J^{2n+1} \\
-  &=\cos\theta\,\mathbb{1}+i\sen\theta\,J \\
+  &=\cos\theta\,\mathbb{1}+i\sin\theta\,J \\
   &=
   \begin{pmatrix}
     \cos\theta&0\\0&\cos\theta
   \end{pmatrix}
   +
   \begin{pmatrix}
-    0&\sen\theta\\-\sen\theta&0
+    0&\sin\theta\\-\sin\theta&0
   \end{pmatrix}
   =R_\theta.
 \end{align*}
 
-Este grupo se llama $O(2)$.
+Este grupo se llama $SO(2)$.
 
-Un grupo similar es el de los complejos unimodulares $|z|=1$, llamado $U(1)$:
+Un grupo similar es el de los complejos unimodulares $|z|=1$, llamado $SU(1)$:
 \[
   |z_1z_2|=|z_1||z_2|=1,
   \qquad |1|=1,
@@ -255,9 +255,9 @@ Un grupo similar es el de los complejos unimodulares $|z|=1$, llamado $U(1)$:
 
 En general,
 \[
-  z=|z|\cos\theta+i|z|\sen\theta=|z|e^{i\theta}.
+  z=|z|\cos\theta+i|z|\sin\theta=|z|e^{i\theta}.
 \]
-Para los miembros de $U(1)$,
+Para los miembros de $SU(1)$,
 \[
   z=e^{i\theta},
 \]
@@ -287,6 +287,6 @@ Es decir, es un \concept{homomorfismo}.
 
 Un homomorfismo es un mapa que preserva la estructura. Cuando es biyectivo, lo llamamos \concept{isomorfismo}. Dos grupos isomorfos contienen la misma información y estructura. Los interpretamos como el ``mismo'':
 \[
-  O(2)\simeq U(1).
+  SO(2)\simeq SU(1).
 \]
 \end{document}
