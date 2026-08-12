@@ -1,0 +1,185 @@
+%+TITLE: Grupos de Lie
+%+DESCRIPTION: Introducción infornal a los grupos y álgebras de Lie. Estos son grupos cuyos elementos se conectan continuamente con la identidad.
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\geometry{margin=2.3cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\setlist[itemize]{leftmargin=1.6em,itemsep=0.25em,topsep=0.25em}
+
+\definecolor{title-red}{RGB}{165,25,20}
+\definecolor{concept-green}{RGB}{20,125,45}
+\newcommand{\concept}[1]{\textcolor{concept-green}{#1}}
+
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\newcommand{\hc}{\mathrm{h.c.}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Diffs}{\mathrm{Diffs}}
+
+\begin{document}
+
+Ya vimos un ejemplo de una transformación de simetría. El lenguaje matemático natural para describirla es la teoría de grupos.
+
+Consideremos una transformación que actúa sobre algún objeto. Por ejemplo, actúa sobre los campos de nuestra teoría:
+\[
+  \phi_a'=T_{ab}\phi_b.
+\]
+Si tenemos varias transformaciones podemos actuar con varias de ellas:
+\[
+  \phi_a''=T_{ab}^{(1)}\phi_b'
+  =T_{ab}^{(1)}T_{bc}^{(2)}\phi_c.
+\]
+Podemos entonces definir el producto de transformaciones como esta composición.
+
+Un \concept{grupo} es precisamente un conjunto de elementos $T^{(a)}$ junto con una operación de multiplicación $T^{(a)}T^{(b)}$, que cumple varias propiedades:
+
+\begin{enumerate}[label=\arabic*.]
+  \item Componer dos transformaciones de simetría nos debería dar una nueva transformación de simetría. Pedimos entonces que el producto de dos elementos del grupo sea un elemento del grupo.
+
+  \item No hacer nada debe ser una simetría. Pedimos entonces que el grupo tenga una identidad $\mathbb{1}$ tal que
+  \[
+    \mathbb{1}T=T\mathbb{1}=T.
+  \]
+
+  \item Para cada transformación de simetría debe existir la transformación inversa. Pedimos que para cada elemento $T$ del grupo exista una inversa dentro del grupo $T^{-1}$ tal que
+  \[
+    T^{-1}T=TT^{-1}=\mathbb{1}.
+  \]
+
+  \item Hemos definido el producto como composición de transformaciones. La
+  composición es asociativa. Por eso, para estudiar su estructura, pedimos que
+  el producto del grupo sea asociativo:
+  \[
+    T^{(1)}\bigl(T^{(2)}T^{(3)}\bigr)
+    =\bigl(T^{(1)}T^{(2)}\bigr)T^{(3)}.
+  \]
+\end{enumerate}
+
+Las rotaciones vistas anteriormente satisfacen todo esto.
+
+Consideramos ahora mapas entre dos grupos $G_1$ y $G_2$, tal que para $g\in G_1$, $f(g)\in G_2$. Decimos que el mapa es un \concept{homomorfismo} si ``preserva la estructura del grupo'', es decir,
+\[
+  f(g_1g_2)=f(g_1)f(g_2).
+\]
+
+Si además el homomorfismo es biyectivo, decimos que es un \concept{isomorfismo}. Cuando existe un isomorfismo entre dos grupos, decimos que los grupos son \concept{isomorfos}, $G_1\simeq G_2$. Cuando esto pasa, lo interpretamos como que ambos grupos tienen la misma estructura. Esto es porque podemos calcular el producto de elementos en un grupo y usar el isomorfismo para obtener el resultado en el otro grupo.
+
+Cuando un subconjunto de un grupo $H\subset G$ satisface los axiomas de grupo, decimos que es un \concept{subgrupo}.
+
+Cuando $g_1g_2=g_2g_1$, decimos que el grupo es \concept{abeliano}. Este es el caso de las rotaciones en el plano, pero no es así para rotaciones 3D.
+
+Cuando el grupo depende de un parámetro continuo, como el $\theta$ de las rotaciones, decimos que es un \concept{grupo de Lie}.
+
+Para grupos de Lie, podemos hacer transformaciones infinitesimales. Supongamos que la transformación depende de $n$ parámetros $\theta^a$, que tomamos pequeños:
+\[
+  T(\theta^a)\approx\mathbb{1}+i\theta^aG^a,
+\]
+donde $G^a$ es el generador.
+
+La $i$ de esta expresión es una convención usada comúnmente en física.
+
+Cualquier transformación para $\theta^a$ finito se puede escribir como infinitas transformaciones pequeñas sucesivas:
+\begin{align*}
+  T(\theta^a)
+  &=\lim_{N\to\infty}
+  \left(\mathbb{1}+i\frac{\theta^a}{N}G^a\right)^N \\
+  &=\lim_{N\to\infty}
+  \sum_{n=0}^N
+  \frac{N!}{n!(N-n)!}
+  \left(i\frac{\theta^a}{N}G^a\right)^n \\
+  &\approx\sum_{n=0}^\infty\frac1{n!}(i\theta^aG^a)^n
+  =e^{i\theta^aG^a}.
+\end{align*}
+Aquí, para $N$ grande,
+\[
+  \frac{N!}{(N-n)!}
+  =N(N-1)\cdots(N-n+1)
+  \approx N\cdots N
+  =N^n.
+\]
+
+Entonces cualquier transformación es el exponencial del generador, al menos localmente. Trabajar con generadores es más fácil, ya que sólo tenemos que considerar transformaciones infinitesimales. Pero nos falta un ingrediente: ¿cómo calcular el producto de elementos del grupo?
+
+Existe una identidad relacionada con exponenciales:
+\[
+  e^XYe^{-X}=e^{[X,\,\cdot\,]}Y,
+\]
+donde
+\[
+  e^{[X,\,\cdot\,]}Y
+  =Y+[X,Y]+\frac12[X,[X,Y]]
+  +\frac16[X,[X,[X,Y]]]+\cdots.
+\]
+
+Demostración: sea el operador $F(s)$ definido por
+\[
+  F(s)Y=e^{sX}Ye^{-sX}.
+\]
+Queremos encontrar $F(s)$. Derivamos respecto a $s$ para obtener
+\begin{align*}
+  F'(s)Y
+  &=Xe^{sX}Ye^{-sX}-e^{sX}Ye^{-sX}X \\
+  &=[X,F(s)Y].
+\end{align*}
+Por tanto,
+\[
+  F'(s)=[X,F(s)\,\cdot\,],
+  \qquad F(0)=\mathbb{1},
+  \qquad\Longrightarrow\qquad
+  F(s)=e^{s[X,\,\cdot\,]}.
+\]
+
+Usando este lema se puede demostrar la fórmula de Baker--Campbell--Hausdorff:
+\[
+  e^Xe^Y=e^Z,
+\]
+con
+\[
+  Z=X+Y+\frac12[X,Y]
+  +\frac1{12}[X,[X,Y]]
+  -\frac1{12}[Y,[X,Y]]+\cdots.
+\]
+
+Por un lado vemos que el producto de exponenciales no es el exponencial de la suma de exponentes. Por otro lado vemos que ese producto se puede calcular si conocemos todos los conmutadores.
+
+Usemos esto en nuestro caso a orden cuadrático:
+\begin{align*}
+  e^{i\theta_1^aG^a}e^{i\theta_2^bG^b}
+  &\approx
+  \exp\left[
+    i\theta_1^aG^a+i\theta_2^aG^a
+    -\frac12\theta_1^a\theta_2^b[G^a,G^b]+\cdots
+  \right] \\
+  &=e^{i\theta_3^aG^a}.
+\end{align*}
+
+Como este debe ser un elemento del grupo, el resultado en el exponente debe ser una combinación lineal de generadores. Es decir, el conmutador se debe poder escribir
+\[
+  [G^a,G^b]=if^{abc}G^c,
+\]
+donde $f^{abc}$ son las constantes de estructura. Esto define el \concept{álgebra de Lie}.
+
+En abstracto, un álgebra de Lie es un conjunto de objetos junto con una operación $[\,\cdot\,,\,\cdot\,]$ tal que $[A,B]$ pertenece al conjunto,
+\[
+  [A,B]=-[B,A],
+\]
+y
+\[
+  [A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0,
+\]
+que es la \concept{identidad de Jacobi}.
+
+\end{document}
