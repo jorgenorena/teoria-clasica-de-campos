@@ -1,0 +1,364 @@
+%+TITLE: Rotaciones en 3D
+%+DESCRIPTION: Luego de estudiar los grupos, estamos listos para estudiar rotaciones más generales y nuestro primer grupo no abeliano.
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\geometry{margin=2.3cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\setlist[itemize]{leftmargin=1.6em,itemsep=0.25em,topsep=0.25em}
+
+\definecolor{title-red}{RGB}{165,25,20}
+\definecolor{concept-green}{RGB}{20,125,45}
+\newcommand{\concept}[1]{\textcolor{concept-green}{#1}}
+
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\newcommand{\hc}{\mathrm{h.c.}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Diffs}{\mathrm{Diffs}}
+
+\begin{document}
+
+Estudiemos ahora el grupo más sencillo no abeliano y con varios generadores. El grupo de rotaciones en 3 dimensiones.
+
+Una rotación arbitraria la podemos definir como rotar por un ángulo $\alpha$ respecto a un eje $\hat n$, que apunta en una dirección arbitraria. Como $\hat n$ tiene módulo $1$, lo podemos escribir
+\[
+  \hat n=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta),
+\]
+tal que la rotación general depende de tres ángulos: $\alpha,\theta,\phi$.
+
+Cuando $\hat n$ es algún eje coordenado, ya sabemos la respuesta:
+\[
+  R_{\hat x}(\alpha)=
+  \begin{pmatrix}
+    1&0&0\\
+    0&\cos\alpha&\sin\alpha\\
+    0&-\sin\alpha&\cos\alpha
+  \end{pmatrix},
+  \qquad
+  R_{\hat y}(\alpha)=
+  \begin{pmatrix}
+    \cos\alpha&0&-\sin\alpha\\
+    0&1&0\\
+    \sin\alpha&0&\cos\alpha
+  \end{pmatrix},
+\]
+\[
+  R_{\hat z}(\alpha)=
+  \begin{pmatrix}
+    \cos\alpha&\sin\alpha&0\\
+    -\sin\alpha&\cos\alpha&0\\
+    0&0&1
+  \end{pmatrix}.
+\]
+
+($R_{\hat y}$ tiene esa forma para ser compatible con la regla de la mano derecha.)
+
+Para un eje arbitrario, podemos hacer una composición de rotaciones:
+
+\concept{Primero} rotamos los ejes para que $\hat n$ apunte en la dirección $\hat z$:
+\[
+  R_{\hat n\to\hat z}=R_{\hat y}(\theta)R_{\hat z}(\phi).
+\]
+(Tarea: verifique que $R_{\hat n\to\hat z}\hat n=\hat z$.)
+
+\concept{Segundo} rotamos por un ángulo $\alpha$ respecto a $\hat z$: $R_{\hat z}(\alpha)$.
+
+\concept{Tercero} regresamos el vector $\hat n$ a su orientación original: $R_{\hat n\to\hat z}^{-1}$.
+
+Por tanto,
+\[
+  R_{\hat n}(\alpha)
+  =R_{\hat n\to\hat z}^{-1}
+   R_{\hat z}(\alpha)
+   R_{\hat n\to\hat z}.
+\]
+
+Como siempre, es más fácil pensar en términos de invariancias. Las rotaciones dejan invariante el módulo de un vector. Eso es, si $\vec v'=R\vec v$,
+\[
+  \lVert\vec v'\rVert^2
+  =\vec v'{}^T\vec v'
+  =(R\vec v)^T(R\vec v)
+  =\vec v^{\,T}R^TR\vec v.
+\]
+
+Si queremos que $\lVert\vec v'\rVert^2=\lVert\vec v\rVert^2 =\vec v^{\,T}\vec v$, entonces debemos pedir que
+\[
+  R^TR=\mathbb 1.
+\]
+Es decir, las matrices ortogonales dejan invariante el módulo de los vectores.
+
+Estas matrices forman un grupo:
+\[
+  (R_1R_2)^T(R_1R_2)
+  =R_2^TR_1^TR_1R_2
+  =\mathbb 1,
+\]
+la identidad es ortogonal, y la inversa de la ortogonal $R^T$ es a su vez ortogonal:
+\[
+  (R^T)^TR^T=RR^T=\mathbb 1.
+\]
+
+Este grupo se llama $O(3)$.
+
+Pero $O(3)$ no contiene sólo rotaciones. Una transformación de paridad también es ortogonal:
+\[
+  P=
+  \begin{pmatrix}
+    -1&0&0\\
+    0&-1&0\\
+    0&0&-1
+  \end{pmatrix}.
+\]
+Pero esta no se puede escribir como una rotación.
+
+De hecho, si tomamos el determinante de $R^TR=\mathbb 1$, obtenemos \[
+  \det(R^TR)=1
+  \quad\Longrightarrow\quad
+  \det R^T\det R=1
+  \quad\Longrightarrow\quad
+  (\det R)^2=1
+  \quad\Longrightarrow\quad
+  \det R=\pm1.
+\]
+
+Pero una rotación se puede hacer infinitamente cercana a la identidad haciendo $\alpha\to0$. Eso quiere decir que $\det R=1$, mientras que $\det P=-1$.
+
+El subgrupo de $O(3)$ con determinante $1$ se llama $SO(3)$, y corresponde a las rotaciones.
+
+La rotación la podemos escribir en términos de los generadores:
+\[
+  R_{\hat n}(\alpha)=e^{i\alpha\hat n\cdot\vec J},
+\]
+donde $\vec J=(J_x,J_y,J_z)$ es un vector de matrices. Para encontrar las $\vec J$, usamos la definición de $SO(3)$ con $\alpha$ infinitesimal:
+\begin{align*}
+  \mathbb 1
+  &=(e^{i\alpha\hat n\cdot\vec J})^T
+    (e^{i\alpha\hat n\cdot\vec J})\\
+  &\approx(\mathbb 1+i\alpha\hat n\cdot\vec J^{\,T})
+    (\mathbb 1+i\alpha\hat n\cdot\vec J)\\
+  &\approx\mathbb 1+i\alpha\hat n\cdot
+    (\vec J^{\,T}+\vec J).
+\end{align*}
+
+Entonces pedimos $\vec J^{\,T}=-\vec J$. Es decir, son matrices antisimétricas. Para que $R$ sea real, $\vec J$ debe ser puramente imaginaria. Una matriz imaginaria antisimétrica tiene $3$ componentes independientes. Es decir, cualquier $\vec J$ se puede expandir en la base
+\[
+  J_x=
+  \begin{pmatrix}
+    0&0&0\\
+    0&0&-i\\
+    0&i&0
+  \end{pmatrix},
+  \qquad
+  J_y=
+  \begin{pmatrix}
+    0&0&i\\
+    0&0&0\\
+    -i&0&0
+  \end{pmatrix},
+  \qquad
+  J_z=
+  \begin{pmatrix}
+    0&-i&0\\
+    i&0&0\\
+    0&0&0
+  \end{pmatrix}.
+\]
+
+De hecho estas matrices corresponden a tomar $\alpha$ infinitesimal en las expresiones para $R_{\hat x}$, $R_{\hat y}$ y $R_{\hat z}$.
+
+Con las expresiones para $\vec J$ podemos calcular el álgebra de Lie tomando explícitamente los conmutadores:
+\[
+  [J_x,J_y]=iJ_z,
+  \qquad
+  [J_y,J_z]=iJ_x,
+  \qquad
+  [J_z,J_x]=iJ_y.
+\]
+Escribiendo $J_1=J_x$, $J_2=J_y$, $J_3=J_z$, podemos resumir esto en
+\[
+  [J_i,J_j]=i\epsilon_{ijk}J_k.
+\]
+
+Resulta que existe otro grupo con la misma álgebra de Lie.
+
+Este grupo es $SU(2)$, el grupo de matrices unitarias $2\times2$,
+\[
+  U^\dagger U=\mathbb 1,
+\]
+con determinante $1$,
+\[
+  \det U=1.
+\]
+
+En general, la condición de unitariedad implica
+\[
+  \det(U^\dagger U)=1,
+\]
+es decir,
+\[
+  \det U\det U^\dagger=|\det U|^2=1.
+\]
+
+Si yo tengo una matriz unitaria $2\times2$, la puedo escribir
+\[
+  U=z\widetilde U,
+\]
+donde $z=\det U$ tal que $|z|^2=1$ y $\det\widetilde U=1$.
+
+Lo que hemos hecho es ``factorizar'' el determinante.
+
+Podemos entonces escribir
+\[
+  U(2)=U(1)\otimes SU(2),
+\]
+donde $z$ corresponde a $U(1)$ y $\widetilde U$ a $SU(2)$.
+
+Como ya estudiamos $U(1)$ con las rotaciones 2D, nos enfocamos en $SU(2)$. Contando componentes, vemos que hay tres matrices $SU(2)$ linealmente independientes.
+
+Para encontrar los generadores, hacemos
+\[
+  U=\mathbb 1+i\alpha G,
+  \qquad
+  U^\dagger U=\mathbb 1+i\alpha(G^\dagger-G),
+  \qquad\Longrightarrow\qquad
+  G=G^\dagger.
+\]
+
+La condición $\det U=1$ se puede escribir
+\begin{align*}
+  1=\det U
+  &\approx(1+i\alpha G_{11})(1+i\alpha G_{22})
+    +\alpha^2G_{12}G_{21}\\
+  &\approx1+i\alpha(G_{11}+G_{22})
+  \qquad\Longrightarrow\qquad
+  \Tr G=0.
+\end{align*}
+
+Los generadores son matrices hermíticas sin traza. Hay $3$ independientes:
+\[
+  \sigma_1=
+  \begin{pmatrix}
+    0&1\\1&0
+  \end{pmatrix},
+  \qquad
+  \sigma_2=
+  \begin{pmatrix}
+    0&-i\\i&0
+  \end{pmatrix},
+  \qquad
+  \sigma_3=
+  \begin{pmatrix}
+    1&0\\0&-1
+  \end{pmatrix},
+\]
+las \concept{matrices de Pauli}.
+
+Éstas satisfacen
+\[
+  \sigma_i\sigma_j
+  =\mathbb 1\,\delta_{ij}+i\epsilon_{ijk}\sigma_k
+\]
+(verifique haciendo varias multiplicaciones). Resulta que también son unitarias,
+\[
+  \sigma_i^\dagger\sigma_i=\mathbb 1.
+\]
+De aquí tenemos que
+\[
+  [\sigma_i,\sigma_j]=2i\epsilon_{ijk}\sigma_k.
+\]
+
+Escribimos el elemento de $SU(2)$ como
+\[
+  U=\mathbb 1+i\vec\alpha\cdot\vec J,
+  \qquad
+  J_i=\frac12\sigma_i.
+\]
+
+Podemos siempre factorizar números al definir nuestros generadores. De esta manera nos queda
+\[
+  [J_i,J_j]
+  =\frac14[\sigma_i,\sigma_j]
+  =\frac12i\epsilon_{ijk}\sigma_k
+  =i\epsilon_{ijk}J_k.
+\]
+
+Como prometimos, esta es la misma álgebra de Lie de $SO(3)$.
+
+Hay una relación más estrecha entre los dos grupos. En abstracto, podemos escribir un vector como
+\[
+  \vec v=v_1\hat e_1+v_2\hat e_2+v_3\hat e_3,
+  \qquad
+  \hat e_i\cdot\hat e_j=\delta_{ij}.
+\]
+
+Para la base podemos usar $\hat e_i=\sigma_i$ y para el producto interno
+\[
+  \vec v\cdot\vec w=\frac12\Tr(vw).
+\]
+Efectivamente,
+\[
+  \hat e_i\cdot\hat e_j
+  =\frac12\Tr(\sigma_i\sigma_j)
+  =\delta_{ij}+i\frac12\epsilon_{ijk}\Tr\sigma_k
+  =\delta_{ij}.
+\]
+
+Entonces cualquier vector se puede escribir
+\[
+  \vec v=
+  \begin{pmatrix}
+    v_z&v_x-iv_y\\
+    v_x+iv_y&v_z
+  \end{pmatrix}.
+\]
+
+Estos vectores se pueden rotar definiendo una rotación respecto al eje $\hat n$ por un ángulo $\alpha$ como
+\[
+  q=\cos\alpha+i\sin\alpha\,\hat n
+  \qquad\text{(escrito como matriz)}.
+\]
+La rotación resulta ser
+\[
+  \vec v'=q^{-1}\vec vq.
+\]
+
+Haremos un check tomando $\vec v$ en la dirección $\hat x$ y tomando $\hat n=\hat z$.
+
+\begin{align*}
+  \vec v'
+  &=v_x(\cos\alpha+i\sigma_3\sin\alpha)^\dagger
+    \sigma_1(\cos\alpha+i\sigma_3\sin\alpha)\\
+  &=v_x\Bigl(
+      \cos^2\alpha\,\sigma_1
+      +i[\sigma_1,\sigma_3]\sin\alpha\cos\alpha
+      +\sigma_3\sigma_1\sigma_3\sin^2\alpha
+    \Bigr)\\
+  &=v_x\Bigl(
+      (\cos^2\alpha-\sin^2\alpha)\sigma_1
+      +2\sin\alpha\cos\alpha\,\sigma_2
+    \Bigr)\\
+  &=\cos2\alpha\,v_x\hat e_1
+    +\sin2\alpha\,v_x\hat e_2.
+\end{align*}
+
+Nos equivocamos, en realidad la rotación debería ser
+\[
+  q=\cos(\alpha/2)+i\hat n\sin(\alpha/2).
+\]
+
+Esto define un homomorfismo entre $SO(3)$ y $SU(2)$ que mapea dos elementos de $SO(3)$, $\theta$ y $\theta+\pi$, en un elemento de $SU(2)$ dado por $\alpha = 2\theta$.
+
+\end{document}
