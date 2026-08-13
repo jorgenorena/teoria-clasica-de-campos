@@ -1,5 +1,5 @@
 %+TITLE: Repaso de relatividad especial
-%+DESCRIPTION: Hacemis un repaso de la relatividad especial para estudiar luego el grupo de Lorentz
+%+DESCRIPTION: Hacemos un repaso de la relatividad especial para estudiar luego el grupo de Lorentz
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -127,7 +127,7 @@ Otra muy sencilla es no transformar $\vec X$ y sumarle una constante a $t$.
 
 Hay otras transformaciones. Notemos que
 \[
-  \Delta s^2=c^2\Delta t^2-\Delta x^2-\Delta y^2-\Delta z^2
+  \Delta s^2=-c^2\Delta t^2+\Delta x^2+\Delta y^2+\Delta z^2
 \]
 es la ecuación de un hiperboloide. Los senos y cosenos hiperbólicos satisfacen ese tipo de ecuación,
 \[
@@ -236,7 +236,7 @@ cualquier $\Delta X$, tal que
   =\eta_{\mu\nu}.
 \]
 
-Esta es la condición que define el \concept{grupo de Lorentz} $O(3,1)$. Está dado por todas las matrices $4\times4$ que satisfacen
+Esta es la condición que define el \concept{grupo de Lorentz} $O(1,3)$. Está dado por todas las matrices $4\times4$ que satisfacen
 \[
   \Lambda^T\eta\Lambda=\eta.
 \]
@@ -248,7 +248,7 @@ Tomando el determinante a ambos lados,
   \det\Lambda=\pm1.
 \]
 
-Como queremos estudiar las transformaciones infinitesimalmente cercanas a la identidad, consideramos sólo $\det\Lambda=1$, formando el grupo $SO(3,1)$. Esto excluye transformaciones como inversión temporal y paridad:
+Como queremos estudiar las transformaciones infinitesimalmente cercanas a la identidad, consideramos sólo $\det\Lambda=1$, formando el grupo $SO(1,3)$. Esto excluye transformaciones como inversión temporal y paridad:
 \[
   T=
   \begin{pmatrix}
@@ -279,7 +279,7 @@ Para $\mu=\nu=0$,
   \Lambda^0{}_0=\pm\sqrt{\Lambda^i{}_0\Lambda^i{}_0+1}.
 \]
 
-Como $\Lambda^i{}_0\Lambda^i{}_0\geq0$, tenemos $|\Lambda^0{}_0|\geq1$, tal que $\Lambda^0{}_0>0$. Esto quiere decir que $\Lambda^0{}_0$ no puede pasar de forma continua entre valores negativos y positivos. Si queremos estar infinitesimalmente cerca de la identidad, debemos imponer $\Lambda^0{}_0>0$. Esto define el \concept{grupo especial de Lorentz ortocrono} $SO(3,1)_+$.
+Como $\Lambda^i{}_0\Lambda^i{}_0\geq0$, tenemos $|\Lambda^0{}_0|\geq1$, tal que $\Lambda^0{}_0>0$. Esto quiere decir que $\Lambda^0{}_0$ no puede pasar de forma continua entre valores negativos y positivos. Si queremos estar infinitesimalmente cerca de la identidad, debemos imponer $\Lambda^0{}_0>0$. Esto define el \concept{grupo especial de Lorentz ortocrono} $SO(1,3)_+$.
 
 En el resto del curso, cuando hablemos del grupo de Lorentz, nos referimos a este. (¿Qué transformación excluimos? Debe tener $\Lambda^T\eta\Lambda=\eta$, $\det\Lambda=1$ y $\Lambda^0{}_0<0$.)
 

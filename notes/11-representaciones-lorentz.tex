@@ -1,0 +1,284 @@
+%+TITLE: Representaciones de $SO(1,3)_+$
+%+DESCRIPTION: Estudiamos las representaciones del grupo de Lorentz que usaremos para construir lagrangianos
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\geometry{margin=2.3cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\setlist[itemize]{leftmargin=1.6em,itemsep=0.25em,topsep=0.25em}
+
+\definecolor{title-red}{RGB}{165,25,20}
+\definecolor{concept-green}{RGB}{20,125,45}
+\newcommand{\concept}[1]{\textcolor{concept-green}{#1}}
+
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\newcommand{\hc}{\mathrm{h.c.}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Diffs}{\mathrm{Diffs}}
+
+\begin{document}
+
+Sabemos cómo actúa el grupo de Lorentz sobre 4-vectores. Pero habíamos visto que las rotaciones podían actuar de forma no trivial sobre objetos que no eran vectores ni escalares, por ejemplo espinores. Para buscar los objetos análogos del grupo de Lorentz, buscamos sus representaciones irreducibles.
+
+Veremos que podemos reciclar las representaciones de $SO(3)$. Para eso definimos
+\[
+  N_i^+=\frac12(J_i+iK_i),
+  \qquad
+  N_i^-=\frac12(J_i-iK_i).
+\]
+
+\begin{align*}
+  [N_i^+,N_j^+]
+  &=\frac14[J_i+iK_i,J_j+iK_j] \\
+  &=\frac14\left(
+      i\epsilon_{ijk}J_k
+      -\epsilon_{ijk}K_k
+      +\epsilon_{ijk}K_k
+      +i\epsilon_{ijk}J_k
+    \right) \\
+  &=\frac12 i\epsilon_{ijk}(J_k+iK_k)
+   =i\epsilon_{ijk}N_k^+.
+\end{align*}
+
+Análogamente,
+\[
+  [N_i^-,N_j^-]=i\epsilon_{ijk}N_k^-,
+  \qquad
+  [N_i^+,N_j^-]=0.
+\]
+
+Aprendemos entonces que el álgebra de Lie de $SO(1,3)_+$ se desarma en dos copias del álgebra de Lie de $SO(3)$.
+
+Las representaciones del álgebra de $SO(1,3)_+$ estarán dadas por dos representaciones de $SO(3)$. Denotamos una representación por $(j_1,j_2)$, donde $j_1$ y $j_2$ denotan la representación de $N_i^+$ y $N_i^-$, respectivamente.
+
+{\bf $\boldsymbol{(0,0)}$}
+
+En este caso $N_i^+=0$ y $N_i^-=0$. Esto es, $J_i=K_i=0$. Corresponde a la representación trivial para la cual $\Lambda=1$.
+
+{\bf $\boldsymbol{(1/2,0)}$}
+
+En este caso sabemos que
+\[
+  N_i^+=\frac12\sigma_i,
+  \qquad
+  N_i^-=0.
+\]
+De esta última, $J_i=iK_i$, tal que $N_i^+=J_i=iK_i$. Entonces
+\[
+  J_i=\frac12\sigma_i,
+  \qquad
+  K_i=-\frac{i}{2}\sigma_i.
+\]
+
+Los objetos sobre los cuales actúan son elementos de un espacio vectorial de dos dimensiones, llamados \concept{espinores izquierdos de Weyl}:
+\[
+  \chi_L=
+  \begin{pmatrix}
+    \chi_L^1\\
+    \chi_L^2
+  \end{pmatrix}.
+\]
+
+Cuando ejecutamos una rotación o un boost, éstos transforman como
+\[
+  \chi_L'
+  =e^{i\theta\hat n\cdot\vec J}\chi_L
+  =e^{\frac{i\theta}{2}\hat n\cdot\vec\sigma}\chi_L,
+\]
+\[
+  \chi_L'
+  =e^{i\phi\hat n\cdot\vec K}\chi_L
+  =e^{\frac{\phi}{2}\hat n\cdot\vec\sigma}\chi_L.
+\]
+
+{\bf $\boldsymbol{(0,1/2)}$}
+
+\[
+  N_i^-=\frac12\sigma_i,
+  \qquad
+  N_i^+=0
+  \quad\Longrightarrow\quad
+  J_i=-iK_i,
+  \qquad
+  N_i^-=J_i=-iK_i,
+\]
+por lo que
+\[
+  J_i=\frac12\sigma_i,
+  \qquad
+  K_i=\frac{i}{2}\sigma_i.
+\]
+
+Los objetos sobre los que actúan son \concept{espinores de Weyl derechos}:
+\[
+  \xi_R=
+  \begin{pmatrix}
+    \xi_R^{\dot 1}\\
+    \xi_R^{\dot 2}
+  \end{pmatrix},
+\]
+donde los índices son ``índices punteados''.
+
+Bajo una rotación y un boost,
+\[
+  \text{Rotación:}\qquad
+  \xi_R'=e^{\frac{i\theta}{2}\hat n\cdot\vec\sigma}\xi_R,
+\]
+\[
+  \text{Boost:}\qquad
+  \xi_R'=e^{-\frac{\phi}{2}\hat n\cdot\vec\sigma}\xi_R.
+\]
+
+{\bf Conjugación de carga}
+
+A partir de un espinor izquierdo podemos construir un objeto que transforma como un espinor derecho. Por motivos que veremos más adelante, a esto se lo llama ``conjugación de carga''. Para hacerlo, definimos $\varepsilon_{ab}$ tal que
+\[
+  \varepsilon_{ab}=-\varepsilon_{ba},
+  \qquad
+  \varepsilon_{12}=1.
+\]
+Además definimos una matriz inversa $\varepsilon^{ab}$ tal que
+\[
+  \varepsilon^{ab}\varepsilon_{bc}=\delta^a{}_c,
+  \qquad
+  \varepsilon^{12}=-1.
+\]
+
+Por ejemplo,
+\[
+  \begin{pmatrix}0&1\\-1&0\end{pmatrix}
+  \begin{pmatrix}0&-i\\i&0\end{pmatrix}
+  \begin{pmatrix}0&-1\\1&0\end{pmatrix}
+  =
+  \begin{pmatrix}i&0\\0&i\end{pmatrix}
+  \begin{pmatrix}0&-1\\1&0\end{pmatrix}
+  =
+  \begin{pmatrix}0&-i\\i&0\end{pmatrix}.
+\]
+En general,
+\[
+  \varepsilon_{ab}(\sigma^i)^b{}_c\varepsilon^{cd}
+  =-(\sigma^{i*})_a{}^d.
+\]
+
+Entonces,
+\begin{align*}
+  \varepsilon_{ab}
+  \bigl[(\hat n\cdot\vec\sigma)^n\bigr]^b{}_c
+  \varepsilon^{cd}
+  &=\varepsilon_{ab}
+    \bigl[(\hat n\cdot\vec\sigma)(-\varepsilon)
+           \varepsilon(\hat n\cdot\vec\sigma)(-\varepsilon)
+           \cdots
+           \varepsilon(\hat n\cdot\vec\sigma)
+    \bigr]^b{}_c
+    \varepsilon^{cd} \\
+  &=\bigl[(-\hat n\cdot\vec\sigma^{\,*})^n\bigr]_a{}^d,
+\end{align*}
+por lo que
+\[
+  \varepsilon_{ab}
+  \left(e^{\frac{i\theta}{2}\hat n\cdot\vec\sigma}\right)^b{}_c
+  \varepsilon^{cd}
+  =
+  \left(e^{-\frac{i\theta}{2}\hat n\cdot\vec\sigma^{\,*}}\right)_a{}^d.
+\]
+
+Bajo rotaciones,
+\begin{align*}
+  \varepsilon\chi_L^*
+  &\longmapsto
+  \varepsilon
+  \left(e^{\frac{i\theta}{2}\hat n\cdot\vec\sigma}\chi_L\right)^* \\
+  &=\varepsilon e^{-\frac{i\theta}{2}\hat n\cdot\vec\sigma^{\,*}}
+    (-\varepsilon)\,\varepsilon\chi_L^* \\
+  &=e^{\frac{i\theta}{2}\hat n\cdot\vec\sigma}\varepsilon\chi_L^*.
+\end{align*}
+
+Bajo boosts,
+\begin{align*}
+  \varepsilon\chi_L^*
+  &\longmapsto
+  \varepsilon
+  \left(e^{\frac{\phi}{2}\hat n\cdot\vec\sigma}\chi_L\right)^* \\
+  &=\varepsilon e^{\frac{\phi}{2}\hat n\cdot\vec\sigma^{\,*}}
+    (-\varepsilon)\,\varepsilon\chi_L^* \\
+  &=e^{-\frac{\phi}{2}\hat n\cdot\vec\sigma}\varepsilon\chi_L^*.
+\end{align*}
+
+Vemos entonces que
+\[
+  \chi_L^c\equiv\varepsilon\chi_L^*
+\]
+transforma como un espinor derecho.
+
+De manera análoga,
+\[
+  \xi_R^c\equiv(-\varepsilon)\xi_R^*
+\]
+transforma como un espinor izquierdo.
+
+Por eso interpretamos $\varepsilon$ como bajando o subiendo índices y el complejo conjugado como poniendo o quitando puntos en los índices:
+\[
+  \varepsilon\chi^{a*}=\chi_{\dot a},
+  \qquad
+  \text{transforma como derecha}.
+\]
+
+{\bf $\boldsymbol{(1/2,1/2)}$}
+
+Son objetos con un índice espinorial izquierdo y un índice espinorial derecho, $W^a{}_{\dot b}$. Si bajamos un índice con $\varepsilon$, tenemos $W^{a\dot b}$, que podemos ver como matrices complejas $2\times2$. Es fácil demostrar que las transformaciones de Lorentz llevan matrices hermíticas en otras hermíticas. Es decir, son un subespacio invariante.
+
+A una matriz hermítica $2\times2$ la podemos descomponer en la base $\{\sigma^\mu\}$, donde $\sigma^0=\mathbb 1$. Escribimos
+\[
+  V^{a\dot b}=V_\mu(\sigma^\mu)^{a\dot b}.
+\]
+Se puede demostrar que
+\[
+  V'^{a\dot b}=\Lambda^\nu{}_{\mu}V_\nu(\sigma^\mu)^{a\dot b},
+\]
+por lo que $V_\mu$ son 4-vectores.
+
+Lo demostramos para un boost en $\hat z$:
+\begin{align*}
+  V'_{a\dot b}
+  &=\left(e^{\phi\sigma_3/2}\right)_a{}^c
+    V_{c\dot d}
+    \left(e^{\phi\sigma_3/2}\right)_{\dot b}{}^{\dot d} \\
+  &=
+    \begin{pmatrix}e^{\phi/2}&0\\0&e^{-\phi/2}\end{pmatrix}
+    \begin{pmatrix}
+      V_0+V_3 & V_1-iV_2\\
+      V_1+iV_2 & V_0-V_3
+    \end{pmatrix}
+    \begin{pmatrix}e^{\phi/2}&0\\0&e^{-\phi/2}\end{pmatrix} \\
+  &=
+    \begin{pmatrix}
+      e^\phi(V_0+V_3) & V_1-iV_2\\
+      V_1+iV_2 & e^{-\phi}(V_0-V_3)
+    \end{pmatrix} \\
+  &=
+    \begin{pmatrix}
+      (\cosh\phi\,V_0+\sinh\phi\,V_3)
+      +(\cosh\phi\,V_3+\sinh\phi\,V_0)
+      & V_1-iV_2\\
+      V_1+iV_2
+      &(\cosh\phi\,V_0+\sinh\phi\,V_3)
+      -(\cosh\phi\,V_3+\sinh\phi\,V_0)
+    \end{pmatrix}.
+\end{align*}
+
+\end{document}
