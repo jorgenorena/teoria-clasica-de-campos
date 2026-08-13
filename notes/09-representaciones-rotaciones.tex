@@ -1,0 +1,252 @@
+%+TITLE: Representaciones de SO(3)
+%+DESCRIPTION: Discutimos las representaciones del grupo de rotaciones antes de discutir repreaentaciones en general.
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\geometry{margin=2.3cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\setlist[itemize]{leftmargin=1.6em,itemsep=0.25em,topsep=0.25em}
+
+\definecolor{title-red}{RGB}{165,25,20}
+\definecolor{concept-green}{RGB}{20,125,45}
+\newcommand{\concept}[1]{\textcolor{concept-green}{#1}}
+
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\newcommand{\hc}{\mathrm{h.c.}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Diffs}{\mathrm{Diffs}}
+
+\begin{document}
+
+Ahora buscamos las representaciones finito-dimensionales del grupo de rotaciones. En realidad lo que haremos es buscar representaciones del álgebra de Lie y tomaremos su exponencial.
+
+Una representación del álgebra de Lie es un conjunto de operadores lineales sobre el espacio $V$ tal que su conmutador satisface el álgebra.
+
+Una representación del álgebra de Lie me permite encontrar una representación del grupo localmente.
+
+\[
+  g_1=e^{i\theta_1^aG^a},
+  \qquad
+  g_2=e^{i\theta_2^aG^a},
+\]
+\[
+  g_1g_2
+  =e^{i\left(
+      (\theta_1^a+\theta_2^a)G^a
+      +\frac{i}{2}\theta_1^a\theta_2^b[G^a,G^b]
+      +\cdots
+    \right)}.
+\]
+De aquí se puede ver que
+\[
+  R(g_1)R(g_2)=R(g_1g_2),
+  \qquad
+  R(g)=e^{i\theta^aR(G^a)}.
+\]
+
+Para encontrar las representaciones de dimensión finita del álgebra, usamos un hecho del álgebra lineal:
+
+Dos matrices son mutuamente diagonalizables si y sólo si conmutan.
+
+En el caso de las rotaciones, ninguna pareja de operadores $J_1,J_2,J_3$ conmuta. Sólo uno de ellos puede ser diagonal. Sin perder generalidad, escojamos $J_3$. Que sea diagonal quiere decir que los elementos de la base son autovectores de $J_3$:
+\[
+  J_3|m\rangle=m|m\rangle.
+\]
+
+Para ver cómo actúan los otros generadores, definimos
+\[
+  J_\pm=(J_1\pm iJ_2).
+\]
+Entonces
+\begin{equation}
+  [J_3,J_+]
+  =[J_3,J_1+iJ_2]
+   =(iJ_2+J_1)
+   =J_+.
+\end{equation}
+Análogamente,
+\[
+  [J_3,J_-]=-J_-.
+\]
+
+De aquí tenemos que
+\begin{align*}
+  J_3J_+|m\rangle
+  &=([J_3,J_+]+J_+J_3)|m\rangle\\
+  &=J_+|m\rangle+J_+J_3|m\rangle\\
+  &=(m+1)J_+|m\rangle.
+\end{align*}
+Análogamente,
+\[
+  J_3J_-|m\rangle=(m-1)J_-|m\rangle.
+\]
+
+Esto quiere decir que $J_+|m\rangle$ es un autovector de $J_3$ con autovalor $m+1$, y $J_-|m\rangle$ es un autovector de $J_3$ con autovalor $m-1$.
+
+Si la representación es finita, $m$ debe tener algún rango finito. Llamemos $j$ al valor máximo que puede tomar $m$, entonces
+\[
+  J_+|j\rangle=0.
+\]
+
+El estado $|j-1\rangle$ debe estar normalizado, escribimos
+\[
+  J_-|j\rangle=\alpha_0|j-1\rangle.
+\]
+Entonces
+\[
+  |\alpha_0|^2\langle j-1|j-1\rangle
+  =\langle j|J_+J_-|j\rangle
+  =\langle j|([J_+,J_-]+J_-J_+)|j\rangle
+\]
+
+Pero
+\[
+  [J_+,J_-]=[J_1+iJ_2,J_1-iJ_2]=2J_3,
+\]
+tal que
+\[
+  |\alpha_0|^2=2\langle j|J_3|j\rangle=2j
+  \quad\Longrightarrow\quad
+  \alpha_0=\sqrt{2j}.
+\]
+
+Queremos demostrar en general
+\[
+  J_-|j-n\rangle
+  =\sqrt{(2j-n)(n+1)}\,|j-n-1\rangle.
+\]
+
+\derivation{Esto se deduce a partir de}
+\[
+  J_+J_-|j-n\rangle=(2j-n)(n+1)|j-n\rangle,
+\]
+\derivation{que demostramos por recurrencia:}
+
+\begin{itemize}
+  \item Ya demostramos el caso base $n=0$.
+  \item Asumimos que se cumple para $n-1$ y lo extendemos a $n$.
+\end{itemize}
+
+\begin{align*}
+  J_+J_-|j-n\rangle
+  &=(2J_3+J_-J_+)|j-n\rangle \\
+  &=2(j-n)|j-n\rangle
+    +(2j-n+1)^{-1/2}n^{-1/2}
+      J_-J_+J_-|j-n+1\rangle \\
+  &=2(j-n)|j-n\rangle
+    +(2j-n+1)^{-1/2}n^{-1/2}
+      (2j-n+1)n\,J_-|j-n+1\rangle \\
+  &=2(j-n)|j-n\rangle+(2j-n+1)n|j-n\rangle \\
+  &=(2j-n+2jn-n^2)|j-n\rangle \\
+  &=(2j-n)(n+1)|j-n\rangle.
+\end{align*}
+
+Entonces
+\begin{align*}
+  |\alpha_n|^2
+  &=|\alpha_n|^2\langle j-n-1|j-n-1\rangle \\
+  &=\langle j-n|J_+J_-|j-n\rangle \\
+  &=(2j-n)(n+1).
+\end{align*}
+
+Escribiendo en términos de $m$,
+\[
+  J_-|m\rangle
+  =\sqrt{(j+m)(j-m+1)}\,|m-1\rangle.
+\]
+Análogamente,
+\[
+  J_+|m\rangle
+  =\sqrt{(j-m)(j+m+1)}\,|m+1\rangle.
+\]
+
+Si $j$ es cualquier número real, la representación no es necesariamente finita:
+\[
+  |1.2\rangle\xrightarrow{J_-}|0.2\rangle
+  \xrightarrow{J_-}|-0.8\rangle
+  \xrightarrow{J_-}|-1.8\rangle
+  \xrightarrow{J_-}\cdots
+\]
+
+Nos da infinitos vectores. Pero si $j$ toma algunos valores especiales, la normalización $\sqrt{(2j-n)n}$ se hace cero luego de un número finito de ``bajadas'':
+\[
+  n=2j.
+\]
+
+Como $n$ es entero, vemos que esto se puede cumplir sólo si $2j$ es entero.
+
+El número de vectores generados es $2j+1$.
+
+Para $j=0$ hay un solo vector y corresponde a la representación trivial.
+
+Para $j=1/2$ hay dos vectores:
+\[
+  J_3|1/2\rangle=\frac12|1/2\rangle,
+  \qquad
+  J_3|-1/2\rangle=-\frac12|-1/2\rangle,
+\]
+\[
+  J_+|-1/2\rangle=|1/2\rangle,
+  \qquad
+  J_-|1/2\rangle=|-1/2\rangle.
+\]
+
+Estos forman una base. Cualquier vector en $V$ se escribe
+\[
+  \alpha|1/2\rangle+\beta|-1/2\rangle
+  \quad\text{o}\quad
+  \begin{pmatrix}\alpha\\ \beta\end{pmatrix}.
+\]
+
+Este vector se llama \concept{espinor de Pauli}. Por ejemplo, los electrones transforman en esta representación bajo rotaciones.
+
+\[
+  J_3=\frac12
+  \begin{pmatrix}
+    1&0\\
+    0&-1
+  \end{pmatrix},
+  \qquad
+  J_+=
+  \begin{pmatrix}
+    0&1\\
+    0&0
+  \end{pmatrix},
+  \qquad
+  J_-=
+  \begin{pmatrix}
+    0&0\\
+    1&0
+  \end{pmatrix}.
+\]
+Por tanto,
+\[
+  J_1=\frac12(J_++J_-)
+  =\frac12
+  \begin{pmatrix}
+    0&1\\
+    1&0
+  \end{pmatrix},
+  \qquad
+  J_2=\frac{1}{2i}(J_+-J_-)
+  =\frac12
+  \begin{pmatrix}
+    0&-i\\
+    i&0
+  \end{pmatrix}.
+\]
+
+\end{document}
