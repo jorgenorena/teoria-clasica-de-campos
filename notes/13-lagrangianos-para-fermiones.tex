@@ -1,0 +1,255 @@
+%+TITLE: Lagrangianos para espín $1/2$.
+%+DESCRIPTION: Usando lo que hemos aprendido, construimos lagrangianos relativistas para fermiones
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\geometry{margin=2.3cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\setlist[itemize]{leftmargin=1.6em,itemsep=0.25em,topsep=0.25em}
+
+\definecolor{title-red}{RGB}{165,25,20}
+\definecolor{concept-green}{RGB}{20,125,45}
+\newcommand{\concept}[1]{\textcolor{concept-green}{#1}}
+
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\newcommand{\hc}{\mathrm{h.c.}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Diffs}{\mathrm{Diffs}}
+\newcommand{\slashedpartial}{\not\!\partial}
+
+\begin{document}
+
+Ahora queremos aplicar la misma lógica a campos de espín $1/2$. Es decir, un campo que a cada punto del espacio le asigna un espinor.
+
+El primer paso es encontrar combinaciones de índices espinoriales que sean invariantes de Lorentz. Usando esas combinaciones podemos construir nuestro lagrangiano, que debe ser invariante.
+
+Resulta que para encontrar esas combinaciones basta contraer índices arriba y abajo. Por ejemplo, bajo un boost,
+\begin{align*}
+  \chi'^a\chi'_a
+  &=\left(e^{\phi\hat n\cdot\vec\sigma/2}\right)^a{}_b
+    \chi^b\,
+    \varepsilon_{ac}
+    \left(e^{\phi\hat n\cdot\vec\sigma/2}\right)^c{}_d
+    \varepsilon^{de}\chi_e \\
+  &=\left(e^{\phi\hat n\cdot\vec\sigma/2}\right)^a{}_b
+    \left(e^{-\phi\hat n\cdot\vec\sigma^{\,*}/2}\right)^e{}_a
+    \chi^b\chi_e \\
+  &=\left(e^{\phi\hat n\cdot\vec\sigma/2}\right)^a{}_b
+    \left(e^{-\phi\hat n\cdot\vec\sigma/2}\right)^e{}_a
+    \chi^b\chi_e
+   =\chi^e\chi_e.
+\end{align*}
+
+Se puede hacer un cálculo análogo para rotaciones y otras combinaciones de índices contraídos.
+
+Usando un espinor izquierdo $\chi$ y uno derecho $\xi$, tenemos las siguientes combinaciones:
+\[
+  \chi_a\chi^a=\chi^T\varepsilon\chi,
+  \qquad
+  \xi_{\dot a}\xi^{\dot a}=\xi^T(-\varepsilon)\xi,
+  \qquad
+  \chi^a\xi_a=\xi^\dagger\chi,
+  \qquad
+  \chi^{\dot a}\xi_{\dot a}=\chi^\dagger\xi.
+\]
+
+Podemos además actuar con derivadas. Aquí surge una diferencia con el caso escalar, porque podemos intercambiar el índice de la derivada por índices espinoriales usando las matrices $\sigma^\mu$; es decir, describimos el 4-vector derivada en la representación $(1/2,1/2)$. Los índices espinoriales de $\sigma^\mu$ entonces se contraen con espinores:
+\[
+  i\,\xi_a(\sigma^\mu)^{a\dot b}\partial_\mu\xi_{\dot b}
+  =i\,\xi^\dagger\sigma^\mu\partial_\mu\xi.
+\]
+
+Note que esta combinación es real, salvo derivadas totales:
+\begin{align*}
+  \left(i\xi^\dagger\sigma^\mu\partial_\mu\xi\right)^*
+  &=\left(i\xi^\dagger\sigma^\mu\partial_\mu\xi\right)^\dagger \\
+  &=-i(\partial_\mu\xi^\dagger)\sigma^{\mu\dagger}\xi \\
+  &=i\xi^\dagger\sigma^\mu\partial_\mu\xi
+    +\text{derivadas totales}.
+\end{align*}
+
+También tenemos
+\begin{align*}
+  i(\partial_\mu\chi_a)(\sigma^\mu)^{a\dot b}\chi_{\dot b}
+  &=i(\partial_\mu\chi^c)\varepsilon_{ac}
+    (\sigma^\mu)^{a\dot b}\varepsilon_{\dot b\dot d}\chi^{\dot d} \\
+  &=i\chi^\dagger\bigl(( -\varepsilon)\sigma^\mu\varepsilon\bigr)^T
+    \partial_\mu\chi \\
+  &=i\chi^\dagger\sigma^0\partial_0\chi
+    -i\chi^\dagger\sigma^i\partial_i\chi
+   =i\chi^\dagger\bar\sigma^\mu\partial_\mu\chi,
+\end{align*}
+con
+\[
+  \bar\sigma^0=\sigma^0,
+  \qquad
+  \bar\sigma^i=-\sigma^i.
+\]
+
+El lagrangiano más general con un espinor derecho y uno izquierdo es
+\begin{align*}
+  \mathcal L={}&
+  i\xi^\dagger\sigma^\mu\partial_\mu\xi
+  +i\chi^\dagger\bar\sigma^\mu\partial_\mu\chi
+  -m\xi^\dagger\chi
+  -m^*\chi^\dagger\xi \\
+  &-\frac{M_R}{2}\xi^T(-\varepsilon)\xi
+  -\frac{M_L}{2}\chi^T\varepsilon\chi
+  +\text{h.c.}
+\end{align*}
+
+Los términos $M_R$ y $M_L$ se llaman \concept{masas de Majorana}. ``h.c.'' quiere decir que sumamos el hermítico conjugado para que $\mathcal L$ sea real. Veremos más adelante que la interacción electromagnética corresponde a una simetría $U(1)$. Los campos que tienen carga $q$ transforman
+\[
+  \phi\longmapsto e^{i\alpha q}\phi.
+\]
+Los términos de Majorana no son invariantes bajo este tipo de transformación
+\[
+  \xi\longmapsto e^{iq_\xi\alpha}\xi,
+  \qquad
+  \chi\longmapsto e^{iq_\chi\alpha}\chi,
+\]
+ya que
+\[
+  \xi^T(-\varepsilon)\xi
+  \longmapsto
+  e^{2iq_\xi\alpha}\,\xi^T(-\varepsilon)\xi,
+  \qquad
+  \chi^T\varepsilon\chi
+  \longmapsto
+  e^{2iq_\chi\alpha}\,\chi^T\varepsilon\chi.
+\]
+
+La única manera de que sean invariantes es $q_\xi=q_\chi=0$. Es decir, sólo campos sin carga pueden tener masas de Majorana. Los únicos fermiones (espín $1/2$) neutros son los neutrinos y aún no se sabe si tienen masas de Majorana. En el resto del curso vamos a poner $M_L=M_R=0$ por simplicidad.
+
+Los términos proporcionales a $m$ se llaman \concept{masas de Dirac}. Note que podemos tener invariancia $U(1)$ si $q_\chi=q_\xi$ cuando $m\neq0$. Los términos de masa de Dirac mezclan espinores izquierdos y derechos.
+
+De hecho, si hacemos una transformación de paridad, los generadores satisfacen
+\[
+  \vec K\longmapsto-\vec K,
+  \qquad
+  \vec J\longmapsto\vec J.
+\]
+\begin{center}
+  \emph{La velocidad del boost es en la dirección opuesta en el espejo.}\\
+  \emph{Las rotaciones son iguales en el espejo.}
+\end{center}
+
+Como la única diferencia entre espinores izquierdos y derechos es el signo del boost, bajo paridad
+\[
+  \xi\longmapsto\chi,
+  \qquad
+  \chi\longmapsto\xi.
+\]
+
+Hoy sabemos que la paridad no es una simetría de la naturaleza. Pero en tiempos de Dirac se creía que era una simetría fundamental. Nuestro lagrangiano es invariante bajo paridad si $M_L=M_R=0$ y $m$ es real. Esto nos da el \concept{lagrangiano de Dirac}
+\[
+  \mathcal L=
+  i\xi^\dagger\sigma^\mu\partial_\mu\xi
+  +i\chi^\dagger\bar\sigma^\mu\partial_\mu\chi
+  -m\left(\chi^\dagger\xi+\xi^\dagger\chi\right).
+\]
+
+Se puede escribir más compacto usando \concept{espinores de Dirac} de cuatro componentes,
+\[
+  \psi=
+  \begin{pmatrix}
+    \chi\\
+    \xi
+  \end{pmatrix}.
+\]
+Definimos las matrices $\gamma$ de $4\times4$,
+\[
+  \gamma^\mu\equiv
+  \begin{pmatrix}
+    0&\sigma^\mu\\
+    \bar\sigma^\mu&0
+  \end{pmatrix},
+\]
+de modo que
+\[
+  \gamma^0\gamma^\mu
+  =
+  \begin{pmatrix}
+    0&\mathbb{1}\\
+    \mathbb{1}&0
+  \end{pmatrix}
+  \begin{pmatrix}
+    0&\sigma^\mu\\
+    \bar\sigma^\mu&0
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \bar\sigma^\mu&0\\
+    0&\sigma^\mu
+  \end{pmatrix}.
+\]
+
+Con esto el término cinético se puede escribir de forma compacta. Definimos
+\[
+  \bar\psi\equiv\psi^\dagger\gamma^0,
+  \qquad
+  \slashedpartial\equiv\gamma^\mu\partial_\mu,
+\]
+tal que
+\begin{align*}
+  i\bar\psi\slashedpartial\psi
+  &=i\psi^\dagger\gamma^0\gamma^\mu\partial_\mu\psi\\
+  &=i(\chi^\dagger\ \xi^\dagger)
+    \begin{pmatrix}
+      \bar\sigma^\mu&0\\
+      0&\sigma^\mu
+    \end{pmatrix}
+    \begin{pmatrix}
+      \partial_\mu\chi\\
+      \partial_\mu\xi
+    \end{pmatrix}\\
+  &=i\chi^\dagger\bar\sigma^\mu\partial_\mu\chi
+    +i\xi^\dagger\sigma^\mu\partial_\mu\xi,
+\end{align*}
+y
+\begin{align*}
+  \bar\psi\psi
+  &=\psi^\dagger\gamma^0\psi\\
+  &=(\chi^\dagger\ \xi^\dagger)
+    \begin{pmatrix}
+      0&\mathbb{1}\\
+      \mathbb{1}&0
+    \end{pmatrix}
+    \begin{pmatrix}
+      \chi\\
+      \xi
+    \end{pmatrix}
+   =\chi^\dagger\xi+\xi^\dagger\chi.
+\end{align*}
+Por lo tanto,
+\[
+  \mathcal L=i\bar\psi\slashedpartial\psi-m\bar\psi\psi.
+\]
+
+Para obtener la ecuación de movimiento podemos tomar las partes reales e imaginarias de las componentes del espinor como nuestras variables independientes. Equivalentemente podemos usar $\psi$ y $\psi^\dagger$, ya que son dos combinaciones diferentes de la parte real e imaginaria. Otra combinación aún más útil es $\psi$ y $\bar\psi$. Variando respecto a $\bar\psi$,
+\[
+  \frac{\partial\mathcal L}{\partial\bar\psi}
+  -\partial_\mu\left(
+    \frac{\partial\mathcal L}{\partial(\partial_\mu\bar\psi)}
+  \right)=0,
+\]
+pero $\mathcal L$ no tiene $\partial_\mu\bar\psi$ por ninguna parte. Entonces
+\[
+  (i\slashedpartial-m)\psi=0,
+\]
+la \concept{ecuación de Dirac}.
+
+\end{document}
