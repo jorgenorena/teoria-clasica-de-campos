@@ -1,0 +1,140 @@
+\documentclass[12pt]{exam}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage{listings}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\newcommand{\class}{Teoría clásica de campos}
+\newcommand{\term}{Segundo semestre, 2026}
+\newcommand{\examnum}{Prueba 1}
+\newcommand{\examdate}{07/10/2026}
+\newcommand{\timelimit}{70 Minutos}
+
+\pagestyle{head}
+\firstpageheader{}{}{}
+\runningheader{\class}{Página \thepage\ de \numpages}{\examdate}
+\runningheadrule
+
+
+\begin{document}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Nombre:} & \makebox[2in]{\hrulefill}\\
+\textbf{\term} & \textbf{RUN:}&\makebox[2in]{\hrulefill}\\
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\textbf{Límite de tiempo: \timelimit}
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+
+Esta prueba contiene \numpages\ páginas (incluyendo esta) y \numquestions\ preguntas. En cada respuesta explique claramente cada paso. \textbf{Todas las preguntas tienen el mismo puntaje}.
+
+\vspace{1em}
+
+A continuación se dan algunas fórmulas que podrían resultar útiles.
+\begin{itemize}
+  \item Generadores del grupo de rotaciones $SO(3)$ en la representación fundamental
+        \[
+        J_1 = \begin{pmatrix}0 & 0 & 0 \\ 0 & 0 & -i \\ 0 & i & 0\end{pmatrix}\,,\quad J_2 = \begin{pmatrix}0 & 0 & i \\ 0 & 0 & 0 \\ -i & 0 & 0\end{pmatrix}\,,\quad J_3 = \begin{pmatrix}0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0\end{pmatrix}\,.
+        \]
+
+  \item Matrices de Pauli
+        \[
+        \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0\end{pmatrix}\,,\quad\sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0\end{pmatrix}\,,\quad\sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1\end{pmatrix}\,.
+        \]
+
+\end{itemize}
+
+\pagebreak
+
+\begin{questions}
+
+\question {\bf Álgebra de Lie}
+
+Por qué discutimos el álgebra de Lie de $SO(3)$ y nunca el álgebra de Lie de $O(3)$?
+
+{\color{RedViolet}\small
+  Porque las transformaciones de $O(3)$ que no pertenecen a $SO(3)$ no se pueden conectar de forma continua con la identidad.
+}
+
+\pagebreak
+
+\question{\bf Exponenciación de generadores}
+
+Calcule $e^{i\theta J_3}$ y demuestre que corresponde a una rotación respecto al eje $z$.
+
+  {\color{RedViolet}\small
+    Primero note que $J_3^2 = 1$. Por lo tanto $(J_3)^{2n} = 1$ y $(J_3)^{2n + 1} = J_3$ para $n$ natural.
+    \begin{align*}
+      e^{i\theta J_3} &= \sum_{n = 0}^\infty\frac{i^n}{n!}\theta^n J_3^n\\ 
+                      &= \sum_{m = 0}^\infty \frac{(-1)^m}{(2m)!}\theta^{2m} + iJ_3\sum_{m = 0}^{\infty}\frac{(-1)^m}{(2m + 1)!}\theta^{2m + 1}\\
+                      &= \mathbb{1}\cos\theta + i J_3 \sin\theta\\
+                      &= \begin{pmatrix} \cos\theta & \sin{\theta} & 0 \\ -\sin\theta & \cos\theta & 0 \\ 0 & 0 & 1\end{pmatrix}\,.
+    \end{align*}
+  }
+
+\pagebreak
+
+\question {\bf Mapa entre U(2) y SO(3)}
+
+Considere un campo de dos componentes
+\[
+  \psi = \begin{pmatrix}z_1 \\ z_2\end{pmatrix}\,\qquad \psi \mapsto \psi' = e^{i\alpha}\begin{pmatrix}e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2}\end{pmatrix}\,.
+\]
+Defina cuatro cantidades reales
+\[
+  \rho = \psi^\dagger \psi\,\qquad X_i = \psi^\dagger \sigma_i \psi\,.
+\]
+
+\begin{itemize}
+  \item Calcule $\rho'$. ¿Lo afectan alguno de los parámetros $\alpha$ o $\theta$?
+\vspace{1em}
+{\color{RedViolet}\small
+        \[
+        \rho' = \psi^\dagger \begin{pmatrix} e^{i\theta/2} & 0 \\ 0 & e^{-i\theta/2}\end{pmatrix} e^{-i\alpha} e^{i\alpha} \begin{pmatrix}e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2}\end{pmatrix}\psi = \psi^\dagger \psi = \rho\,.
+        \]
+}
+  \item Escriba $X_1$, $X_2$ y $X_3$ explícitamente en términos de $z_1$ y $z_2$. Calcule su transformación bajo la operación definida arriba. Pruebe que
+    \[
+        \begin{pmatrix}X_1'\\ X_2'\\ X_3' \end{pmatrix} = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}\begin{pmatrix}X_1\\ X_2\\ X_3 \end{pmatrix} 
+    \]
+\vspace{1em}
+{\color{RedViolet}\small
+        \[
+        X_1 = z_2^* z_1 + z_1^* z_2\,,\quad X_2 = -i z_2^* z_1 + i z_1^* z_2\,,\quad X_3 = z_1^* z_1 - z_2^* z_2\,,
+        \]
+        entonces
+        \[
+        X_1' = e^{i\theta} z_2^* z_1 + e^{-i\theta} z_1^* z_2\,,\quad X_2 = -i e^{i\theta} z_2^* z_1 + i e^{-i\theta}z_1^* z_2\,,\quad X_3 = z_1^* z_1 - z_2^* z_2\,,
+        \]
+        esto se puede reordenar para obtener
+        \begin{align*}
+        X_1' &= \left(\frac{e^{i\theta} + e^{-i\theta}}{2}\right)X_1 - \left(\frac{e^{i\theta} - e^{-i\theta}}{2i}\right)X_2\,,\\
+        X_2' &= \left(\frac{e^{i\theta} + e^{-i\theta}}{2}\right)X_2 + \left(\frac{e^{i\theta} - e^{-i\theta}}{2i}\right)X_1\,,\\
+        X_3' &= X_3
+        \end{align*}
+}
+  \item Suponga que medimos $\rho$ y los $X_i$. Podemos reconstruír a partir de esas mediciones el $\psi$? Explique cuál transformación queda invisible a esas observaciones. Pista: ¿Qué pasa con $\alpha$ en la transformación de $\rho$ y $X_i$? ¿Cuál es el valor positivo más pequeño para $\theta$ tal que $\psi$ regresa a sí mismo (con $\alpha = 0$)? ¿Cuál es el valor que regresa $\vec{X}$ a sí mismo? 
+\vspace{1em}
+{\color{RedViolet}\small
+        Considere la transformación $\alpha$ que deja invariante $\rho$ y $X_i$. Entonces supongamos que creimos haber reconstruido $\psi$, pero si hacemos una tranformación nuestros observables no cambian, mientras $\psi$ adquiere una fase. Esto nos indica que no podemos determinar esa fase. En otras palabras, si tú me das un $\psi$ yo te doy otro $\psi' = e^{i\alpha}\psi$ que tiene los mismos observables. De forma similar, $\theta = 2\pi$ regresa los $X_i$ a sus valores originales, mientras $\theta = 4\pi$ regresa $\psi$ a sus valores originales, tal que conociendo $X_i$ no podemos determinar un signo global en $\psi$.
+}
+\end{itemize}
+        
+
+\end{questions}
+
+\end{document}
