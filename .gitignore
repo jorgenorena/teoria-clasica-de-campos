@@ -38,3 +38,4 @@ __pycache__/
 !/build_site.py
 !/export_tex.py
 !/site/
+pruebas/
