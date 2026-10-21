@@ -1,5 +1,14 @@
 %+TITLE: Electrodinámica $U(1)$
-%+DESCRIPTION: Discutimos simetrías de gauge y escribimos el lagrangiano de la elextrodinámica
+%+DESCRIPTION: Discutimos simetrías de gauge y escribimos el lagrangiano de la electrodinámica
+% Fuente: pag-31-35/transcripcion_teoria_clasica_campos_paginas_31-35/transcripcion_paginas_31-35.tex
+% Páginas manuscritas 32--33.
+% Se conserva la transcripción; los puntos pendientes de revisión se anotan abajo.
+% Véase también pag-31-35/transcripcion_teoria_clasica_campos_paginas_31-35/NOTAS_TRANSCRIPCION.md.
+% Página 32, unidades: el manuscrito dice «Unidades de carga Coulomb/\(\varepsilon_0\) y recordar \(c=1\)». Se preservó literalmente aunque la formulación es poco usual.
+% Página 33, variación electromagnética: hay una inconsistencia de signos entre el término fuente del lagrangiano de la página 32 y las primeras líneas de \(\delta\mathcal L\). Además, en una línea aparece \(+\delta A_\mu J^\mu\) y en la siguiente \(-\delta A_\nu J^\nu\). Se conservaron ambos signos tal como aparecen.
+% Página 33, signo de la masa de Dirac: aquí se escribe \(+m\bar\psi\psi\), mientras que en la página 31 el lagrangiano de Dirac tiene \(-m\bar\psi\psi\). Se mantuvieron ambos.
+% Página 33, acoplamiento electromagnético: en el lagrangiano explícito aparece \(+iq\bar\psi\not\!A\psi\), pero en la demostración posterior de invariancia local el término se usa como \(+q\bar\psi\not\!A\psi\). Se preservó esta diferencia.
+% Página 33, corriente de Noether: el manuscrito escribe \(j^\mu=i\bar\psi\gamma^\mu\psi\). Se transcribió literalmente, sin retirar el factor \(i\).
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -31,5 +40,279 @@
 \newcommand{\slashedpartial}{\not\!\partial}
 
 \begin{document}
+
+% -----------------------------------------------------------------------------
+% Página manuscrita 32
+% -----------------------------------------------------------------------------
+Ya hemos descrito teorías relativistas para partículas de espín $0$ y $1/2$.
+También se observan en la naturaleza campos con espín $1$, los campos
+vectoriales. Estos aparecen en el modelo estándar siempre en relación con una
+simetría adicional llamada de gauge. El ejemplo más sencillo es el campo
+electromagnético:
+\[
+  \vec\nabla\cdot\vec E=\rho,
+  \qquad
+  \vec\nabla\cdot\vec B=0,
+  \qquad
+  \vec\nabla\times\vec E+\frac{\partial\vec B}{\partial t}=0,
+\]
+\[
+  \vec\nabla\times\vec B-\frac{\partial\vec E}{\partial t}=\vec j,
+  \qquad
+  \vec F=q\left(\vec E+\vec v\times\vec B\right).
+\]
+
+(Unidades de carga Coulomb/$\varepsilon_0$ y recordar $c=1$.)
+
+Primero queremos escribir estas ecuaciones de forma relativista. Empezamos por
+la ley de fuerza de Lorentz; ésta contiene una velocidad, intentamos
+\[
+  \boxed{
+  \frac{dP^\mu}{d\tau}=qF^\mu{}_{\nu}U^\nu
+  }
+  =q\gamma F^\mu{}_{0}+q\gamma F^\mu{}_{i}v^i
+  \underset{v\to0}{\approx}
+  q\left(F^\mu{}_{0}+F^\mu{}_{i}v^i\right).
+\]
+Comparando con la fuerza de Lorentz,
+\[
+  \frac{dP^i}{dt}\approx q\left(F^i{}_{0}+F^i{}_{j}v^j\right)
+  \quad\Longrightarrow\quad
+  F^i{}_{0}=E^i,
+  \qquad
+  F^i{}_{j}v^j=\epsilon^i{}_{jk}v^jB^k
+  \quad\Longrightarrow\quad
+  F^i{}_{j}=\epsilon^i{}_{jk}B^k.
+\]
+Para la componente temporal,
+\[
+  \frac{dP^0}{dt}\approx q\left(F^0{}_{0}+F^0{}_{i}v^i\right)
+  \quad\Longrightarrow\quad
+  F^0{}_{0}=0,
+  \qquad
+  F^0{}_{i}=E_i,
+\]
+ya que la partícula gana energía según
+\[
+  \frac{dP^0}{dt}=q\,\vec E\cdot\vec v.
+\]
+
+Todas las componentes de los campos $\vec E,\vec B$ se resumen de forma más
+compacta en el tensor $F^{\mu\nu}$. Además cumple
+\[
+  F_{\mu\nu}=-F_{\nu\mu}.
+\]
+
+Para escribir las ecuaciones de Maxwell, primero recordemos que las dos
+ecuaciones sin fuente nos permiten escribir los campos en términos de
+potenciales:
+\[
+  \vec\nabla\cdot\vec B=0
+  \quad\Longleftrightarrow\quad
+  \vec B=\vec\nabla\times\vec A,
+\]
+\[
+  \vec\nabla\times\vec E+\frac{\partial\vec B}{\partial t}=0
+  \quad\Longleftrightarrow\quad
+  \vec E=-\vec\nabla\phi-\frac{\partial\vec A}{\partial t}.
+\]
+
+\[
+  B_i=\frac12\epsilon^{ijk}F_{jk}
+  =\epsilon^{ijk}\partial_jA_k
+  \quad\Longrightarrow\quad
+  F_{ij}=\partial_iA_j-\partial_jA_i,
+\]
+\[
+  E_i=F_{i0}=-\partial_i\phi-\partial_0A_i
+  \quad\Longrightarrow\quad
+  F_{i0}=\partial_iA_0-\partial_0A_i,
+  \qquad A_0=-\phi,
+\]
+con
+\[
+  A^\mu=(\phi,\vec A).
+\]
+Por lo tanto,
+\[
+  \boxed{F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu}.
+\]
+
+Las otras dos ecuaciones se resumen en
+\[
+  \boxed{\partial_\mu F^{\mu\nu}=-J^\nu}.
+\]
+Para $\nu=0$,
+\[
+  \partial_iF^{i0}=-J^0
+  \quad\Longrightarrow\quad
+  -\partial_iE^i=-J^0
+  \quad\Longrightarrow\quad
+  \vec\nabla\cdot\vec E=\rho,
+  \qquad J^0=\rho.
+\]
+Para $\nu=i$,
+\[
+  \partial_0E^i+\epsilon^{jik}\partial_jB_k=-J^i
+  \quad\Longrightarrow\quad
+  \vec\nabla\times\vec B-\partial_t\vec E=\vec J.
+\]
+
+Conservación de carga:
+\[
+  \dot\rho+\vec\nabla\cdot\vec J=0
+  \quad\Longrightarrow\quad
+  \boxed{\partial_\mu J^\mu=0}.
+\]
+
+Ahora queremos obtener estas ecuaciones a partir de un lagrangiano. Usamos
+\[
+  \mathcal L=
+  -\frac14(\partial_\mu A_\nu-\partial_\nu A_\mu)
+             (\partial^\mu A^\nu-\partial^\nu A^\mu)
+  -A_\mu J^\mu.
+\]
+Para calcular la ecuación de movimiento es más fácil realizar la variación de
+$\mathcal L$ directamente.
+
+% -----------------------------------------------------------------------------
+% Página manuscrita 33
+% -----------------------------------------------------------------------------
+\begin{align*}
+  \delta\mathcal L={}&
+  -\frac14(\partial_\mu\delta A_\nu-\partial_\nu\delta A_\mu)
+             (\partial^\mu A^\nu-\partial^\nu A^\mu)\\
+  &-\frac14(\partial_\mu A_\nu-\partial_\nu A_\mu)
+             (\partial^\mu\delta A^\nu-\partial^\nu\delta A^\mu)
+  +\delta A_\mu J^\mu\\
+  ={}&-\frac12(\partial_\mu\delta A_\nu-\partial_\nu\delta A_\mu)
+               (\partial^\mu A^\nu-\partial^\nu A^\mu)
+       +\delta A_\mu J^\mu\\
+  ={}&-(\partial_\mu\delta A_\nu)F^{\mu\nu}-\delta A_\nu J^\nu\\
+  ={}&\delta A_\nu\partial_\mu F^{\mu\nu}
+      +\delta A_\nu J^\nu
+      +\text{derivadas totales}.
+\end{align*}
+Entonces $\delta S=0$ implica
+\[
+  \partial_\mu F^{\mu\nu}=-J^\nu,
+\]
+que son las ecuaciones de Maxwell.
+
+Para escribir el lagrangiano que representa un electrón en un campo
+electromagnético sólo tenemos que escribir la corriente. Ésta debe ser un
+4-vector y conservada. Un buen candidato está dado por el hecho de que el
+lagrangiano de Dirac es invariante $U(1)$:
+\[
+  \mathcal L=i\bar\psi\slashedpartial\psi+m\bar\psi\psi,
+  \qquad
+  \psi\longmapsto\psi'=e^{i\alpha}\psi
+  \quad\Longrightarrow\quad
+  \mathcal L'=\mathcal L.
+\]
+La corriente de Noether es
+\[
+  j^\mu=\frac{\partial\mathcal L}{\partial(\partial_\mu\psi)}\psi
+  =i\bar\psi\gamma^\mu\psi,
+\]
+la \concept{corriente del electrón}. Gracias al teorema de Noether,
+\[
+  \partial_\mu j^\mu=0
+  \qquad\text{(on-shell)}.
+\]
+
+Entonces el lagrangiano de un campo de electrones en un campo electromagnético
+es
+\[
+  \mathcal L=
+  i\bar\psi\slashedpartial\psi+m\bar\psi\psi
+  -\frac14F_{\mu\nu}F^{\mu\nu}
+  +iq\bar\psi\not\!A\psi.
+\]
+\begin{center}
+  \includegraphics[width=0.22\linewidth]{figures/vertice_electron_foton.png}
+\end{center}
+
+Cuando a principios del siglo XX formularon esta teoría, se dieron cuenta de
+que tenía una interpretación interesante. Este lagrangiano tiene las
+invariancias $U(1)$ y la conocida libertad de gauge
+\[
+  \vec A\longmapsto\vec A+\vec\nabla\chi,
+  \qquad
+  \phi\longmapsto\phi-\partial_t\chi,
+\]
+para la cual
+\[
+  \vec B\longmapsto\vec B+\vec\nabla\times\vec\nabla\chi,
+  \qquad
+  \vec E\longmapsto
+  \vec E+\vec\nabla\partial_t\chi-\partial_t\vec\nabla\chi.
+\]
+Usando nuestra nueva notación relativista,
+\[
+  A_\mu\longmapsto A_\mu+\partial_\mu\chi,
+  \qquad
+  F_{\mu\nu}\longmapsto
+  F_{\mu\nu}+\partial_\mu\partial_\nu\chi
+  -\partial_\nu\partial_\mu\chi.
+\]
+Y el lagrangiano es invariante on-shell, ya que
+\[
+  \bar\psi\not\!A\psi
+  \longmapsto
+  \bar\psi\not\!A\psi
+  +\partial_\mu\chi\,\bar\psi\gamma^\mu\psi
+  =\bar\psi\not\!A\psi
+  -\chi\,\partial_\mu(\bar\psi\gamma^\mu\psi)
+  +\text{derivadas totales}.
+\]
+
+Es más, ambas se pueden ver como una única invariancia válida incluso
+off-shell:
+\[
+  \psi\longmapsto e^{iq\alpha(x)}\psi,
+  \qquad
+  A_\mu\longmapsto A_\mu+\partial_\mu\alpha(x),
+\]
+la \concept{invariancia $U(1)$ de gauge}. En efecto,
+\[
+  \partial_\mu\psi
+  \longmapsto
+  e^{iq\alpha(x)}\partial_\mu\psi
+  +iqe^{iq\alpha(x)}\psi\,\partial_\mu\alpha(x),
+\]
+por lo que
+\[
+  i\bar\psi\slashedpartial\psi
+  \longmapsto
+  i\bar\psi\slashedpartial\psi
+  -q\bar\psi\gamma^\mu\psi\,\partial_\mu\alpha.
+\]
+El término cinético no es invariante, pero
+\begin{align*}
+  i\bar\psi\slashedpartial\psi+q\bar\psi\not\!A\psi
+  \longmapsto{}&
+  i\bar\psi\slashedpartial\psi
+  -q\bar\psi\gamma^\mu\psi\,\partial_\mu\alpha
+  +q\bar\psi\not\!A\psi
+  +q\bar\psi\gamma^\mu\psi\,\partial_\mu\alpha.
+\end{align*}
+
+La combinación
+\[
+  \partial_\mu-iqA_\mu\equiv D_\mu
+\]
+se llama \concept{derivada covariante}. Satisface
+\[
+  D_\mu\psi\longmapsto e^{iq\alpha(x)}D_\mu\psi.
+\]
+Entonces
+\[
+  \mathcal L=
+  i\bar\psi\not\!D\psi+m\bar\psi\psi
+  -\frac14F_{\mu\nu}F^{\mu\nu}.
+\]
+Necesitamos el \concept{campo de gauge} $A_\mu$ para tener invariancia $U(1)$
+local ($\alpha$ depende de $x$).
 
 \end{document}

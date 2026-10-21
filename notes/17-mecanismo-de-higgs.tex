@@ -1,0 +1,253 @@
+%+TITLE: Mecanismo de Higgs
+%+DESCRIPTION: Estudiamos cómo los bosones de gauge adquieren masa mediante la ruptura espontánea de simetría
+% Fuente: transcripcion_teoria_clasica_campos_paginas_36-43/transcripcion_paginas_36-43.tex
+% Páginas manuscritas 38--39.
+% Se conserva la transcripción; los puntos pendientes de revisión se anotan abajo.
+% Véase también transcripcion_teoria_clasica_campos_paginas_36-43/NOTAS_TRANSCRIPCION.md.
+% Página 38, expansión del término cinético: en el segundo paréntesis aparece escrito \(-ig\,\partial^\mu\phi_2\), mientras que en el primero aparece \(+i\partial_\mu\phi_2\). También el término \(-\sqrt2igA^\mu\) parece carecer del factor \(a\). Ambos se preservaron.
+% Página 38, término de mezcla: el manuscrito da \(+2\sqrt2g^2A_\mu\partial^\mu\phi_2\). Se conservó ese coeficiente aunque conviene revisarlo al editar.
+% Página 38, transformación al gauge unitario: se escriben como igualdades exactas \(a+\phi_1'=a+\phi_1+\phi_2^2/(a+\phi_1)\) y \(\phi_1'=\phi_1+\phi_2^2/(a+\phi_1)\). Se mantuvieron sin introducir raíces ni aproximaciones.
+% Página 39, expansión no abeliana: el último rótulo de la expansión parece decir «cuadráticos y cúbicos», aunque en contexto podría esperarse «cúbicos y cuárticos». Se transcribió lo visible.
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\geometry{margin=2.3cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\setlist[itemize]{leftmargin=1.6em,itemsep=0.25em,topsep=0.25em}
+
+\definecolor{title-red}{RGB}{165,25,20}
+\definecolor{concept-green}{RGB}{20,125,45}
+\newcommand{\concept}[1]{\textcolor{concept-green}{#1}}
+
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\left\langle #1\middle|#2\right\rangle}
+\newcommand{\hc}{\mathrm{h.c.}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Diffs}{\mathrm{Diffs}}
+\newcommand{\slashedpartial}{\not\!\partial}
+
+\begin{document}
+
+% -----------------------------------------------------------------------------
+% Página manuscrita 38
+% -----------------------------------------------------------------------------
+Vimos que la ruptura espontánea de una simetría global garantiza la presencia
+de partículas sin masa. Así mismo, la simetría de gauge garantiza la presencia
+de bosones de gauge sin masa. Pero cuando la simetría de gauge se rompe
+espontáneamente lo que ocurre es que los bosones de gauge adquieren masa. Esto
+se llama mecanismo de Higgs.
+
+Empecemos por estudiar la ruptura espontánea de una simetría de gauge $U(1)$.
+Para eso consideramos el lagrangiano
+\[
+  \mathcal L
+  =-D_\mu\phi^*D^\mu\phi
+   -m^2\phi^*\phi
+   -\lambda(\phi^*\phi)^2
+   -\frac14F_{\mu\nu}F^{\mu\nu}.
+\]
+
+Donde
+\[
+  D_\mu\phi=\partial_\mu\phi+igA_\mu\phi,
+  \qquad
+  F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+
+Si $m^2<0$, el mínimo de potencial es en
+\[
+  \phi^*\phi=-\frac{m^2}{2\lambda}=a^2.
+\]
+Sin pérdida de generalidad, tomamos el mínimo en $\phi_0=a$ (sin parte
+imaginaria). Entonces parametrizamos el campo como
+\[
+  \phi=a+\frac1{\sqrt2}(\phi_1+i\phi_2),
+\]
+obteniendo
+\begin{align*}
+  \mathcal L
+  ={}&-\frac12
+  \left(
+    \partial_\mu\phi_1+i\partial_\mu\phi_2
+    +\sqrt2\,igaA_\mu+\text{cuadráticos}
+  \right)
+  \left(
+    \partial^\mu\phi_1-ig\partial^\mu\phi_2
+    -\sqrt2\,igA^\mu+\text{cuadráticos}
+  \right)\\
+  &+\lambda a^2\left((\sqrt2a+\phi_1)^2+\phi_2^2\right)
+  -\frac\lambda4\left((\sqrt2a+\phi_1)^2+\phi_2^2\right)^2
+  -\frac14F_{\mu\nu}F^{\mu\nu}\\
+  ={}&-\frac12\partial_\mu\phi_1\partial^\mu\phi_1
+  -2\lambda a^2\phi_1^2
+  -\frac12\partial_\mu\phi_2\partial^\mu\phi_2
+  -\frac14F_{\mu\nu}F^{\mu\nu}
+  +2g^2a^2A_\mu A^\mu
+  +2\sqrt2g^2A_\mu\partial^\mu\phi_2\\
+  &+\text{términos cúbicos y cuárticos}.
+\end{align*}
+
+Como antes, tenemos un campo sin masa $\phi_2$ relacionado con la dirección
+rota. Pero tenemos un par de novedades. Aparece un término de masa para el
+bosón de gauge y aparece un término cuadrático que involucra $\phi_2$ y el bosón
+de gauge $A_\mu$. Ese término cuadrático se llama término de mezcla porque en la
+teoría cuántica implica que $\phi_2$ se puede transformar en una componente de
+$A_\mu$ y vice versa.
+
+En realidad tenemos demasiados campos. La ambigüedad de gauge hace que podamos
+eliminar algunos. Esto es análogo a eliminar coordenadas escogiendo
+inteligentemente el marco de referencia. Para ver cómo hagamos
+\[
+  \phi\longmapsto\phi'=e^{i\alpha(x)}\phi,
+\]
+por lo que
+\[
+  a+\phi_1'=(a+\phi_1)\cos\alpha(x)-\phi_2\sin\alpha(x),
+\]
+\[
+  \phi_2'=\phi_2\cos\alpha(x)+(a+\phi_1)\sin\alpha(x).
+\]
+
+Basta escoger
+\[
+  \tan\alpha(x)=-\frac{\phi_2}{a+\phi_1},
+\]
+que podemos hacer porque $\alpha$ depende de $x$. De este modo
+\[
+  \phi_2'=0,
+  \qquad
+  a+\phi_1'=a+\phi_1+\frac{\phi_2^2}{a+\phi_1},
+  \qquad
+  \phi_1'=\phi_1+\frac{\phi_2^2}{a+\phi_1}.
+\]
+
+En este gauge (llamado gauge \concept{unitario}) el lagrangiano toma una forma
+sencilla:
+\[
+  \mathcal L
+  =-\frac12\partial_\mu\phi_1\partial^\mu\phi_1
+   -2a^2\lambda\phi_1^2
+   -\frac14F_{\mu\nu}F^{\mu\nu}
+   +2g^2a^2A_\mu A^\mu
+   +\text{términos cúbicos y cuárticos}.
+\]
+
+% -----------------------------------------------------------------------------
+% Página manuscrita 39
+% -----------------------------------------------------------------------------
+En este lagrangiano desaparece el bosón de Goldstone, pero aparece un término de
+masa para el bosón de gauge. Un campo vectorial sin masa tiene dos grados de
+libertad, mientras uno con masa tiene tres (tarea). Decimos entonces que
+``el bosón de gauge se come al bosón de Goldstone para adquirir masa'' (entre
+comillas).
+
+Ahora hagamos lo mismo para una teoría no abeliana. Veremos que son los bosones
+de gauge correspondientes a las direcciones rotas los que adquieren masa.
+
+Para simplificar la notación mencionamos un hecho de la teoría de grupos. Para
+cualquier grupo compacto (por ejemplo $SU(n)$ o $SO(n)$) se pueden escoger los
+generadores tales que
+\[
+  \Tr(J^iJ^j)=\frac12\delta^{ij}
+  \qquad\Longrightarrow\qquad
+  -\frac12\Tr\left[
+    (F_{\mu\nu}^iJ^i)(F^{j\mu\nu}J^j)
+  \right]
+  =-\frac14F_{\mu\nu}^iF^{i\mu\nu}.
+\]
+
+Nuestro lagrangiano de partida es (con $\vec\phi=(\phi_1,\phi_2,\phi_3)$)
+\[
+  \mathcal L
+  =-\frac12(D_\mu\phi_i)(D^\mu\phi_i)
+   -\frac{m^2}{2}\phi_i\phi_i
+   -\lambda(\phi_i\phi_i)^2
+   -\frac14F_{\mu\nu}^iF^{i\mu\nu},
+\]
+con
+\[
+  D_\mu\phi_i=\partial_\mu\phi_i+g\epsilon_{ijk}A_\mu^j\phi_k,
+\]
+\[
+  F_{\mu\nu}^i
+  =\partial_\mu A_\nu^i-\partial_\nu A_\mu^i
+   +g\epsilon_{ijk}A_\mu^jA_\nu^k,
+\]
+donde hemos usado el álgebra de Lie
+\[
+  [J_i,J_j]=i\epsilon_{ijk}J_k.
+\]
+Del caso global sabemos que si $m^2<0$ el mínimo del potencial está en
+\[
+  \phi_{0i}\phi_{0i}=-\frac{m^2}{4\lambda}=a^2,
+  \qquad
+  \text{sin pérdida de generalidad}\qquad
+  \vec\phi_0=a\hat e_3.
+\]
+
+Parametrizamos el campo
+\[
+  \vec\phi=(\phi_1,\phi_2,\chi+a)
+\]
+y el lagrangiano cuadrático queda
+\begin{align*}
+  \mathcal L={}&-\frac12\Bigl[
+    (\partial_\mu\phi_1+g\epsilon_{123}A_\mu^2a)^2
+    +(\partial_\mu\phi_2+g\epsilon_{213}A_\mu^1a)^2
+    +(\partial_\mu\chi)^2
+    +\text{cúbicos y cuárticos}
+  \Bigr]\\
+  &+2\lambda a^2\left(\phi_1^2+\phi_2^2+(\chi+a)^2\right)
+   -\lambda\left(\phi_1^2+\phi_2^2+(\chi+a)^2\right)^2
+   -\frac14F_{\mu\nu}^iF^{i\mu\nu}\\
+  ={}&-\frac12\partial_\mu\chi\partial^\mu\chi
+   -2\lambda a^2\chi^2
+   -\frac12\partial_\mu\phi_1\partial^\mu\phi_1
+   -\frac12\partial_\mu\phi_2\partial^\mu\phi_2\\
+  &-ga\,\partial_\mu\phi_1A^{2\mu}
+   +ga\,\partial_\mu\phi_2A^{1\mu}
+   -\frac14F_{\mu\nu}^iF^{i\mu\nu}
+   -\frac12g^2a^2A_\mu^1A^{1\mu}
+   -\frac12g^2a^2A_\mu^2A^{2\mu}\\
+  &+\text{cuadráticos y cúbicos}.
+\end{align*}
+
+Tenemos términos de masa para $A_\mu^1,A_\mu^2$ que corresponden a los
+generadores rotos $J^1,J^2$, mientras que $A_\mu^3$ sigue sin masa. Aparecen dos
+bosones de Goldstone sin masa pero mezclados con $A_\mu^1$ y $A_\mu^2$. Estos se
+pueden eliminar de nuevo realizando una transformación de gauge al gauge
+unitario, reorientando el campo punto por punto para que apunte en la dirección
+$\hat e_3$:
+\[
+  \vec\phi=(a+\chi)\hat e_3.
+\]
+
+Entonces el lagrangiano cuadrático queda
+\[
+  \mathcal L
+  =-\frac12\partial_\mu\chi\partial^\mu\chi
+   -2\lambda a^2\chi^2
+   -\frac14F_{\mu\nu}^iF^{i\mu\nu}
+   -\frac12g^2a^2A_\mu^1A^{1\mu}
+   -\frac12g^2a^2A_\mu^2A^{2\mu}
+   +\cdots.
+\]
+
+``Los bosones de gauge en las direcciones rotas se comen a los bosones de
+Goldstone para adquirir masa.''
+
+Al campo $\vec\phi$ se lo llama un \concept{campo de Higgs}.
+
+\end{document}
