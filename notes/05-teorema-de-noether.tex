@@ -31,7 +31,7 @@
 
 \begin{document}
 
-Vimos un ejemplo de una teoría de campo que describe la densidad en una barra y cuyas ecuaciones dinámicas son ondas longitudinales.
+Vimos un ejemplo de una teoría de campo que describe el desplazamiento longitudinal en una barra y cuyas ecuaciones dinámicas son ondas longitudinales.
 
 En general, describimos uno o varios campos mediante su acción
 \[
@@ -52,7 +52,8 @@ Aquí nos hemos adelantado un poco y hemos juntado el espacio y el tiempo. Verem
 
 La derivación de las ecuaciones de Euler--Lagrange es análoga a lo que hicimos para la barra. Se obtienen fijando condiciones de borde
 \[
-  \delta\phi_i(t_i)=\delta\phi_i(t_f)=0.
+  \delta\phi_i(t_i,\vec x)=\delta\phi_i(t_f,\vec x)=0,
+  \qquad \delta\phi_i\to0\quad\text{en el borde espacial}.
 \]
 
 La ventaja de usar un lagrangiano no es sólo economía del lenguaje. También nos permite tratar fácilmente las simetrías de un sistema. Este curso es básicamente un estudio de simetrías. Las simetrías juegan un papel fundamental en la física de hoy.
@@ -68,7 +69,7 @@ tal que $\Delta S=0$.
 
 Un punto importante es que la variación $\Delta x^\mu$, $\Delta\phi_i(x)$ no es arbitraria, y no es cero en el borde generalmente (a diferencia de los $\delta\phi$ usados para deducir Euler--Lagrange).
 
-Si el sistema tiene una simetría, demostraremos que tiene entonces una corriente conservada. Este es el famoso \concept{teorema de Nöther}.
+Si el sistema tiene una simetría continua global, demostraremos que tiene entonces una corriente conservada luego de usar las ecuaciones de movimiento. Este es el famoso \concept{teorema de Nöther}.
 
 Demostrémoslo primero en el caso en que no transformamos las coordenadas, $\Delta x^\mu=0$.
 
@@ -145,13 +146,13 @@ que es la ecuación de continuidad.
 
 La carga es
 \[
-  Q=\int d^3x\,j^0.
+  Q=\int_V d^3x\,j^0.
 \]
 Por tanto,
 \begin{align*}
   \dot Q
-  &=\int d^3x\,\partial_tj^0
-   =-\int d^3x\,\vec\nabla\cdot\vec j
+  &=\int_V d^3x\,\partial_tj^0
+   =-\int_V d^3x\,\vec\nabla\cdot\vec j
    =-\int_{\partial V}d\vec\Sigma\cdot\vec j.
 \end{align*}
 
@@ -161,7 +162,7 @@ Por consiguiente, si bajo
 \[
   \phi_i'=\phi_i+\Delta\phi_i
 \]
-la acción es invariante, hay una corriente conservada
+la densidad lagrangiana es invariante, hay una corriente conservada
 \[
   j_a^\mu
   =\left(
@@ -171,5 +172,16 @@ la acción es invariante, hay una corriente conservada
   \qquad \text{on-shell}
 \]
 (usando la ecuación de movimiento).
+
+La acción también admite simetrías para las cuales la densidad cambia
+por una derivada total, $\delta_a\mathcal L=\partial_\mu K_a^\mu$.
+En ese caso la corriente correcta es
+\[
+  j_a^\mu=
+  \frac{\partial\mathcal L}{\partial(\partial_\mu\phi_i)}
+  \delta_a\phi_i-K_a^\mu.
+\]
+Para transformaciones del espacio-tiempo se usa la variación del campo
+a coordenadas fijas y se incluye el cambio del elemento de volumen.
 
 \end{document}

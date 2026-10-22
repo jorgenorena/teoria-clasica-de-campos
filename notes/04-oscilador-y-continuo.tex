@@ -157,6 +157,8 @@ Tomemos ese límite en el lagrangiano:
 \end{align*}
 donde hemos definido
 \[
+  \lambda=\lim_{a\to0}\frac ma,
+  \qquad
   Y=\lim_{a\to0}am\omega^2,
 \]
 asumiendo que $\omega\to\infty$ tal que $a\omega$ es constante.
@@ -195,7 +197,8 @@ Entonces,
     \frac{\partial q}{\partial x}a
     +\frac12\frac{\partial^2q}{\partial x^2}a^2
   \right)
-  =\frac{\partial^2q}{\partial x^2}a^2.
+  +\mathcal O(a^3)
+  =-\frac{\partial^2q}{\partial x^2}a^2+\mathcal O(a^3).
 \end{align*}
 Por tanto,
 \[
@@ -219,7 +222,7 @@ condiciones de borde pedimos que
 \]
 Pedimos como antes que $\delta S[q]=0$:
 \begin{align*}
-  \delta S
+  \Delta S
   &=\int_{t_i}^{t_f}dt\int_{-\infty}^{\infty}dx\,
     \Bigl(
       \mathcal L(q+\delta q,
@@ -227,6 +230,11 @@ Pedimos como antes que $\delta S[q]=0$:
       \partial_xq+\partial_x\delta q)
       -\mathcal L(q,\partial_tq,\partial_xq)
     \Bigr)\\
+  &=\delta S+\mathcal O(\delta q^2).
+\end{align*}
+La primera variación es
+\begin{align*}
+  \delta S
   &=\int_{t_i}^{t_f}dt\int_{-\infty}^{\infty}dx\,
     \left(
       \frac{\partial\mathcal L}{\partial q}\delta q
