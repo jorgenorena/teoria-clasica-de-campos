@@ -1,5 +1,5 @@
 %+TITLE: Mecánica clásica
-%+DESCRIPTION: Repaso de los conceptos escenciales de la mecánica clásica que necesitaremos
+%+DESCRIPTION: Repaso de los conceptos esenciales de la mecánica clásica que necesitaremos
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -68,7 +68,7 @@ y
   \ddot y=-g.
 \]
 
-Las ecuaciones de Euler--Lagrange se pueden obtener de un principio de mínima acción. Es decir, definimos la \concept{acción}
+Las ecuaciones de Euler--Lagrange se pueden obtener del principio de acción estacionaria. Es decir, definimos la \concept{acción}
 \[
   S[\vec q]
   =\int_{t_i}^{t_f}dt\,
@@ -78,9 +78,9 @@ y también imponemos condiciones de borde, exigiendo que las coordenadas general
 
 Note que la acción es un \concept{funcional}. Es decir, es un objeto matemático que toma una función, en este caso la trayectoria del sistema $\vec q(t)$, y arroja un número.
 
-El principio de mínima acción consiste en postular que la trayectoria seguida por el sistema es aquella para la cual la acción tiene el mínimo valor.
+Según el ``principio de mínima acción'', pedimos que la trayectoria sea estacionaria. Es decir, pedimos que la primera variación sea cero. Este punto estacionario también podría ser un máximo o un punto de silla.
 
-¿Cómo hacemos para encontrar ese mínimo valor? Pensemos en una función usual de una variable $f(x)$.
+¿Cómo hacemos para encontrar ese valor estacionario? Pensemos en una función usual de una variable $f(x)$.
 
 \begin{figure}
   \includegraphics[width=0.32\textwidth]{figures/figura_minimo_funcion.png}
@@ -112,7 +112,7 @@ Si queremos que $f(x+\delta x)>f(x)$ para cualquier signo de $\delta x$, necesit
   \delta f(x)\equiv f'(x)\,\delta x=0.
 \]
 
-Hagamos lo mismo con la acción. Para encontrar el mínimo pedimos que un pequeño cambio en la trayectoria $\delta\vec q(t)$ no cambie el valor de la acción. Como fijamos condiciones de borde, consideramos sólo aquellas trayectorias que empiezan en $\vec q(t_i)$ y terminan en $\vec q(t_f)$. Entonces, para ser más precisos, pedimos que la acción sea mínima entre todas las trayectorias que van entre $\vec q(t_i)$ y $\vec q(t_f)$.
+Hagamos lo mismo con la acción. Para encontrar el punto estacionario pedimos que un pequeño cambio en la trayectoria $\delta\vec q(t)$ no cambie el valor de la acción. Como fijamos condiciones de borde, consideramos sólo aquellas trayectorias que empiezan en $\vec q(t_i)$ y terminan en $\vec q(t_f)$. Entonces, para ser más precisos, pedimos que la acción sea estacionaria entre todas las trayectorias que van entre $\vec q(t_i)$ y $\vec q(t_f)$.
 
 \begin{figure}
   \includegraphics[width=0.28\textwidth]{figures/variacion_trayectoria.png}
@@ -143,6 +143,7 @@ Partimos de
     -L(\vec q,\dot{\vec q},t)
   \Bigr\}.
 \end{align*}
+La primera variación $\delta S$ es la parte lineal de $\Delta S$.
 Expandiendo a primer orden en $\delta\vec q$,
 \begin{align*}
   \delta S[\vec q]

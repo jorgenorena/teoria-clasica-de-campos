@@ -52,7 +52,10 @@ Un \concept{espacio vectorial} es un conjunto de elementos, $\{\ket{\chi_1},\ket
 
   \item Hay un vector cero $\ket{0}$ tal que $\ket{\chi}+\ket{0}=\ket{\chi}$, y cada vector tiene un inverso $-\ket{\chi}$ tal que $\ket{\chi}-\ket{\chi}=\ket{0}$. Además, $0\ket{\chi}=\ket{0}$.
 
-  \item Todas las operaciones son asociativas:
+  \item La suma es conmutativa, $\ket v+\ket w=\ket w+\ket v$, y
+  $1\ket v=\ket v$.
+
+  \item La suma y la multiplicación por escalares son asociativas:
   \[
     \ket{\chi_1}+(\ket{\chi_2}+\ket{\chi_3})
     =(\ket{\chi_1}+\ket{\chi_2})+\ket{\chi_3},
@@ -93,9 +96,12 @@ Vamos a considerar espacios vectoriales con un \concept{producto interno}. Es de
     &=\alpha^*(\ket{v_1},\ket w)+\beta^*(\ket{v_2},\ket w).
 \end{align*}
 
-Para hacer la notación más sencilla vamos a escribir $(\ket v)^*=\bra v$, tal que
+Además exigimos positividad: $(\ket v,\ket v)\geq0$, con igualdad sólo si
+$\ket v=\ket0$.
+
+Para hacer la notación más sencilla vamos a escribir $(\ket v)^\dagger=\bra v$, tal que
 \[
-  (\alpha\ket v+\beta\ket w)^*=\alpha^*\bra v+\beta^*\bra w.
+  (\alpha\ket v+\beta\ket w)^\dagger=\alpha^*\bra v+\beta^*\bra w.
 \]
 De esta manera, estas reglas son fáciles de recordar si definimos $(\ket a,\ket b)=\braket a b$. Por ejemplo, el producto interno entre $\alpha\ket{v_1}+\beta\ket{v_2}$ y $\ket w$ es
 \[
@@ -150,15 +156,18 @@ Calcular las componentes de $A\ket v$ es fácil:
   \bra{e_i}A\ket v
   &=\bra{e_i}A\bigl(\ket{e_j}\braket{e_j}{v}\bigr)\\
   &=\bra{e_i}A\ket{e_j}\braket{e_j}{v}
-   =A_{ij}v_j
-   =
+   =A_{ij}v_j.
+\end{align*}
+En forma matricial, el vector completo de componentes es
+\[
+  [A\ket v]=
    \begin{pmatrix}
      A_{11}&\cdots&A_{1n}\\
      \vdots&\ddots&\vdots\\
      A_{n1}&\cdots&A_{nn}
    \end{pmatrix}
    \begin{pmatrix}v_1\\ \vdots\\ v_n\end{pmatrix}.
-\end{align*}
+\]
 Para obtener las nuevas componentes usamos la clásica multiplicación matriz por vector.
 
 Definamos algunas operaciones útiles para matrices.
@@ -198,7 +207,7 @@ Esto quiere decir que $\det A^{-1}=1/\det A$.
 
 Definimos
 \[
-  (A\ket v)^*=\bra v A^\dagger,
+  (A\ket v)^\dagger=\bra v A^\dagger,
 \]
 que introduce el hermítico conjugado. En componentes,
 \[
@@ -213,7 +222,9 @@ Un operador es \concept{hermítico} si $A^\dagger=A$.
 
 Un operador es \concept{unitario} si $A^\dagger=A^{-1}$. En los reales, un operador es \concept{ortogonal} si $A^T=A^{-1}$.
 
-Un espacio vectorial puede tener muchas bases diferentes. Los elementos de una base $\{\ket{e_i'}\}$ se pueden expresar en términos de otra $\{\ket{e_i}\}$:
+Un espacio vectorial puede tener muchas bases diferentes. En lo que sigue
+usamos bases ortonormales. Los elementos de una base $\{\ket{e_i'}\}$ se pueden
+expresar en términos de otra $\{\ket{e_i}\}$:
 \[
   \ket{e_i'}=\ket{e_j}\braket{e_j}{e_i'},
   \qquad
@@ -239,6 +250,8 @@ También podemos expresar $A$ en la base $\{\ket{e_i'}\}$:
    =S^\dagger_{ik}A_{kl}S_{lj},
 \end{align*}
 lo que es una \concept{transformación de similaridad}.
+Para bases generales, el cambio de matriz es $A'=S^{-1}AS$.
+Aquí $S^{-1}=S^\dagger$ porque ambas bases son ortonormales.
 
 Ahora queremos saber si podemos encontrar una base en la cual $A$ tome una forma diagonal, es decir,
 \[
@@ -265,18 +278,18 @@ Para encontrar los autovalores y autovectores necesitamos resolver
   &\Longrightarrow \bra{e_i}A\ket v=\lambda\braket{e_i}{v}\\
   &\Longrightarrow \bra{e_i}A\ket{e_j}\braket{e_j}{v}
      =\lambda\braket{e_i}{v}\\
-  &\Longrightarrow A_{ij}V_j=\lambda V_i\\
-  &\Longrightarrow (A_{ij}-\lambda\delta_{ij})V_j=0.
+  &\Longrightarrow A_{ij}v_j=\lambda v_i\\
+  &\Longrightarrow (A_{ij}-\lambda\delta_{ij})v_j=0.
 \end{align*}
-Son $n$ ecuaciones con $n$ componentes de $V$ si fijamos $\lambda$.
+Son $n$ ecuaciones con $n$ componentes de $v$ si fijamos $\lambda$.
 
-Claramente, $V=(0,\ldots,0)^T$ es una solución. No queremos que esta sea la única solución. Es decir, queremos que el sistema de ecuaciones sea degenerado.
+Claramente, $v=(0,\ldots,0)^T$ es una solución. No queremos que esta sea la única solución. Es decir, queremos que el sistema de ecuaciones sea degenerado.
 
 Un sistema de ecuaciones $B_{ij}X_j=0$ es degenerado cuando una de las ecuaciones, digamos la primera, $B_{1j}X_j=0$, se puede escribir como una combinación lineal de las otras. En otras palabras, esa ecuación no es independiente y no hay suficientes ecuaciones para las variables.
 
 Escribamos explícitamente la primera fila como combinación lineal de las demás:
 \begin{align}
-B &=
+\det B &=\det
 \begin{pmatrix}
  \alpha_2b_{21}+\cdots+\alpha_nb_{n1} & \cdots &
  \alpha_2b_{2n}+\cdots+\alpha_nb_{nn}\\
@@ -284,7 +297,7 @@ B &=
  \vdots&\ddots&\vdots\\
  b_{n1}&\cdots&b_{nn}
 \end{pmatrix} \\
-&=\alpha_2
+&=\alpha_2\det
 \underbrace{\begin{pmatrix}
  b_{21}&\cdots&b_{2n}\\
  b_{21}&\cdots&b_{2n}\\
@@ -292,7 +305,7 @@ B &=
  b_{n1}&\cdots&b_{nn}
 \end{pmatrix}}_{B^{(2)}}
 +\cdots+
-\alpha_n
+\alpha_n\det
 \underbrace{\begin{pmatrix}
  b_{n1}&\cdots&b_{nn}\\
  b_{21}&\cdots&b_{2n}\\
@@ -309,9 +322,9 @@ Pero el determinante de una matriz con filas repetidas es cero. (El determinante
 
 Por tanto,
 \[
-  (A-\lambda\mathbb{1})V=0
+  (A-\lambda\mathbb{1})v=0
 \]
-tiene soluciones diferentes de $V=(0,\ldots,0)^T$ si y sólo si
+tiene soluciones diferentes de $v=(0,\ldots,0)^T$ si y sólo si
 \[
   \det(A-\lambda\mathbb{1})=0,
 \]
