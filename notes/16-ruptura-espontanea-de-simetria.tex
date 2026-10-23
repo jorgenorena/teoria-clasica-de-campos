@@ -1,13 +1,5 @@
 %+TITLE: Ruptura espontánea de simetría
 %+DESCRIPTION: Estudiamos vacíos que rompen simetrías globales y demostramos el teorema de Goldstone
-% Fuente: transcripcion_teoria_clasica_campos_paginas_36-43/transcripcion_paginas_36-43.tex
-% Páginas manuscritas 36--37.
-% Se conserva la transcripción; los puntos pendientes de revisión se anotan abajo.
-% Véase también transcripcion_teoria_clasica_campos_paginas_36-43/NOTAS_TRANSCRIPCION.md.
-% Página 36, parametrización del mínimo: el manuscrito organiza los campos como \(\phi=(\phi_1+i\phi_2)/\sqrt2\), pero después toma el punto del mínimo como \(\phi_1=a,\phi_2=0\) y parametriza \(\phi=(a+\rho)e^{i\theta}\). Se preservó esta normalización tal como aparece.
-% Página 36, transformación del punto mínimo: la frase manuscrita parece decir que bajo \(U(1)\), \(\phi_1=\cos\alpha\), \(\phi_2=\sin\alpha\), sin factores de \(a\). Se transcribió literalmente.
-% Página 36, término cinético radial: el lagrangiano en variables \(\rho,\theta\) aparece sin factores \(1/2\). Se mantuvo tal cual.
-% Página 37, matriz de masa: en la expansión del potencial se define \(M_{ij}\) (sin superíndice \(2\)) como matriz de masa y después se escribe \(M_{ij}\delta\phi_{0j}=0\). Se conservó esta notación.
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -40,14 +32,11 @@
 
 \begin{document}
 
-% -----------------------------------------------------------------------------
-% Página manuscrita 36
-% -----------------------------------------------------------------------------
 La interacción nuclear débil es una interacción de gauge $SU(2)$ mediada por
 bosones de gauge masivos. Esto no parecería posible ya que un término de masa
 para un bosón de gauge, del estilo
 \[
-  m^2W_\mu W^\mu,
+  -\frac12m_W^2W_\mu W^\mu,
 \]
 no es invariante de gauge (tarea).
 
@@ -57,8 +46,8 @@ a los bosones de gauge, como veremos más adelante. Pero antes demostremos el
 \concept{teorema de Goldstone}, según el cual la ruptura espontánea de una
 simetría global implica la presencia de partículas sin masa.
 
-¿Qué es la ruptura espontánea de la simetría? Es un estado estable de un sistema
-que no respeta la simetría de la teoría. El ejemplo estereotípico es el
+¿Qué es la ruptura espontánea de la simetría? Ocurre cuando el estado fundamental elegido
+no respeta una simetría de las ecuaciones de la teoría. El ejemplo estereotípico es el
 ferromagnetismo.
 
 \begin{center}
@@ -107,11 +96,11 @@ mínimo de potencial.
 
 El mínimo de potencial es un círculo en el plano complejo $\phi_1,\phi_2$.
 Cualquier punto de ese círculo es un punto estable para el sistema. Por ejemplo
-el punto $\phi_1=a$, $\phi_2=0$ es un mínimo, pero bajo $U(1)$
-$\phi_1=\cos\alpha$, $\phi_2=\sin\alpha$. Es decir, el mínimo no es invariante y
+el punto $\phi_1=\sqrt2a$, $\phi_2=0$ es un mínimo, pero bajo $U(1)$
+$\phi_1'=\sqrt2a\cos\alpha$, $\phi_2'=\sqrt2a\sin\alpha$. Es decir, el mínimo no es invariante y
 $U(1)$ está espontáneamente rota.
 
-Escojamos ese mínimo $\phi_1=a$, $\phi_2=0$ y parametricemos
+Escojamos ese mínimo $\phi_1=\sqrt2a$, $\phi_2=0$ y parametricemos
 \[
   \phi(x)=(a+\rho(x))e^{i\theta(x)},
 \]
@@ -123,16 +112,19 @@ tal que el mínimo es $\rho=0$, $\theta=0$. El lagrangiano es
    -m^2(\rho+a)^2-\lambda(\rho+a)^4.
 \]
 
-La masa del campo es un término proporcional al campo al cuadrado (sin
-derivadas). Vemos inmediatamente que $m_\theta^2=0$. Este es nuestro
-\concept{bosón de Goldstone}, un campo sin masa que aparece cuando hay una
-simetría rota. Por otro lado $m_\rho^2=4\lambda a^2$.
+Para leer las masas hay que normalizar canónicamente los campos.
+A orden cuadrático, $r=\sqrt2\rho$ y $\pi=\sqrt2a\theta$ dan
+\[
+  \mathcal L_2
+  =-\frac12\partial_\mu r\,\partial^\mu r
+   -\frac12(4\lambda a^2)r^2
+   -\frac12\partial_\mu\pi\,\partial^\mu\pi.
+\]
+Así, $m_\pi^2=0$: este es el \concept{bosón de Goldstone}.
+El modo radial tiene $m_r^2=4\lambda a^2$.
+La simetría sigue presente como $\theta\mapsto\theta+\alpha$,
+pero mueve el vacío elegido.
 
-Note que la simetría no parece estar en $\mathcal L$. Está ``escondida''.
-
-% -----------------------------------------------------------------------------
-% Página manuscrita 37
-% -----------------------------------------------------------------------------
 Complicemos el ejemplo, ahora con tres campos escalares y simetría $SO(3)$:
 \[
   \mathcal L
@@ -186,7 +178,8 @@ pero todos los mínimos son equivalentes, tal que eso no cuesta energía y
 corresponde a una dirección sin resistencia del espacio de campos, es decir,
 sin masa.
 
-En general, tomemos un conjunto de campos
+En general, para una teoría relativista con término cinético canónico
+y vacío homogéneo, tomemos un conjunto de campos reales
 $\phi=(\phi_1,\ldots,\phi_n)$ que forman un vector bajo alguna representación de
 un grupo $G$ espontáneamente roto, tal que un subgrupo $H\subseteq G$ no está
 roto. Decimos que los generadores de $G$ que no son generadores de $H$ están
@@ -225,21 +218,28 @@ Por otra parte, podemos escribir, para $\delta\phi_0$ pequeño,
     +\frac12\left.\frac{\partial^2V}{\partial\phi_i\partial\phi_j}
       \right|_{\phi_0}
       \delta\phi_{0i}\delta\phi_{0j}+\cdots\\
-  &=V(\phi_0)+\frac12M_{ij}\delta\phi_{0i}\delta\phi_{0j}+\cdots.
+  &=V(\phi_0)+\frac12(M^2)_{ij}\delta\phi_{0i}\delta\phi_{0j}+\cdots.
 \end{align*}
 
-Entonces
+Aquí $(M^2)_{ij}=\partial_i\partial_jV|_{\phi_0}$ es la
+matriz de masas al cuadrado. Para demostrar que las direcciones rotas
+son vectores nulos, usamos la invariancia del potencial para cualquier
+$\phi$:
 \[
-  M_{ij}\delta\phi_{0j}=0
+  \frac{\partial V}{\partial\phi_i}
+  (T^{(A)})_{ij}\phi_j=0.
 \]
-para que $V(\phi'_0)=V(\phi_0)$. Esto lo reescribimos
+Derivamos respecto a $\phi_k$ y evaluamos en el mínimo,
+donde $\partial_iV|_{\phi_0}=0$. Se obtiene
 \[
-  M_{ij}\left(T_{jk}^{(A)}\phi_{0k}\right)=0.
+  (M^2)_{ki}(T^{(A)})_{ij}\phi_{0j}=0.
 \]
-
-Es decir, por cada generador roto existe una dirección en el espacio de campos,
-$T_{jk}^{(A)}\phi_{0k}$, que no tiene masa. Este es el
-\concept{teorema de Goldstone}.
+Los vectores $(T^{(A)})_{ij}\phi_{0j}$ asociados a una base de
+generadores rotos son independientes. Por tanto hay al menos
+$\dim G-\dim H$ modos sin masa. Este es el \concept{teorema de Goldstone}
+en el contexto relativista que estamos estudiando.
+En sistemas no relativistas el número de modos puede ser menor que
+el número de generadores rotos.
 
 Este teorema también se puede demostrar en el caso cuántico.
 

@@ -2,17 +2,7 @@
 %+DESCRIPTION: Construimos la teoría electrodébil, las masas y los acoplamientos de Yukawa, y reunimos el lagrangiano del modelo estándar
 % Fuente: transcripcion_teoria_clasica_campos_paginas_36-43/transcripcion_paginas_36-43.tex
 % Páginas manuscritas 40--43.
-% Se conserva la transcripción; los puntos pendientes de revisión se anotan abajo.
-% Véase también transcripcion_teoria_clasica_campos_paginas_36-43/NOTAS_TRANSCRIPCION.md.
-% Página 40, convención quiral: el manuscrito define \(P_R=(1-\gamma_5)/2\), \(P_L=(1+\gamma^5)/2\), con \(P_R\psi=(0,\xi)^T\) y \(P_L\psi=(\chi,0)^T\). Se conservó esta convención.
-% Página 40, última línea del término cinético: se transcribió \(i\bar\psi_L\not\!\partial\psi_L+i\bar\psi_R\not\!\partial\psi_R\) tal como aparece, aunque el paso anterior puede requerir revisar el etiquetado de las barras.
-% Páginas 40--42, hipercarga: el manuscrito usa \(Y_L=1/2\), \(Y_{e_R}=1\), \(Q=I_3-Y\) y para el Higgs \(Y=-1/2\). Estas convenciones tienen signos opuestos a otras convenciones frecuentes, pero se conservaron.
-% Página 41, derivada covariante del Higgs: en la expresión matricial aparece \(+ig'X_\mu\), pero al multiplicar el doblete aparece \(+ig'X_\mu/2\). Se mantuvo la inconsistencia visible.
-% Página 41, normalización del potencial del Higgs: se escribe \(-\lambda(\phi^\dagger\phi)^2/4\), pero el mínimo se da como \(-m^2/(2\lambda)=v^2\). Se preservaron ambos.
-% Página 42, masas electrodébiles: se transcribieron \(m_W^2=g^2v^2/2\) y \(m_Z^2=(g^2+g'^2)v^2/2\) exactamente como aparecen.
-% Página 42, Yukawa de quarks: el manuscrito escribe \(iy_u\bar Q\sigma_2\phi^*u_R\). Se conservó el factor \(i\).
-% Página 43, acción final: el término cosmológico parece ser \(+\Lambda\), sin factor adicional. El término gravitacional se leyó como \(M_{\mathrm{Pl}}^2R/2\). Conviene compararlo con la acción de la página 2 al ensamblar.
-% Página 43, índices y nombres de campos derechos: se preservó la mezcla visible entre \(R_i\), \(U_{Ri}\) y \(d_{Ri}\), sin uniformar la notación.
+% Revisión editorial: quiralidad, cargas, potencial de Higgs y acción final.
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -62,22 +52,16 @@ Para empezar, definimos la matriz
 \]
 De su definición o forma explícita vemos que
 \[
-  \{\gamma^5,\gamma^0\}=0.
+  \{\gamma^5,\gamma^\mu\}=0,\qquad(\gamma^5)^2=\mathbb1.
 \]
 
 Podemos usar esta matriz para definir los proyectores
 \[
-  P_R=\frac12(1-\gamma_5)
-  =\begin{pmatrix}
-    \mathbb 1_{2\times2}&0\\
-    0&0
-  \end{pmatrix},
+  P_R=\frac12(1+\gamma^5)
+  =\begin{pmatrix}0&0\\0&\mathbb1_{2\times2}\end{pmatrix},
   \qquad
-  P_L=\frac12(1+\gamma^5)
-  =\begin{pmatrix}
-    0&0\\
-    0&\mathbb 1_{2\times2}
-  \end{pmatrix}.
+  P_L=\frac12(1-\gamma^5)
+  =\begin{pmatrix}\mathbb1_{2\times2}&0\\0&0\end{pmatrix}.
 \]
 
 Es fácil ver que
@@ -111,14 +95,18 @@ izquierda o derecha:
 Note que
 \begin{align*}
   P_R\gamma^0\gamma^\mu
-  &=\frac12(1-\gamma^5)\gamma^0\gamma^\mu
-   =\frac12\gamma^0(1+\gamma^5)\gamma^\mu\\
-  &=\frac12\gamma^0\gamma^\mu(1-\gamma^5)
+  &=\frac12(1+\gamma^5)\gamma^0\gamma^\mu
+   =\frac12\gamma^0(1-\gamma^5)\gamma^\mu\\
+  &=\frac12\gamma^0\gamma^\mu(1+\gamma^5)
    =\gamma^0\gamma^\mu P_R,
 \end{align*}
 \[
   P_L\gamma^0\gamma^\mu=\gamma^0\gamma^\mu P_L.
 \]
+
+Las barras de los campos quirales se definen después de proyectar:
+$\bar\psi_L=\overline{\psi_L}=\bar\psi P_R$ y
+$\bar\psi_R=\overline{\psi_R}=\bar\psi P_L$.
 
 Entonces el término cinético de Dirac se puede escribir
 \begin{align*}
@@ -135,8 +123,8 @@ Entonces el término cinético de Dirac se puede escribir
 \end{align*}
 
 Ahora estudiemos una teoría con electrones, descritos con el espinor de Dirac
-$e$, y neutrinos electrónicos, descritos con el espinor de Dirac $\nu$. Los
-neutrinos los tomamos sólo izquierdos,
+$e$, y neutrinos electrónicos, descritos por un espinor de Weyl izquierdo
+escrito en notación de cuatro componentes, $\nu=\nu_L$, con
 \[
   P_R\nu=0.
 \]
@@ -169,9 +157,9 @@ que $L$ tiene isospín $1/2$ (pertenece a esa representación de $SU(2)$) y
 $e_R$ tiene isospín $0$. Vemos además que hay una relación entre la carga y la
 tercera componente de isospín:
 \[
-  L:\qquad Q=I_3-\frac12,
+  L:\qquad Q_{\mathrm{em}}=I_3-\frac12,
   \qquad
-  e_R:\qquad Q=I_3-1.
+  e_R:\qquad Q_{\mathrm{em}}=I_3-1.
 \]
 
 % -----------------------------------------------------------------------------
@@ -180,20 +168,21 @@ tercera componente de isospín:
 La simetría $U(1)$, llamada de \concept{hipercarga}, actúa de la siguiente
 manera:
 \[
-  L\longmapsto e^{ig'\beta/2}L,
+  L\longmapsto e^{-ig'\beta/2}L,
   \qquad
-  e_R\longmapsto e^{ig'\beta}e_R.
+  e_R\longmapsto e^{-ig'\beta}e_R.
 \]
 
 Decimos que las hipercargas son
 \[
-  Y_L=\frac12,
+  Y_L=-\frac12,
   \qquad
-  Y_{e_R}=1,
+  Y_{e_R}=-1.
 \]
-y la carga eléctrica se puede escribir
+El número cuántico de carga eléctrica es
 \[
-  Q=I_3-Y.
+  Q_{\mathrm{em}}=I_3+Y,\qquad q=e_{\mathrm{em}}Q_{\mathrm{em}},
+  \qquad e_{\mathrm{em}}>0.
 \]
 
 Según el modelo la simetría es de gauge, tal que debemos introducir derivadas
@@ -203,10 +192,10 @@ covariantes y campos de gauge:
 \]
 \[
   D_\mu L
-  =\partial_\mu L-\frac{ig'}2X_\mu L
+  =\partial_\mu L+\frac{ig'}2X_\mu L
    -\frac{ig}2\vec\sigma\cdot\vec W_\mu L,
   \qquad
-  D_\mu e_R=\partial_\mu e_R-ig'X_\mu e_R.
+  D_\mu e_R=\partial_\mu e_R+ig'X_\mu e_R.
 \]
 
 El lagrangiano con esta invariancia de gauge es
@@ -235,22 +224,25 @@ campo de Higgs:
 \]
 \[
   \mathcal L_{\mathrm{Higgs}}
-  =-D_\mu\phi^\dagger D^\mu\phi
+  =-(D_\mu\phi)^\dagger D^\mu\phi
    -m^2\phi^\dagger\phi
-   -\frac\lambda4(\phi^\dagger\phi)^2.
+   -\lambda(\phi^\dagger\phi)^2.
 \]
 
 El campo de Higgs lo tomamos en la representación fundamental de $SU(2)$ y con
-$Y=-1/2$:
+$Y=1/2$:
 \[
   \phi=\begin{pmatrix}\phi^+\\\phi^0\end{pmatrix}.
 \]
 
-Para romper la simetría tomamos $m^2<0$, tal que el mínimo
+Para romper la simetría tomamos $m^2<0$ y $\lambda>0$. El mínimo satisface
 \[
   \phi^\dagger\phi=|\phi^+|^2+|\phi^0|^2
   =-\frac{m^2}{2\lambda}\equiv v^2.
 \]
+Nuestra $v$ es el valor de la componente neutra del doblete;
+la convención $\phi_0=(0,v_{\mathrm{SM}}/\sqrt2)^T$ usa
+$v_{\mathrm{SM}}=\sqrt2v$.
 Sin pérdida de generalidad,
 \[
   \phi_0=\begin{pmatrix}0\\v\end{pmatrix},
@@ -271,7 +263,7 @@ Entonces
 \[
   D_\mu\phi
   =\left[
-    \partial_\mu+ig'X_\mu
+    \partial_\mu-\frac{ig'}2X_\mu
     -\frac{ig}{2}
     \begin{pmatrix}
       W_\mu^3&W_\mu^1-iW_\mu^2\\
@@ -287,7 +279,7 @@ por lo que
     -\dfrac{ig}{2}\left(v+\dfrac h{\sqrt2}\right)
       (W_\mu^1-iW_\mu^2)\\[3mm]
     \dfrac1{\sqrt2}\partial_\mu h
-    +\dfrac{ig'}2X_\mu\left(v+\dfrac h{\sqrt2}\right)
+    -\dfrac{ig'}2X_\mu\left(v+\dfrac h{\sqrt2}\right)
     +\dfrac{ig}{2}W_\mu^3\left(v+\dfrac h{\sqrt2}\right)
   \end{pmatrix}.
 \]
@@ -298,17 +290,17 @@ por lo que
   (W_\mu^1+iW_\mu^2)(W^{1\mu}-iW^{2\mu})
   +\frac12\partial_\mu h\partial^\mu h\\
   &+\frac14\left(v+\frac h{\sqrt2}\right)^2
-  (g'X_\mu+gW_\mu^3)^2\\
+  (gW_\mu^3-g'X_\mu)(gW^{3\mu}-g'X^\mu)\\
   ={}&\frac{g^2v^2}{4}
   \left(W_\mu^1W^{1\mu}+W_\mu^2W^{2\mu}\right)
   +\frac12\partial_\mu h\partial^\mu h\\
   &+\frac{v^2}{4}
-  (g'X_\mu+gW_\mu^3)(g'X^\mu+gW^{3\mu})
+  (gW_\mu^3-g'X_\mu)(gW^{3\mu}-g'X^\mu)
   +\text{cúbicos y cuárticos}.
 \end{align*}
 
 Vemos que aparece un término cinético para $h$ junto con términos de masa para
-$W_\mu^1$, $W_\mu^2$ y para la combinación $g'X_\mu+gW_\mu^3$.
+$W_\mu^1$, $W_\mu^2$ y para la combinación $gW_\mu^3-g'X_\mu$.
 
 % -----------------------------------------------------------------------------
 % Página manuscrita 42
@@ -316,8 +308,8 @@ $W_\mu^1$, $W_\mu^2$ y para la combinación $g'X_\mu+gW_\mu^3$.
 La combinación con masa recibe un nombre:
 \[
   Z_\mu
-  =\frac{g'X_\mu+gW_\mu^3}{(g'^2+g^2)^{1/2}}
-  =\sin\theta_WX_\mu+\cos\theta_WW_\mu^3,
+  =\frac{gW_\mu^3-g'X_\mu}{(g'^2+g^2)^{1/2}}
+  =\cos\theta_WW_\mu^3-\sin\theta_WX_\mu,
   \qquad
   \tan\theta_W=\frac{g'}g.
 \]
@@ -334,50 +326,55 @@ La combinación ortogonal a $Z_\mu$ no tiene masa y la identificamos con el
 fotón:
 \[
   A_\mu
-  =\frac{-g'W_\mu^3+gX_\mu}{(g^2+g'^2)^{1/2}}
-  =\cos\theta_WX_\mu-\sin\theta_WW_\mu^3.
+  =\frac{g'W_\mu^3+gX_\mu}{(g^2+g'^2)^{1/2}}
+  =\sin\theta_WW_\mu^3+\cos\theta_WX_\mu.
 \]
 
 Para hacer esa identificación notemos que podemos escribir
 \[
-  X_\mu=\cos\theta_WA_\mu+\sin\theta_WZ_\mu,
+  X_\mu=\cos\theta_WA_\mu-\sin\theta_WZ_\mu,
 \]
 \[
-  W_\mu^3=\cos\theta_WZ_\mu-\sin\theta_WA_\mu.
+  W_\mu^3=\cos\theta_WZ_\mu+\sin\theta_WA_\mu.
 \]
 
 Volvamos a los términos para el electrón y el neutrino:
 \begin{align*}
   D_\mu
-  \begin{pmatrix}\nu\\e_L\end{pmatrix}
+  \begin{pmatrix}\nu_L\\e_L\end{pmatrix}
   ={}&\partial_\mu
-  \begin{pmatrix}\nu\\e_L\end{pmatrix}
-  -\frac{ig'}2\cos\theta_WA_\mu
-  \begin{pmatrix}\nu\\e_L\end{pmatrix}
-  +\frac{ig}2\sin\theta_WA_\mu
+  \begin{pmatrix}\nu_L\\e_L\end{pmatrix}
+  +\frac{ig'}2\cos\theta_WA_\mu
+  \begin{pmatrix}\nu_L\\e_L\end{pmatrix}
+  -\frac{ig}2\sin\theta_WA_\mu
   \begin{pmatrix}1&0\\0&-1\end{pmatrix}
-  \begin{pmatrix}\nu\\e_L\end{pmatrix}\\
+  \begin{pmatrix}\nu_L\\e_L\end{pmatrix}\\
   &+\text{términos con }Z_\mu,W_\mu^1,W_\mu^2\\
   ={}&
   \begin{pmatrix}
-    \partial_\mu\nu\\[1mm]
-    \partial_\mu e_L-
+    \partial_\mu\nu_L\\[1mm]
+    \partial_\mu e_L+
     i\dfrac{gg'}{(g^2+g'^2)^{1/2}}A_\mu e_L
   \end{pmatrix}
   +\cdots,
 \end{align*}
 \[
   D_\mu e_R
-  =\partial_\mu e_R-ig'\cos\theta_WA_\mu e_R
+  =\partial_\mu e_R+ig'\cos\theta_WA_\mu e_R
    +\text{términos con }Z_\mu
-  =\partial_\mu e_R-i\frac{gg'}{(g^2+g'^2)^{1/2}}A_\mu e_R+\cdots.
+  =\partial_\mu e_R+i\frac{gg'}{(g^2+g'^2)^{1/2}}A_\mu e_R+\cdots.
 \]
 
-Vemos que corresponde a la derivada covariante de la electrodinámica para
+El signo elegido para $A_\mu$ hace que la derivada electromagnética sea
+$D_\mu=\partial_\mu-iqA_\mu+\cdots$, como en electrodinámica, con
 \[
-  q=\frac{gg'}{(g^2+g'^2)^{1/2}},
+  e_{\mathrm{em}}=\frac{gg'}{\sqrt{g^2+g'^2}},
+  \qquad q_e=-e_{\mathrm{em}},\qquad q_\nu=0.
 \]
-(es igual para $e_R$ y $e_L$, como debe ser).
+Ambas quiralidades del electrón tienen la misma carga.
+Los bosones cargados son
+$W^\pm_\mu=(W^1_\mu\mp iW^2_\mu)/\sqrt2$.
+La expansión del potencial también da $m_h^2=4\lambda v^2$.
 
 Podemos agregarle más términos al lagrangiano invariantes bajo la simetría y con
 un coeficiente adimensional:
@@ -386,19 +383,20 @@ un coeficiente adimensional:
   =\mathcal L_0+\mathcal L_{\mathrm{Higgs}}+\mathcal L_{\mathrm{Yukawa}},
   \qquad
   \mathcal L_{\mathrm{Yukawa}}
-  =y_e\bar L\phi e_R+\text{h.c.}
+  =-\left(y_e\bar L\phi e_R+\hc\right).
 \]
 
 Después de la ruptura de simetría nos queda
 \begin{align*}
   \mathcal L_{\mathrm{Yukawa}}
-  &=y_e(\bar\nu\ \bar e_L)
+  &=-y_e(\bar\nu_L\ \bar e_L)
     \begin{pmatrix}0\\v+\dfrac1{\sqrt2}h\end{pmatrix}e_R
     +\text{h.c.}\\
-  &=y_ev\bar e_Le_R+\frac{y_eh}{\sqrt2}\bar e_Le_R+\text{h.c.}
+  &=-y_ev\bar e_Le_R-\frac{y_eh}{\sqrt2}\bar e_Le_R+\text{h.c.}
 \end{align*}
 
-Vemos que de esta manera el Higgs le da también la masa al electrón.
+Tras una redefinición de fase podemos tomar $y_e$ real y positivo.
+Entonces $m_e=y_ev$ y el término de masa es $-m_e\bar e e$.
 
 Los quarks también tienen interacción electrodébil con unas diferencias. Los
 quarks $u$ y $d$ izquierdos forman el doblete, y ambos tienen versión derecha.
@@ -406,59 +404,48 @@ Las hipercargas son
 \[
   Q=\begin{pmatrix}u_L\\d_L\end{pmatrix},
   \qquad
-  Y_Q=-\frac16,
+  Y_Q=\frac16,
   \qquad
-  Y_{u_R}=-\frac23,
+  Y_{u_R}=\frac23,
   \qquad
-  Y_{d_R}=\frac13.
+  Y_{d_R}=-\frac13.
 \]
 
-La otra diferencia es que $u_R$ tiene masa después de la ruptura de simetría.
-Esto lo podemos lograr con los siguientes acoplamientos de Yukawa:
+Para dar masa al quark de tipo up necesitamos el doblete conjugado
+$\widetilde\phi=i\sigma_2\phi^*$, con hipercarga $-1/2$.
+Los acoplamientos de Yukawa son
 \[
   \mathcal L_{\mathrm{Yukawa,quarks}}
-  =y_d\bar Q\phi d_R+iy_u\bar Q\sigma_2\phi^*u_R+\text{h.c.}
+  =-\left(y_d\bar Q\phi d_R+y_u\bar Q\widetilde\phi u_R+\hc\right).
 \]
 
 % -----------------------------------------------------------------------------
 % Página manuscrita 43
 % -----------------------------------------------------------------------------
-Después de la ruptura de simetría tenemos, evaluando $\phi$ en su mínimo,
-\begin{align*}
+Después de la ruptura de simetría,
+$\phi_0=(0,v)^T$ y $\widetilde\phi_0=(v,0)^T$, de modo que
+\[
   \mathcal L_{\mathrm{Yukawa,quarks}}
-  \supset{}&y_d(\bar u_L\ \bar d_L)
-  \begin{pmatrix}0\\v\end{pmatrix}d_R
-  +y_u(\bar u_L\ \bar d_L)
-  \begin{pmatrix}0&1\\-1&0\end{pmatrix}
-  \begin{pmatrix}0\\v\end{pmatrix}u_R
-  +\text{h.c.}\\
-  ={}&y_dv\bar d_Ld_R+y_uv\bar u_Lu_R+\text{h.c.}
-\end{align*}
-
-Además el término $iy_u\bar Q\sigma^2\phi^*u_R$ es invariante bajo la simetría.
-Las hipercargas suman cero tal que la transformación $U(1)$ lo deja invariante.
-Para ver cómo transforma bajo $SU(2)$ hacemos una transformación infinitesimal:
-\[
-  \phi\longmapsto\phi'
-  =\phi-\frac{ig}{2}\theta\,\hat n\cdot\vec\sigma\,\phi.
+  \supset-\left(y_dv\bar d_Ld_R+y_uv\bar u_Lu_R+\hc\right).
 \]
+Para una familia, las masas son $m_d=|y_d|v$ y $m_u=|y_u|v$.
 
-Recordemos que
+Las hipercargas de cada término suman cero:
 \[
-  \sigma^2\sigma^{i*}=-\sigma^i\sigma^2.
+  -Y_Q+Y_\phi+Y_{d_R}=0,\qquad
+  -Y_Q+Y_{\widetilde\phi}+Y_{u_R}=0.
 \]
-Entonces
-\begin{align*}
-  \sigma^2\phi^*
-  \longmapsto\sigma^2\phi'^*
-  &=\sigma^2\phi^*
-    +\frac{ig}{2}\sigma^2\theta\,\hat n\cdot\vec\sigma^*\phi^*\\
-  &=\sigma^2\phi^*
-    -\frac{ig}{2}\theta\,\hat n\cdot\vec\sigma\,\sigma^2\phi^*.
-\end{align*}
-
-Entonces $\sigma^2\phi^*$ transforma en la representación fundamental, tal que
-$\bar Q\sigma^2\phi^*$ es invariante.
+Para comprobar la invariancia bajo $SU(2)$ usamos
+$\sigma_2\sigma_i^*=-\sigma_i\sigma_2$. Si
+$U=e^{ig\vec\alpha\cdot\vec\sigma/2}$, entonces
+\[
+  i\sigma_2U^*=U\,i\sigma_2,
+  \qquad
+  \widetilde\phi\longmapsto
+  i\sigma_2(U\phi)^*=U\widetilde\phi.
+\]
+Así, $\widetilde\phi$ transforma en la representación fundamental,
+y $\bar Q\widetilde\phi$ es un singlete de $SU(2)$.
 
 El modelo estándar consiste de tres generaciones de leptones: $e$ (electrón),
 $\mu$ (muón), $\tau$ (tauón), con interacciones y simetrías idénticas a las del
@@ -467,8 +454,8 @@ neutrinos $\nu_e,\nu_\mu,\nu_\tau$, sólo izquierdos en el modelo estándar. Com
 todos transforman igual, podemos escribir más Yukawas invariantes:
 \[
   \mathcal L_{\mathrm{leptones}}
-  =i\bar L_i\not\!D L_i+i\bar R_i\not\!D R_i
-   +y_{ij}^{(l)}\bar L_i\phi R_j+\text{h.c.},
+  =i\bar L_i\not\!D L_i+i\bar e_{Ri}\not\!D e_{Ri}
+   -\left(y_{ij}^{(l)}\bar L_i\phi e_{Rj}+\hc\right),
 \]
 donde $i=1,2,3$ corresponde a $e,\mu,\tau$ respectivamente.
 
@@ -479,34 +466,51 @@ también tienen interacción de color $SU(3)$):
 \[
   \mathcal L_{\mathrm{quarks}}
   =i\bar Q_i\not\!D Q_i
-   +i\bar U_{Ri}\not\!D U_{Ri}
+   +i\bar u_{Ri}\not\!D u_{Ri}
    +i\bar d_{Ri}\not\!D d_{Ri}
-   +y_{ij}^{(q)}\bar Q_i\phi d_{Rj}
-   +i\widetilde y_{ij}^{(q)}\bar Q_i\sigma^2\phi^*U_{Rj}
-   +\text{h.c.}
+   -\left(
+     y_{ij}^{(d)}\bar Q_i\phi d_{Rj}
+     +y_{ij}^{(u)}\bar Q_i\widetilde\phi u_{Rj}
+     +\hc\right).
 \]
 
-Con esto podemos escribir el lagrangiano del modelo estándar, y le incluimos la
-gravedad para completarlo:
+En los quarks se contraen además los índices de color, y
+\[
+  D_\mu=\partial_\mu-ig'YX_\mu-igJ^aW_\mu^a
+        -ig_sT^AG_\mu^A,
+  \qquad T^A=\lambda^{(A)}/2.
+\]
+Para leptones y para el Higgs, el último término está ausente.
+El índice de familia $i=1,2,3$ no es un índice de color.
+
+Reuniendo los términos y acoplando la teoría mínimamente a la gravedad,
+obtenemos
 \begin{align*}
   S_{\text{todo lo que sabemos}}
-  =\int d^4x\sqrt{-g}\Bigg(&
-    \frac{M_{\mathrm{Pl}}^2}{2}R+\Lambda
-    -D_\mu\phi^\dagger D^\mu\phi
+  =\int d^4x\sqrt{-g}\Bigg[&
+    \frac{M_{\mathrm{Pl}}^2}{2}R-M_{\mathrm{Pl}}^2\Lambda
+    -(D_\mu\phi)^\dagger D^\mu\phi
     -m^2\phi^\dagger\phi
-    -\frac\lambda4(\phi^\dagger\phi)^2\\
-  &+i\bar L_i\not\!D L_i+i\bar R_i\not\!D R_i
-    +y_{ij}^{(l)}\bar L_i\phi R_j+\text{h.c.}\\
-  &+i\bar Q_i\not\!D Q_i+i\bar U_{Ri}\not\!D U_{Ri}\\
-  &+i\bar d_{Ri}\not\!D d_{Ri}
-    +y_{ij}^{(q)}\bar Q_i\phi d_{Rj}\\
-  &+i\widetilde y_{ij}^{(q)}\bar Q_i\sigma^2\phi^*U_{Rj}
-    +\text{h.c.}\\
+    -\lambda(\phi^\dagger\phi)^2\\
+  &+i\bar L_i\not\!D L_i+i\bar e_{Ri}\not\!D e_{Ri}
+    +i\bar Q_i\not\!D Q_i\\
+  &+i\bar u_{Ri}\not\!D u_{Ri}
+    +i\bar d_{Ri}\not\!D d_{Ri}\\
+  &-\Bigl(
+    y_{ij}^{(l)}\bar L_i\phi e_{Rj}
+    +y_{ij}^{(d)}\bar Q_i\phi d_{Rj}
+    +y_{ij}^{(u)}\bar Q_i\widetilde\phi u_{Rj}
+    +\hc\Bigr)\\
   &-\frac14X_{\mu\nu}X^{\mu\nu}
-    -\frac14W_{\mu\nu}^iW^{i\mu\nu}
-    -\frac14G^{a\mu\nu}G^a_{\mu\nu}
-  \Bigg).
+    -\frac14W_{\mu\nu}^aW^{a\mu\nu}
+    -\frac14G_{\mu\nu}^AG^{A\mu\nu}
+  \Bigg].
 \end{align*}
+En espacio curvo, $\not\!D=\gamma^\mu(x)D_\mu$ incluye la conexión
+espinorial y las matrices gamma se construyen con una tétrada.
+La normalización de $\Lambda$ coincide con la introducción.
+Hemos omitido los términos topológicos, que no alteran las ecuaciones
+clásicas locales para coeficientes constantes.
 
 A esto le falta: algo que le dé masa a los neutrinos, algo que sea materia
 oscura, algo que haga inflación, algo que explique la asimetría
