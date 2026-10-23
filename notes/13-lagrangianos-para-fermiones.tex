@@ -32,36 +32,39 @@
 
 \begin{document}
 
-Ahora queremos aplicar la misma lógica a campos de espín $1/2$. Es decir, un campo que a cada punto del espacio le asigna un espinor.
+Ahora queremos aplicar la misma lógica a campos de espín $1/2$. Es decir, un campo que a cada punto del espacio le asigna un espinor. Sus componentes son variables de Grassmann: al intercambiar dos componentes fermiónicas aparece un signo menos (el por qué tiene que ver con su naturaleza cuántica).
 
 El primer paso es encontrar combinaciones de índices espinoriales que sean invariantes de Lorentz. Usando esas combinaciones podemos construir nuestro lagrangiano, que debe ser invariante.
 
 Resulta que para encontrar esas combinaciones basta contraer índices arriba y abajo. Por ejemplo, bajo un boost,
 \begin{align*}
   \chi'^a\chi'_a
-  &=\left(e^{\phi\hat n\cdot\vec\sigma/2}\right)^a{}_b
+  &=\left(e^{-\phi\hat n\cdot\vec\sigma/2}\right)^a{}_b
     \chi^b\,
     \varepsilon_{ac}
-    \left(e^{\phi\hat n\cdot\vec\sigma/2}\right)^c{}_d
+    \left(e^{-\phi\hat n\cdot\vec\sigma/2}\right)^c{}_d
     \varepsilon^{de}\chi_e \\
-  &=\left(e^{\phi\hat n\cdot\vec\sigma/2}\right)^a{}_b
-    \left(e^{-\phi\hat n\cdot\vec\sigma^{\,*}/2}\right)^e{}_a
+  &=\left(e^{-\phi\hat n\cdot\vec\sigma/2}\right)^a{}_b
+    \left(e^{\phi\hat n\cdot\vec\sigma^{\,*}/2}\right)_a{}^e
     \chi^b\chi_e \\
-  &=\left(e^{\phi\hat n\cdot\vec\sigma/2}\right)^a{}_b
-    \left(e^{-\phi\hat n\cdot\vec\sigma/2}\right)^e{}_a
+  &=\left(e^{-\phi\hat n\cdot\vec\sigma/2}\right)^a{}_b
+    \left(e^{\phi\hat n\cdot\vec\sigma/2}\right)^e{}_a
     \chi^b\chi_e
    =\chi^e\chi_e.
 \end{align*}
 
 Se puede hacer un cálculo análogo para rotaciones y otras combinaciones de índices contraídos.
 
-Usando un espinor izquierdo $\chi$ y uno derecho $\xi$, tenemos las siguientes combinaciones:
+Usando un espinor izquierdo $\chi$ y uno derecho $\xi$, tenemos las siguientes combinaciones
+(aquí escribimos sus componentes como $\chi^a$ y $\xi_{\dot a}$,
+y sus conjugadas como $\chi^{\dot a}\equiv(\chi^a)^*$ y
+$\xi_a\equiv(\xi_{\dot a})^*$):
 \[
-  \chi_a\chi^a=\chi^T\varepsilon\chi,
+  \chi^a\chi_a=\chi^T\varepsilon\chi,
   \qquad
   \xi_{\dot a}\xi^{\dot a}=\xi^T(-\varepsilon)\xi,
   \qquad
-  \chi^a\xi_a=\xi^\dagger\chi,
+  \xi_a\chi^a=\xi^\dagger\chi,
   \qquad
   \chi^{\dot a}\xi_{\dot a}=\chi^\dagger\xi.
 \]
@@ -83,8 +86,8 @@ Note que esta combinación es real, salvo derivadas totales:
 
 También tenemos
 \begin{align*}
-  i(\partial_\mu\chi_a)(\sigma^\mu)^{a\dot b}\chi_{\dot b}
-  &=i(\partial_\mu\chi^c)\varepsilon_{ac}
+  -i(\partial_\mu\chi_a)(\sigma^\mu)^{a\dot b}\chi_{\dot b}
+  &=-i(\partial_\mu\chi^c)\varepsilon_{ac}
     (\sigma^\mu)^{a\dot b}\varepsilon_{\dot b\dot d}\chi^{\dot d} \\
   &=i\chi^\dagger\bigl(( -\varepsilon)\sigma^\mu\varepsilon\bigr)^T
     \partial_\mu\chi \\
@@ -106,9 +109,9 @@ El lagrangiano más general con un espinor derecho y uno izquierdo es
   +i\chi^\dagger\bar\sigma^\mu\partial_\mu\chi
   -m\xi^\dagger\chi
   -m^*\chi^\dagger\xi \\
-  &-\frac{M_R}{2}\xi^T(-\varepsilon)\xi
-  -\frac{M_L}{2}\chi^T\varepsilon\chi
-  +\text{h.c.}
+  &-\left(\frac{M_R}{2}\xi^T(-\varepsilon)\xi
+  +\frac{M_L}{2}\chi^T\varepsilon\chi
+  +\text{h.c.}\right).
 \end{align*}
 
 Los términos $M_R$ y $M_L$ se llaman \concept{masas de Majorana}. ``h.c.'' quiere decir que sumamos el hermítico conjugado para que $\mathcal L$ sea real. Veremos más adelante que la interacción electromagnética corresponde a una simetría $U(1)$. Los campos que tienen carga $q$ transforman

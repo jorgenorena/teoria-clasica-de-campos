@@ -57,7 +57,7 @@ electromagnético:
   \vec\nabla\times\vec E+\frac{\partial\vec B}{\partial t}=0,
 \]
 \[
-  \vec\nabla\times\vec B-\frac{\partial\vec E}{\partial t}=\vec j,
+  \vec\nabla\times\vec B-\frac{\partial\vec E}{\partial t}=\vec J,
   \qquad
   \vec F=q\left(\vec E+\vec v\times\vec B\right).
 \]
@@ -70,13 +70,15 @@ la ley de fuerza de Lorentz; ésta contiene una velocidad, intentamos
   \boxed{
   \frac{dP^\mu}{d\tau}=qF^\mu{}_{\nu}U^\nu
   }
-  =q\gamma F^\mu{}_{0}+q\gamma F^\mu{}_{i}v^i
-  \underset{v\to0}{\approx}
-  q\left(F^\mu{}_{0}+F^\mu{}_{i}v^i\right).
+  =q\gamma\left(F^\mu{}_{0}+F^\mu{}_{i}v^i\right).
+\]
+Como $dt/d\tau=\gamma$, se sigue exactamente que
+\[
+  \frac{dP^\mu}{dt}=q\left(F^\mu{}_{0}+F^\mu{}_{i}v^i\right).
 \]
 Comparando con la fuerza de Lorentz,
 \[
-  \frac{dP^i}{dt}\approx q\left(F^i{}_{0}+F^i{}_{j}v^j\right)
+  \frac{dP^i}{dt}= q\left(F^i{}_{0}+F^i{}_{j}v^j\right)
   \quad\Longrightarrow\quad
   F^i{}_{0}=E^i,
   \qquad
@@ -86,7 +88,7 @@ Comparando con la fuerza de Lorentz,
 \]
 Para la componente temporal,
 \[
-  \frac{dP^0}{dt}\approx q\left(F^0{}_{0}+F^0{}_{i}v^i\right)
+  \frac{dP^0}{dt}= q\left(F^0{}_{0}+F^0{}_{i}v^i\right)
   \quad\Longrightarrow\quad
   F^0{}_{0}=0,
   \qquad
@@ -170,7 +172,7 @@ Ahora queremos obtener estas ecuaciones a partir de un lagrangiano. Usamos
   \mathcal L=
   -\frac14(\partial_\mu A_\nu-\partial_\nu A_\mu)
              (\partial^\mu A^\nu-\partial^\nu A^\mu)
-  -A_\mu J^\mu.
+  +A_\mu J^\mu.
 \]
 Para calcular la ecuación de movimiento es más fácil realizar la variación de
 $\mathcal L$ directamente.
@@ -188,7 +190,7 @@ $\mathcal L$ directamente.
   ={}&-\frac12(\partial_\mu\delta A_\nu-\partial_\nu\delta A_\mu)
                (\partial^\mu A^\nu-\partial^\nu A^\mu)
        +\delta A_\mu J^\mu\\
-  ={}&-(\partial_\mu\delta A_\nu)F^{\mu\nu}-\delta A_\nu J^\nu\\
+  ={}&-(\partial_\mu\delta A_\nu)F^{\mu\nu}+\delta A_\nu J^\nu\\
   ={}&\delta A_\nu\partial_\mu F^{\mu\nu}
       +\delta A_\nu J^\nu
       +\text{derivadas totales}.
@@ -204,18 +206,21 @@ electromagnético sólo tenemos que escribir la corriente. Ésta debe ser un
 4-vector y conservada. Un buen candidato está dado por el hecho de que el
 lagrangiano de Dirac es invariante $U(1)$:
 \[
-  \mathcal L=i\bar\psi\slashedpartial\psi+m\bar\psi\psi,
+  \mathcal L=i\bar\psi\slashedpartial\psi-m\bar\psi\psi,
   \qquad
-  \psi\longmapsto\psi'=e^{i\alpha}\psi
+  \psi\longmapsto\psi'=e^{-i\alpha}\psi
   \quad\Longrightarrow\quad
   \mathcal L'=\mathcal L.
 \]
-La corriente de Noether es
+Con $\delta\psi=-i\psi$ para esta elección del parámetro, la corriente
+de Noether es
 \[
-  j^\mu=\frac{\partial\mathcal L}{\partial(\partial_\mu\psi)}\psi
-  =i\bar\psi\gamma^\mu\psi,
+  j^\mu=\frac{\partial\mathcal L}{\partial(\partial_\mu\psi)}(-i\psi)
+  =\bar\psi\gamma^\mu\psi,
 \]
-la \concept{corriente del electrón}. Gracias al teorema de Noether,
+la \concept{corriente de número del campo de Dirac}.
+La corriente electromagnética es $J^\mu=qj^\mu$; para el electrón,
+$q=-e_{\mathrm{em}}$, con $e_{\mathrm{em}}>0$. Gracias al teorema de Noether,
 \[
   \partial_\mu j^\mu=0
   \qquad\text{(on-shell)}.
@@ -225,9 +230,9 @@ Entonces el lagrangiano de un campo de electrones en un campo electromagnético
 es
 \[
   \mathcal L=
-  i\bar\psi\slashedpartial\psi+m\bar\psi\psi
+  i\bar\psi\slashedpartial\psi-m\bar\psi\psi
   -\frac14F_{\mu\nu}F^{\mu\nu}
-  +iq\bar\psi\not\!A\psi.
+  +q\bar\psi\not\!A\psi.
 \]
 \begin{center}
   \includegraphics[width=0.22\linewidth]{figures/vertice_electron_foton.png}
@@ -256,7 +261,7 @@ Usando nuestra nueva notación relativista,
   F_{\mu\nu}+\partial_\mu\partial_\nu\chi
   -\partial_\nu\partial_\mu\chi.
 \]
-Y el lagrangiano es invariante on-shell, ya que
+La acción cambia sólo por un término de borde al usar la conservación de la corriente, ya que
 \[
   \bar\psi\not\!A\psi
   \longmapsto
@@ -309,7 +314,7 @@ se llama \concept{derivada covariante}. Satisface
 Entonces
 \[
   \mathcal L=
-  i\bar\psi\not\!D\psi+m\bar\psi\psi
+  i\bar\psi\not\!D\psi-m\bar\psi\psi
   -\frac14F_{\mu\nu}F^{\mu\nu}.
 \]
 Necesitamos el \concept{campo de gauge} $A_\mu$ para tener invariancia $U(1)$

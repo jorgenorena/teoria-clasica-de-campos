@@ -2,11 +2,7 @@
 %+DESCRIPTION: Construimos teorías de Yang--Mills y describimos la interacción fuerte mediante la simetría de gauge $SU(3)$
 % Fuente: pag-31-35/transcripcion_teoria_clasica_campos_paginas_31-35/transcripcion_paginas_31-35.tex
 % Páginas manuscritas 34--35.
-% Se conserva la transcripción; los puntos pendientes de revisión se anotan abajo.
-% Véase también pag-31-35/transcripcion_teoria_clasica_campos_paginas_31-35/NOTAS_TRANSCRIPCION.md.
-% Página 34, factor \(g\) en las rotaciones: el manuscrito parametriza \(R=e^{ig\vec\theta\cdot\vec J}\). Se conservó ese factor aun cuando en una discusión puramente de \(SO(3)\) suele absorberse en los parámetros.
-% Página 35, generadores de \(SU(3)\): se reprodujeron las ocho matrices \(\lambda^{(i)}\) exactamente como matrices de Gell--Mann, sin introducir el factor habitual \(1/2\) que a veces se usa al definir los generadores.
-% Página 35, frase final: se conservó «objetos escalares \(SU(3)\)» tal como está escrito; probablemente convenga decidir al editar si se quería decir singletes de \(SU(3)\).
+% Revisión editorial: signos, normalizaciones y notación unificados con el curso.
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -75,7 +71,7 @@ Vemos que este lagrangiano tiene una simetría $SO(3)$,
 \]
 Por ejemplo,
 \[
-  \partial_\mu\vec\Phi^{\,T}\partial^\mu\vec\Phi'
+  \partial_\mu\vec\Phi'{}^T\partial^\mu\vec\Phi'
   =\partial_\mu\vec\Phi^{\,T}R^TR\partial^\mu\vec\Phi
   =\partial_\mu\vec\Phi^{\,T}\partial^\mu\vec\Phi,
 \]
@@ -87,6 +83,10 @@ Recordemos que
   \qquad
   \vec\theta=\theta\hat n=(\theta_1,\theta_2,\theta_3).
 \]
+Aquí $g$ se absorbe en la parametrización de la rotación:
+el ángulo geométrico es $g\theta$. Esta convención resulta útil
+al introducir el acoplamiento de gauge.
+
 Análogo al caso de electrodinámica, queremos que los parámetros $\theta_i$
 puedan depender del espacio-tiempo. El lagrangiano no es invariante en este
 caso:
@@ -190,15 +190,16 @@ De la discusión anterior, este tensor de fuerza transforma como
     (\vec F_{\mu\nu}\cdot\vec J)
     e^{-ig\vec\theta\cdot\vec J}.
 \]
-Esto quiere decir que si $F_{\mu\nu}^c=0$ en un gauge, será cero también en otro
-gauge. Para obtener un objeto invariante de Lorentz y de gauge sólo tenemos que
-hacer
+Esto quiere decir que si todo el tensor $F_{\mu\nu}=0$ en un gauge, será cero también en otro
+gauge. Para normalizar el término cinético, sea
+$\Tr_R(J^aJ^b)=T(R)\delta^{ab}$. En la representación vectorial
+de $SO(3)$ usada aquí, $T(R)=2$. Entonces
 \[
-  -\frac14\Tr\left[
+  -\frac{1}{4T(R)}\Tr_R\left[
     (\vec F_{\mu\nu}\cdot\vec J)
     (\vec F^{\mu\nu}\cdot\vec J)
   \right]
-  =-\frac14\Tr(F_{\mu\nu}F^{\mu\nu}),
+  =-\frac14F_{\mu\nu}^aF^{a\mu\nu},
   \qquad
   F_{\mu\nu}\equiv\vec J\cdot\vec F_{\mu\nu}.
 \]
@@ -218,7 +219,7 @@ escribe como un triplete de espinores de Dirac
     u_3
   \end{pmatrix}
 \]
-con carga electromagnética $q=\frac23e$. Análogamente, el quark $d$ es un
+con carga electromagnética $q=\frac23e_{\mathrm{em}}$. Análogamente, el quark $d$ es un
 triplete
 \[
   \begin{pmatrix}
@@ -227,31 +228,38 @@ triplete
     d_3
   \end{pmatrix}
 \]
-con carga $q=-\frac13e$.
+con carga $q=-\frac13e_{\mathrm{em}}$.
 
-El lagrangiano es
+Aquí $e_{\mathrm{em}}>0$ es la magnitud de la carga del electrón
+y $g_s$ es el acoplamiento fuerte. El lagrangiano es
 \[
   \mathcal L=
   i\bar u_a\not\!D u_a-m_u\bar u_a u_a
   +i\bar d_a\not\!D d_a-m_d\bar d_a d_a
   -\frac14F_{\mu\nu}F^{\mu\nu}
-  -\frac14\Tr(G_{\mu\nu}G^{\mu\nu}),
+  -\frac12\Tr(G_{\mu\nu}G^{\mu\nu}),
 \]
 con
 \[
   D_\mu u^a
-  =\partial_\mu u^a-\frac23ieA_\mu u^a
-   -igG_\mu^{(i)}\lambda^{(i)a}{}_{b}u^b,
+  =\partial_\mu u^a-\frac23ie_{\mathrm{em}}A_\mu u^a
+   -ig_sG_\mu^{(i)}(T^{(i)})^a{}_{b}u^b,
 \]
 \[
   D_\mu d^a
-  =\partial_\mu d^a+\frac13ieA_\mu d^a
-   -igG_\mu^{(i)}\lambda^{(i)a}{}_{b}d^b.
+  =\partial_\mu d^a+\frac13ie_{\mathrm{em}}A_\mu d^a
+   -ig_sG_\mu^{(i)}(T^{(i)})^a{}_{b}d^b.
 \]
 
-Las matrices $\lambda$ son los generadores de $SU(3)$ en la representación
-fundamental, en la cual los elementos de $SU(3)$ son matrices unitarias
-$3\times3$ con determinante $1$:
+Usamos $T^{(i)}=\lambda^{(i)}/2$, de modo que
+$\Tr(T^{(i)}T^{(j)})=\delta^{ij}/2$ y
+$G_{\mu\nu}=G_{\mu\nu}^{(i)}T^{(i)}$.
+En notación matricial,
+$G_{\mu\nu}=\partial_\mu G_\nu-\partial_\nu G_\mu-ig_s[G_\mu,G_\nu]$,
+con $G_\mu=G_\mu^{(i)}T^{(i)}$.
+Las $\lambda^{(i)}$ son las matrices de Gell--Mann. La representación
+fundamental de $SU(3)$ consta de matrices unitarias $3\times3$
+con determinante $1$:
 \[
 \begin{gathered}
   \lambda^{(1)}=
@@ -284,9 +292,9 @@ A los ocho campos de gauge $G_\mu^{(i)}$ se los llama \concept{gluones} y son
 responsables de mantener unidos dos $u$ y un $d$ para formar un protón, o dos
 $d$ y un $u$ para formar un neutrón, a pesar de la repulsión electromagnética.
 
-No podemos ver esta interacción $SU(3)$ (\concept{cromodinámica}) a nivel
-macroscópico debido a un fenómeno cuántico. Resulta que a mayores distancias la
-constante $g$ crece. Esto hace que los quarks no estén libres y sólo formen
-objetos escalares $SU(3)$.
+No observamos cargas de color aisladas a distancias macroscópicas.
+La explicación pertenece a la \concept{cromodinámica cuántica}. Resulta que a mayores distancias el
+acoplamiento efectivo $g_s$ crece. Esto hace que los quarks no estén libres y sólo formen
+estados singletes de color $SU(3)$ (confinamiento).
 
 \end{document}
