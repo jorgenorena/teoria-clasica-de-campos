@@ -54,16 +54,15 @@ El término $B_1$ es redundante con $C_0$:
       \partial_\mu(\phi\partial^\mu\phi)
       -\partial_\mu\phi\partial^\mu\phi
     \right] \\
-  &=\int_{\partial}d^3x\,\phi\partial^\mu\phi
+  &=\int_{\partial\mathcal M}d\Sigma_\mu\,\phi\partial^\mu\phi
     -\int d^4x\,\partial_\mu\phi\partial^\mu\phi.
 \end{align*}
 El primer término se anula si asumimos $\phi=0$ en el borde.
 
-Entonces,
+Entonces, absorbiendo $B_1$ en $C_0$,
 \[
   \mathcal L
   =A_2\phi^2+A_3\phi^3+A_4\phi^4+\cdots
-   +B_1\phi\Box\phi+\cdots
    +C_0\partial_\mu\phi\partial^\mu\phi+\cdots.
 \]
 
@@ -104,10 +103,10 @@ Esto nos permite ahora escribir las unidades de cada término del lagrangiano. L
   +\frac{c_1}{M}\phi(\partial_\mu\phi\partial^\mu\phi)+\cdots
   +\frac{b_2}{M}\phi^2\Box\phi+\cdots \\
   &+\frac{d_0}{M^2}(\Box\phi)^2+\cdots
-  +\frac{m^2}{2}\phi^2
-  +\frac{\lambda_3}{3!}M\phi^3
-  +\frac{\lambda_4}{4!}\phi^4
-  +\frac{\lambda_5}{5!M}\phi^5+\cdots.
+  -\frac{m^2}{2}\phi^2
+  -\frac{\lambda_3}{3!}M\phi^3
+  -\frac{\lambda_4}{4!}\phi^4
+  -\frac{\lambda_5}{5!M}\phi^5+\cdots.
 \end{align*}
 
 Ahora bien, la cantidad $M$ tiene algún valor y dimensión de masa ($=$ energía). Si el sistema tiene una sola escala característica de energía, este $M$ debe ser esa escala. Recordemos además que en mecánica cuántica momento-energía son derivadas.
@@ -115,7 +114,7 @@ Ahora bien, la cantidad $M$ tiene algún valor y dimensión de masa ($=$ energí
 Si queremos describir este sistema para bajas energías $E\sim\partial_\mu\ll M$, tenemos
 \[
   \mathcal L=-\frac12 f(\phi)
-    (\partial_\mu\phi\partial^\mu\phi)+V(\phi).
+    (\partial_\mu\phi\partial^\mu\phi)-V(\phi).
 \]
 
 Además, en muchos casos excitar un campo requiere energía, tal que $\phi\ll M$, y nos quedamos con
@@ -186,14 +185,14 @@ Por tanto,
 y
 \[
   \phi(t,\vec k)
-  =a_k e^{i\omega_k t}+a_k^*e^{-i\omega_k t}.
+  =a_{\vec k}e^{i\omega_k t}+a_{-\vec k}^*e^{-i\omega_k t}.
 \]
 
 Los coeficientes $a_k$ estarán determinados por condiciones iniciales y la solución $\phi(t,\vec x)$ es la antitransformada de Fourier:
 \[
   \phi(t,\vec x)
   =\int\frac{d^3k}{(2\pi)^3}e^{-i\vec k\cdot\vec x}
-    \left(a_k e^{i\omega_k t}+a_k^*e^{-i\omega_k t}\right).
+    \left(a_{\vec k}e^{i\omega_k t}+a_{-\vec k}^*e^{-i\omega_k t}\right).
 \]
 
 Cada modo de Fourier se comporta como un oscilador con frecuencia
@@ -201,29 +200,81 @@ Cada modo de Fourier se comporta como un oscilador con frecuencia
   \omega_k=\sqrt{|\vec k|^2+m^2}.
 \]
 
-Para $|\vec k|\gg m$, $\omega\approx|\vec k|$ y cada modo es una onda plana de las de toda la vida. La información se propaga a velocidad $\omega/|\vec k|=1$.
+Para $|\vec k|\gg m$, $\omega_k\approx|\vec k|$ y recuperamos las
+ondas del campo sin masa. Para $|\vec k|\ll m$, $\omega_k\approx m$:
+incluso un modo casi uniforme oscila con frecuencia $m$. Los paquetes
+de ondas se propagan con velocidad de grupo
+\[
+  v_{\mathrm g}=\frac{d\omega_k}{d|\vec k|}
+  =\frac{|\vec k|}{\sqrt{|\vec k|^2+m^2}}\leq1.
+\]
+Los modos de longitud de onda grande se propagan lentamente, pero no
+hay una longitud de onda máxima.
 
-Para $|\vec k|\ll m$, $\omega\approx m$ y cada modo tiene una velocidad de fase diferente,
+¿Por qué, entonces, un campo masivo produce una respuesta de corto alcance?
+Pensemos en una fuente fija que mantiene una deformación del campo.
+Cada modo se comporta como un oscilador: ante una fuerza constante, su
+desplazamiento es inversamente proporcional a su frecuencia al cuadrado.
+Si añadimos una fuente $\rho(\vec x)$, la ecuación estática es
 \[
-  \frac{\omega}{|\vec k|}\approx\frac{m}{|\vec k|}.
+  (-\nabla^2+m^2)\phi=\rho,
+  \qquad
+  \phi(\vec k)=\frac{\rho(\vec k)}{|\vec k|^2+m^2}.
 \]
-En este caso la superposición de ondas tiende a perder coherencia y estar suprimida. Es decir, para distancias mayores que
-\[
-  L\sim\lambda\sim\frac1{|\vec k|}>\frac1m
-\]
-no hay propagación del campo.
+La masa actúa como una fuerza restauradora incluso para deformaciones
+muy suaves: impide que la respuesta crezca sin límite cuando
+$|\vec k|\to0$.
 
-Cuando $\lambda_3$ o $\lambda_4$ no son cero, no se sabe resolver exactamente la ecuación. En este caso se usa teoría de perturbaciones, asumiendo $\lambda_3\ll1$, $\lambda_4\ll1$. A estas perturbaciones se las llama ``interacciones''. La solución $\lambda_3=\lambda_4=0$ se llama ``libre''. Por ejemplo, con $\lambda_4\neq0$,
+Para una fuente puntual $\rho(\vec x)=q\delta^{(3)}(\vec x)$,
+reconstruimos el campo sumando ondas espaciales:
 \[
-  \ddot\phi_0-(m^2+\nabla^2)\phi_0=0,
+  \phi(\vec x)=q\int\frac{d^3k}{(2\pi)^3}
+    \frac{e^{-i\vec k\cdot\vec x}}{|\vec k|^2+m^2}.
+\]
+En el origen todas las fases coinciden. Al alejarnos, las contribuciones
+de distintos $\vec k$ tienen fases diferentes y se cancelan en gran
+medida. Las componentes de longitud de onda mucho menor que la distancia
+recorrida oscilan muchas veces en esta suma; las de longitud de onda
+comparable o mayor pueden sostener una respuesta a esa distancia.
+Sin masa, el factor $1/|\vec k|^2$ realza precisamente estas últimas
+componentes, y queda una cola de largo alcance, proporcional a $1/r$.
+Con masa, ese realce desaparece para $|\vec k|\lesssim m$: a distancias
+$r\gg m^{-1}$ la cancelación deja una respuesta mucho menor.
+Aquí hablamos de fases espaciales de una configuración estática, no de
+ondas libres que pierden coherencia al evolucionar en el tiempo.
+
+La cancelación da la intuición; para ver que la caída es
+\emph{exponencial}, basta resolver la ecuación fuera de la fuente.
+Por simetría esférica, escribimos $\phi(r)=u(r)/r$. Para $r>0$,
+\[
+  \nabla^2\phi=\frac{u''(r)}r,
+  \qquad
+  u''-m^2u=0.
+\]
+La solución que se anula en el infinito tiene $u\propto e^{-mr}$.
+La normalización se fija integrando la ecuación alrededor de la fuente:
+\[
+  \phi(r)=\frac{q}{4\pi r}e^{-mr}.
+\]
+Además de la caída geométrica $1/r$, aparece una supresión exponencial
+con alcance $m^{-1}$. Es la misma cancelación de la suma de Fourier,
+expresada ahora como solución de la ecuación diferencial. Este alcance
+caracteriza la respuesta estática, no una distancia máxima que puedan
+recorrer las ondas libres.
+
+Cuando $\lambda_3$ o $\lambda_4$ no son cero, no se sabe resolver exactamente la ecuación. En este caso se usa teoría de perturbaciones, asumiendo $\lambda_3\ll1$, $\lambda_4\ll1$. A estas perturbaciones se las llama ``interacciones''. La solución $\lambda_3=\lambda_4=0$ se llama ``libre''. Por ejemplo, con $\lambda_3=0$, escribimos
+$\phi=\phi_0+\phi_1+\phi_2+\cdots$, con
+$\phi_n=\mathcal O(\lambda_4^n)$. Entonces
+\[
+  (\partial_t^2-\nabla^2+m^2)\phi_0=0,
 \]
 \[
-  \ddot\phi_1-(m^2+\nabla^2)\phi_1
-  =\frac{\lambda_4}{3!}\phi_0^3,
+  (\partial_t^2-\nabla^2+m^2)\phi_1
+  =-\frac{\lambda_4}{3!}\phi_0^3,
 \]
 \[
-  \ddot\phi_2-(m^2+\nabla^2)\phi_2
-  =\frac{\lambda_4}{2!}\phi_0^2\phi_1.
+  (\partial_t^2-\nabla^2+m^2)\phi_2
+  =-\frac{\lambda_4}{2!}\phi_0^2\phi_1.
 \]
 
 \begin{figure}

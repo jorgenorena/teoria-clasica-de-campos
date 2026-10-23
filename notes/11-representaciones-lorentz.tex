@@ -72,15 +72,15 @@ En este caso $N_i^+=0$ y $N_i^-=0$. Esto es, $J_i=K_i=0$. Corresponde a la repre
 
 En este caso sabemos que
 \[
-  N_i^+=\frac12\sigma_i,
+  N_i^-=\frac12\sigma_i,
   \qquad
-  N_i^-=0.
+  N_i^+=0.
 \]
-De esta última, $J_i=iK_i$, tal que $N_i^+=J_i=iK_i$. Entonces
+De esta última, $J_i=-iK_i$, tal que $N_i^-=J_i=-iK_i$. Entonces
 \[
   J_i=\frac12\sigma_i,
   \qquad
-  K_i=-\frac{i}{2}\sigma_i.
+  K_i=\frac{i}{2}\sigma_i.
 \]
 
 Los objetos sobre los cuales actúan son elementos de un espacio vectorial de dos dimensiones, llamados \concept{espinores izquierdos de Weyl}:
@@ -101,25 +101,25 @@ Cuando ejecutamos una rotación o un boost, éstos transforman como
 \[
   \chi_L'
   =e^{i\phi\hat n\cdot\vec K}\chi_L
-  =e^{\frac{\phi}{2}\hat n\cdot\vec\sigma}\chi_L.
+  =e^{-\frac{\phi}{2}\hat n\cdot\vec\sigma}\chi_L.
 \]
 
 {\bf $\boldsymbol{(0,1/2)}$}
 
 \[
-  N_i^-=\frac12\sigma_i,
+  N_i^+=\frac12\sigma_i,
   \qquad
-  N_i^+=0
+  N_i^-=0
   \quad\Longrightarrow\quad
-  J_i=-iK_i,
+  J_i=iK_i,
   \qquad
-  N_i^-=J_i=-iK_i,
+  N_i^+=J_i=iK_i,
 \]
 por lo que
 \[
   J_i=\frac12\sigma_i,
   \qquad
-  K_i=\frac{i}{2}\sigma_i.
+  K_i=-\frac{i}{2}\sigma_i.
 \]
 
 Los objetos sobre los que actúan son \concept{espinores de Weyl derechos}:
@@ -139,7 +139,7 @@ Bajo una rotación y un boost,
 \]
 \[
   \text{Boost:}\qquad
-  \xi_R'=e^{-\frac{\phi}{2}\hat n\cdot\vec\sigma}\xi_R.
+  \xi_R'=e^{\frac{\phi}{2}\hat n\cdot\vec\sigma}\xi_R.
 \]
 
 {\bf Conjugación de carga}
@@ -213,10 +213,10 @@ Bajo boosts,
   \varepsilon\chi_L^*
   &\longmapsto
   \varepsilon
-  \left(e^{\frac{\phi}{2}\hat n\cdot\vec\sigma}\chi_L\right)^* \\
-  &=\varepsilon e^{\frac{\phi}{2}\hat n\cdot\vec\sigma^{\,*}}
+  \left(e^{-\frac{\phi}{2}\hat n\cdot\vec\sigma}\chi_L\right)^* \\
+  &=\varepsilon e^{-\frac{\phi}{2}\hat n\cdot\vec\sigma^{\,*}}
     (-\varepsilon)\,\varepsilon\chi_L^* \\
-  &=e^{-\frac{\phi}{2}\hat n\cdot\vec\sigma}\varepsilon\chi_L^*.
+  &=e^{\frac{\phi}{2}\hat n\cdot\vec\sigma}\varepsilon\chi_L^*.
 \end{align*}
 
 Vemos entonces que
@@ -231,54 +231,48 @@ De manera análoga,
 \]
 transforma como un espinor izquierdo.
 
-Por eso interpretamos $\varepsilon$ como bajando o subiendo índices y el complejo conjugado como poniendo o quitando puntos en los índices:
+La matriz $\varepsilon$ permite bajar y subir índices, mientras que
+la conjugación compleja cambia índices no punteados por punteados:
 \[
-  \varepsilon\chi^{a*}=\chi_{\dot a},
-  \qquad
-  \text{transforma como derecha}.
+  \chi_a=\varepsilon_{ab}\chi^b,\qquad
+  \chi^a=\varepsilon^{ab}\chi_b,\qquad
+  (\chi^*)^{\dot a}=(\chi^a)^*.
 \]
 
 {\bf $\boldsymbol{(1/2,1/2)}$}
 
-Son objetos con un índice espinorial izquierdo y un índice espinorial derecho, $W^a{}_{\dot b}$. Si bajamos un índice con $\varepsilon$, tenemos $W^{a\dot b}$, que podemos ver como matrices complejas $2\times2$. Es fácil demostrar que las transformaciones de Lorentz llevan matrices hermíticas en otras hermíticas. Es decir, son un subespacio invariante.
-
-A una matriz hermítica $2\times2$ la podemos descomponer en la base $\{\sigma^\mu\}$, donde $\sigma^0=\mathbb 1$. Escribimos
+Podemos representar un 4-vector mediante una matriz hermítica:
 \[
-  V^{a\dot b}=V_\mu(\sigma^\mu)^{a\dot b}.
+  \mathsf V=V_\mu\sigma^\mu
+  =\begin{pmatrix}
+    V_0+V_3&V_1-iV_2\\
+    V_1+iV_2&V_0-V_3
+  \end{pmatrix},
+  \qquad \sigma^\mu=(\mathbb1,\vec\sigma).
 \]
-Se puede demostrar que
-\[
-  V'^{a\dot b}=\Lambda^\nu{}_{\mu}V_\nu(\sigma^\mu)^{a\dot b},
-\]
-por lo que $V_\mu$ son 4-vectores.
+Los $V_\mu$ son componentes covariantes: $V_0=-V^0$ y $V_i=V^i$.
+Si $S$ actúa sobre el espinor izquierdo, la transformación es
+$\mathsf V'=S\mathsf V S^\dagger$ y conserva la hermiticidad.
+El índice derecho de la matriz corresponde al espinor conjugado.
 
-Lo demostramos para un boost en $\hat z$:
-\begin{align*}
-  V'_{a\dot b}
-  &=\left(e^{\phi\sigma_3/2}\right)_a{}^c
-    V_{c\dot d}
-    \left(e^{\phi\sigma_3/2}\right)_{\dot b}{}^{\dot d} \\
-  &=
-    \begin{pmatrix}e^{\phi/2}&0\\0&e^{-\phi/2}\end{pmatrix}
-    \begin{pmatrix}
-      V_0+V_3 & V_1-iV_2\\
-      V_1+iV_2 & V_0-V_3
-    \end{pmatrix}
-    \begin{pmatrix}e^{\phi/2}&0\\0&e^{-\phi/2}\end{pmatrix} \\
-  &=
-    \begin{pmatrix}
-      e^\phi(V_0+V_3) & V_1-iV_2\\
-      V_1+iV_2 & e^{-\phi}(V_0-V_3)
-    \end{pmatrix} \\
-  &=
-    \begin{pmatrix}
-      (\cosh\phi\,V_0+\sinh\phi\,V_3)
-      +(\cosh\phi\,V_3+\sinh\phi\,V_0)
-      & V_1-iV_2\\
-      V_1+iV_2
-      &(\cosh\phi\,V_0+\sinh\phi\,V_3)
-      -(\cosh\phi\,V_3+\sinh\phi\,V_0)
-    \end{pmatrix}.
-\end{align*}
+Para un boost de parámetro $\phi$ en $\hat z$, como en la lección anterior,
+$S=e^{-\phi\sigma_3/2}$:
+\[
+  \mathsf V'=
+  \begin{pmatrix}
+    e^{-\phi}(V_0+V_3)&V_1-iV_2\\
+    V_1+iV_2&e^\phi(V_0-V_3)
+  \end{pmatrix}.
+\]
+Así,
+\[
+  V'_0=\cosh\phi\,V_0-\sinh\phi\,V_3,
+  \qquad
+  V'_3=\cosh\phi\,V_3-\sinh\phi\,V_0,
+\]
+mientras $V'_1=V_1$ y $V'_2=V_2$. Al subir los índices recuperamos
+$V'^0=\cosh\phi\,V^0+\sinh\phi\,V^3$ y
+$V'^3=\sinh\phi\,V^0+\cosh\phi\,V^3$, como corresponde al 4-vector.
+Además, $\det\mathsf V=(V^0)^2-|\vec V|^2=-V_\mu V^\mu$.
 
 \end{document}

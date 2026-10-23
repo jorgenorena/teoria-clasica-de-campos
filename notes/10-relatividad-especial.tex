@@ -33,7 +33,7 @@
 
 En las ecuaciones de Maxwell aparece una velocidad absoluta $c$. Pero nuestra intuición nos dice que, si un objeto tiene una velocidad $\vec v$ en un marco de referencia, entonces en otro marco de referencia inercial que se mueve con velocidad $\vec w$ respecto al primero la velocidad será
 \[
-  \vec v'=\vec v+\vec w.
+  \vec v'=\vec v-\vec w.
 \]
 
 Eso quiere decir que no hay velocidades absolutas, tal que las ecuaciones de Maxwell parecen escritas en un marco de referencia especial (el éter). Si eso es así, la velocidad de la luz debería ser diferente para distintos marcos de referencia. Pero esto nunca se observó en un experimento.
@@ -279,7 +279,7 @@ Para $\mu=\nu=0$,
   \Lambda^0{}_0=\pm\sqrt{\Lambda^i{}_0\Lambda^i{}_0+1}.
 \]
 
-Como $\Lambda^i{}_0\Lambda^i{}_0\geq0$, tenemos $|\Lambda^0{}_0|\geq1$, tal que $\Lambda^0{}_0>0$. Esto quiere decir que $\Lambda^0{}_0$ no puede pasar de forma continua entre valores negativos y positivos. Si queremos estar infinitesimalmente cerca de la identidad, debemos imponer $\Lambda^0{}_0>0$. Esto define el \concept{grupo especial de Lorentz ortocrono} $SO(1,3)_+$.
+Como $\Lambda^i{}_0\Lambda^i{}_0\geq0$, tenemos $|\Lambda^0{}_0|\geq1$, pero esta desigualdad no fija su signo. Esto quiere decir que $\Lambda^0{}_0$ no puede pasar de forma continua entre valores negativos y positivos. Si queremos estar infinitesimalmente cerca de la identidad, debemos imponer $\Lambda^0{}_0>0$. Esto define el \concept{grupo especial de Lorentz ortocrono} $SO(1,3)_+$.
 
 En el resto del curso, cuando hablemos del grupo de Lorentz, nos referimos a este. (¿Qué transformación excluimos? Debe tener $\Lambda^T\eta\Lambda=\eta$, $\det\Lambda=1$ y $\Lambda^0{}_0<0$.)
 
@@ -406,7 +406,7 @@ y entonces
   =-(M^{\alpha\beta})_{\rho\sigma}.
 \]
 
-Las únicas matrices antisimétricas puramente imaginarias son
+Una base de matrices antisimétricas puramente imaginarias es
 \[
   (M^{\alpha\beta})_{\mu\nu}
   =i\left(\delta^\alpha{}_{\mu}\delta^\beta{}_{\nu}
@@ -433,7 +433,7 @@ En esta manera de escribir,
 \[
   K_i=M^{0i},
   \qquad
-  J_i=\epsilon_{ijk}M^{jk}.
+  J_i=-\frac12\epsilon_{ijk}M^{jk}.
 \]
 
 Para terminar de hablar de transformaciones de Lorentz, hablemos de dinámica.
@@ -482,14 +482,14 @@ Esta definición es útil porque cumple:
     \underset{v\to0}{\approx}
     m+\frac12mv^2+\mathcal O(v^4)
     \qquad\longrightarrow\qquad
-    \stepword{\text{energía en reposo + cinética}},
+    \text{energía en reposo + cinética},
   \]
   \[
     P^i=\frac{mv^i}{\sqrt{1-v^2}}
     \underset{v\to0}{\approx}
     mv^i+\mathcal O(v^3)
     \qquad\longrightarrow\qquad
-    \stepword{\text{momento}}.
+    \text{momento}.
   \]
 \end{enumerate}
 
