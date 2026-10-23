@@ -1,5 +1,5 @@
 %+TITLE: Representaciones de SO(3)
-%+DESCRIPTION: Discutimos las representaciones del grupo de rotaciones antes de discutir repreaentaciones en general.
+%+DESCRIPTION: Discutimos las representaciones del grupo de rotaciones antes de discutir representaciones en general.
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -59,7 +59,11 @@ De aquí se puede ver que
 
 Para encontrar las representaciones de dimensión finita del álgebra, usamos un hecho del álgebra lineal:
 
-Dos matrices son mutuamente diagonalizables si y sólo si conmutan.
+Dos matrices hermíticas son simultáneamente diagonalizables mediante una
+transformación unitaria si y sólo si conmutan. Para un grupo compacto
+podemos escoger unitarias sus representaciones de dimensión finita;
+sus generadores son entonces hermíticos. Nos concentraremos en una
+representación irreducible.
 
 En el caso de las rotaciones, ninguna pareja de operadores $J_1,J_2,J_3$ conmuta. Sólo uno de ellos puede ser diagonal. Sin perder generalidad, escojamos $J_3$. Que sea diagonal quiere decir que los elementos de la base son autovectores de $J_3$:
 \[
@@ -188,7 +192,10 @@ Nos da infinitos vectores. Pero si $j$ toma algunos valores especiales, la norma
 
 Como $n$ es entero, vemos que esto se puede cumplir sólo si $2j$ es entero.
 
-El número de vectores generados es $2j+1$.
+Así, $j=0,1/2,1,\ldots$, y el número de vectores generados es $2j+1$.
+Todos estos valores dan representaciones de $SU(2)$. Sólo los $j$ enteros
+dan representaciones ordinarias de $SO(3)$: para los semienteros,
+una rotación de $2\pi$ actúa como $-\mathbb1$.
 
 Para $j=0$ hay un solo vector y corresponde a la representación trivial.
 

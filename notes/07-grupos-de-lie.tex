@@ -1,5 +1,5 @@
 %+TITLE: Grupos de Lie
-%+DESCRIPTION: Introducción infornal a los grupos y álgebras de Lie. Estos son grupos cuyos elementos se conectan continuamente con la identidad.
+%+DESCRIPTION: Introducción informal a los grupos y álgebras de Lie y a las transformaciones conectadas con la identidad.
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -91,7 +91,7 @@ donde $G^a$ es el generador.
 
 La $i$ de esta expresión es una convención usada comúnmente en física.
 
-Cualquier transformación para $\theta^a$ finito se puede escribir como infinitas transformaciones pequeñas sucesivas:
+Para una combinación fija de generadores podemos construir una transformación finita mediante transformaciones pequeñas sucesivas:
 \begin{align*}
   T(\theta^a)
   &=\lim_{N\to\infty}
@@ -100,7 +100,7 @@ Cualquier transformación para $\theta^a$ finito se puede escribir como infinita
   \sum_{n=0}^N
   \frac{N!}{n!(N-n)!}
   \left(i\frac{\theta^a}{N}G^a\right)^n \\
-  &\approx\sum_{n=0}^\infty\frac1{n!}(i\theta^aG^a)^n
+  &=\sum_{n=0}^\infty\frac1{n!}(i\theta^aG^a)^n
   =e^{i\theta^aG^a}.
 \end{align*}
 Aquí, para $N$ grande,
@@ -172,7 +172,8 @@ Como este debe ser un elemento del grupo, el resultado en el exponente debe ser 
 \]
 donde $f^{abc}$ son las constantes de estructura. Esto define el \concept{álgebra de Lie}.
 
-En abstracto, un álgebra de Lie es un conjunto de objetos junto con una operación $[\,\cdot\,,\,\cdot\,]$ tal que $[A,B]$ pertenece al conjunto,
+En abstracto, un álgebra de Lie es un espacio vectorial con una
+operación bilineal $[\,\cdot\,,\,\cdot\,]$ que toma valores en ese espacio,
 \[
   [A,B]=-[B,A],
 \]

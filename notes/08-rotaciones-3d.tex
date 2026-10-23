@@ -216,23 +216,25 @@ Si yo tengo una matriz unitaria $2\times2$, la puedo escribir
 \[
   U=z\widetilde U,
 \]
-donde $z=\det U$ tal que $|z|^2=1$ y $\det\widetilde U=1$.
+donde $z^2=\det U$ tal que $|z|^2=1$ y $\det\widetilde U=1$.
 
 Lo que hemos hecho es ``factorizar'' el determinante.
 
 Podemos entonces escribir
 \[
-  U(2)=U(1)\otimes SU(2),
+  U(2)\simeq\bigl(U(1)\times SU(2)\bigr)/\mathbb Z_2,
 \]
 donde $z$ corresponde a $U(1)$ y $\widetilde U$ a $SU(2)$.
+El cociente identifica $(z,\widetilde U)$ con $(-z,-\widetilde U)$:
+ambos pares dan la misma matriz $U$.
 
-Como ya estudiamos $U(1)$ con las rotaciones 2D, nos enfocamos en $SU(2)$. Contando componentes, vemos que hay tres matrices $SU(2)$ linealmente independientes.
+Como ya estudiamos $U(1)$ con las rotaciones 2D, nos enfocamos en $SU(2)$. El grupo tiene tres parámetros reales independientes. Sus generadores, forman un espacio vectorial de dimensión tres.
 
 Para encontrar los generadores, hacemos
 \[
   U=\mathbb 1+i\alpha G,
   \qquad
-  U^\dagger U=\mathbb 1+i\alpha(G^\dagger-G),
+  U^\dagger U=\mathbb 1+i\alpha(G-G^\dagger)+\mathcal O(\alpha^2),
   \qquad\Longrightarrow\qquad
   G=G^\dagger.
 \]
@@ -273,7 +275,7 @@ las \concept{matrices de Pauli}.
 \]
 (verifique haciendo varias multiplicaciones). Resulta que también son unitarias,
 \[
-  \sigma_i^\dagger\sigma_i=\mathbb 1.
+  \sigma_i^\dagger\sigma_i=\mathbb 1\qquad\text{(sin suma sobre }i\text{)}.
 \]
 De aquí tenemos que
 \[
@@ -282,7 +284,7 @@ De aquí tenemos que
 
 Escribimos el elemento de $SU(2)$ como
 \[
-  U=\mathbb 1+i\vec\alpha\cdot\vec J,
+  U=\mathbb 1+i\vec\alpha\cdot\vec J+\mathcal O(|\vec\alpha|^2),
   \qquad
   J_i=\frac12\sigma_i.
 \]
@@ -321,44 +323,48 @@ Entonces cualquier vector se puede escribir
   \vec v=
   \begin{pmatrix}
     v_z&v_x-iv_y\\
-    v_x+iv_y&v_z
+    v_x+iv_y&-v_z
   \end{pmatrix}.
 \]
 
 Estos vectores se pueden rotar definiendo una rotación respecto al eje $\hat n$ por un ángulo $\alpha$ como
 \[
-  q=\cos\alpha+i\sin\alpha\,\hat n
+  q=\cos\alpha\,\mathbb1+i\sin\alpha\,\hat n\cdot\vec\sigma
   \qquad\text{(escrito como matriz)}.
 \]
 La rotación resulta ser
 \[
-  \vec v'=q^{-1}\vec vq.
+  \vec v'=q\vec vq^\dagger.
 \]
 
 Haremos un check tomando $\vec v$ en la dirección $\hat x$ y tomando $\hat n=\hat z$.
 
 \begin{align*}
   \vec v'
-  &=v_x(\cos\alpha+i\sigma_3\sin\alpha)^\dagger
-    \sigma_1(\cos\alpha+i\sigma_3\sin\alpha)\\
+  &=v_x(\cos\alpha+i\sigma_3\sin\alpha)
+    \sigma_1(\cos\alpha+i\sigma_3\sin\alpha)^\dagger\\
   &=v_x\Bigl(
       \cos^2\alpha\,\sigma_1
-      +i[\sigma_1,\sigma_3]\sin\alpha\cos\alpha
+      +i[\sigma_3,\sigma_1]\sin\alpha\cos\alpha
       +\sigma_3\sigma_1\sigma_3\sin^2\alpha
     \Bigr)\\
   &=v_x\Bigl(
       (\cos^2\alpha-\sin^2\alpha)\sigma_1
-      +2\sin\alpha\cos\alpha\,\sigma_2
+      -2\sin\alpha\cos\alpha\,\sigma_2
     \Bigr)\\
   &=\cos2\alpha\,v_x\hat e_1
-    +\sin2\alpha\,v_x\hat e_2.
+    -\sin2\alpha\,v_x\hat e_2.
 \end{align*}
 
 Nos equivocamos, en realidad la rotación debería ser
 \[
-  q=\cos(\alpha/2)+i\hat n\sin(\alpha/2).
+  q=\cos(\alpha/2)\,\mathbb1+i(\hat n\cdot\vec\sigma)\sin(\alpha/2)
+   =e^{i\alpha\hat n\cdot\vec\sigma/2}.
 \]
 
-Esto define un homomorfismo entre $SO(3)$ y $SU(2)$ que mapea dos elementos de $SO(3)$, $\theta$ y $\theta+\pi$, en un elemento de $SU(2)$ dado por $\alpha = 2\theta$.
+Esto define un homomorfismo sobreyectivo $SU(2)\to SO(3)$:
+$q$ y $-q$ producen la misma rotación. Su núcleo es
+$\{\mathbb1,-\mathbb1\}$, por lo que $SO(3)\simeq SU(2)/\mathbb Z_2$.
+Decimos que $SU(2)$ es el recubrimiento doble de $SO(3)$.
 
 \end{document}
