@@ -25,16 +25,11 @@
 % Página 1 del manuscrito
 \section*{El kink}
 
-% REVISIÓN 1. Falta 1/2 en el término cinético para obtener las
-% ecuaciones siguientes con la normalización canónica. Con la métrica
-% de las clases anteriores el término es -\partial_\nu\varphi\partial^\nu\varphi/2.
-% REVISIÓN 2. La igualdad de los dos potenciales requiere \mu^4/(4\lambda)
-% como término constante, en vez de \mu^2/(4\lambda).
 \begin{align*}
-S &= \int \dd^2x\,\bigl[(\partial_\nu\varphi)^2 - V(\varphi)\bigr],
+S &= \int \dd^2x\,\bigl[-\frac12\partial_\nu\varphi\,\partial^\nu\varphi - V(\varphi)\bigr],
 & \nu &= 0,1,\\
 V(\varphi) &= -\frac{\mu^2}{2}\varphi^2
-  + \frac{\lambda}{4}\varphi^4 + \frac{\mu^2}{4\lambda}
+  + \frac{\lambda}{4}\varphi^4 + \frac{\mu^4}{4\lambda}
   = \frac{\lambda}{4}(\varphi^2-v^2)^2,
 & v &= \frac{\mu}{\sqrt{\lambda}}.
 \end{align*}
@@ -114,36 +109,30 @@ Algunas observaciones:
   Esta es la masa del kink. Como $v\gg1$, su tamaño es mucho mayor que
   su propia longitud de onda de Compton y su masa es mucho mayor que la
   de una excitación elemental.
-\item Para $|x|$ grande, $\varphi\approx v-2v e^{-mx}$, de modo que
+\item Para $x$ grande, $\varphi\approx v-2v e^{-mx}$, de modo que
   $\varphi$ satisface la ecuación estática de Klein--Gordon (decaimiento
   exponencial).
-  % REVISIÓN 5. Con x_0=0 la expresión escrita vale para x\to+\infty.
-  % Para x\to-\infty se tiene \varphi\approx-v+2v e^{mx}.
 \item Las traslaciones y los boosts no dejan invariante esta solución.
   Un boost da un kink en movimiento,
   \[
-  \varphi_k(x-x_0;t;v)
+  \varphi_k(x-x_0;t;u)
     =\frac{\mu}{\sqrt{\lambda}}
     \tanh\left(\frac{\mu}{\sqrt{2}}\frac{(x-x_0)-ut}{\sqrt{1-u^2}}\right).
   \]
-  % REVISIÓN 6. En la lista de argumentos aparece v, pero la velocidad
-  % en la expresión es u. En el resto de la clase v es el valor de vacío.
 \end{itemize}
 
 Estudiemos ahora la estabilidad de estas soluciones bajo perturbaciones pequeñas:
 \[
 \varphi(x,t)=\varphi_k(x)+\phi(x,t).
 \]
-% REVISIÓN 7. El manuscrito escribe ambos índices abajo en
-% \partial_\mu\partial_\mu. La contracción lorentziana requiere subir uno.
 \begin{align*}
--\partial_\mu\partial_\mu\varphi-\frac{\partial V}{\partial\varphi}=0
+\partial_\mu\partial^\mu\varphi-\frac{\partial V}{\partial\varphi}=0
 &\quad\Rightarrow\quad
--\partial_\mu\partial_\mu(\varphi_k+\phi)
+\partial_\mu\partial^\mu(\varphi_k+\phi)
 -\frac{\partial V}{\partial\varphi}(\varphi_k)
 -\frac{\partial^2V}{\partial\varphi^2}(\varphi_k)\phi+\dots=0\\
 &\quad\Rightarrow\quad
--\partial_\mu\partial_\mu\phi
+\partial_\mu\partial^\mu\phi
 -\frac{\partial^2V}{\partial\varphi^2}(\varphi_k)\phi=0.
 \end{align*}
 Con $\phi(x,t)=e^{i\omega t}\phi_\omega(x)$,
@@ -207,7 +196,7 @@ Consideremos una teoría de $n$ campos escalares en $d+1$ dimensiones:
 % usada en el curso. Para los términos de traza hay que fijar además
 % si los generadores de gauge son hermíticos o antihermíticos.
 \[
-\mathcal{L}=\frac12 F_{ab}\,\partial_\mu\phi^a\,\partial^\mu\phi^b
+\mathcal{L}=-\frac12 F_{ab}\,\partial_\mu\phi^a\,\partial^\mu\phi^b
    -V(\phi).
 \]
 Para una solución estática, la energía es
@@ -233,14 +222,12 @@ de los gradientes a $E$ divergiría. Por tanto,
 \qquad E(\lambda)\equiv E[\varphi_\lambda].
 \]
 Pero
-% REVISIÓN 10. En la primera integral los dos campos llevan a. El
-% segundo campo debe llevar b para contraerlo con F_{ab}.
 \begin{align*}
 E(\lambda)
  &= \int\dd^d x\,\biggl(
      \frac12 F_{ab}(\varphi_c(\lambda\vec{x}))
        \partial_i\varphi_c^a(\lambda\vec{x})\,
-       \partial^i\varphi_c^a(\lambda\vec{x})
+       \partial^i\varphi_c^b(\lambda\vec{x})
        +V(\varphi_c(\lambda\vec{x}))\biggr)\\
  &= \int\dd^d y\,\lambda^{-d}\biggl(
      \frac12\lambda^2 F_{ab}(\varphi_c(\vec{y}))
@@ -311,11 +298,8 @@ Consideremos una teoría de gauge $U(1)$ con un potencial de Higgs:
 \]
 con $\mu=\sqrt{\lambda}\,v$. El campo $A_\mu$ tiene masa $m_V=\sqrt{2}\,ev$.
 Trabajemos en el gauge $A_0=0$. La energía de una solución estática es
-% REVISIÓN 13. Aquí se integra en tres dimensiones, pero para un vórtice
-% recto en 3+1 la integral transversal que sigue da energía por unidad
-% de longitud. En 2+1 esa integral da la energía total.
 \[
-E[\phi,A_\mu]=\int\dd^3 x\,
+E[\phi,A_\mu]=\int\dd^2 x\,
   \left[\frac14 F_{\mu\nu}F^{\mu\nu}+D_i\phi^* D_i\phi+V(\phi)\right].
 \]
 Para que la energía sea finita es necesario que la densidad de energía
@@ -333,17 +317,12 @@ invariante. En efecto, si intentamos reducirlo,
 \[
 e^{i\alpha(\theta)}=e^{-i\theta}.
 \]
-Pero entonces $A_i'=A_i-\frac{1}{e}\partial_i\alpha$ diverge en el origen.
-% REVISIÓN 14. Este signo corresponde a D_i=\partial_i+ieA_i para
-% \varphi'=e^{i\alpha}\varphi. El A_i asintótico escrito abajo y el
-% convenio de la clase 17 corresponden al signo opuesto en D_i.
+Pero entonces $A_i'=A_i+\frac{1}{e}\partial_i\alpha$ diverge en el origen.
 
 El número de enrollamiento se puede definir como
-% REVISIÓN 15. El manuscrito dice n^2 en el denominador; la fórmula
-% siguiente requiere v^2, pues |\varphi|^2\to v^2 en el contorno.
 \[
-n=\frac{1}{2\pi i n^2}\oint_{r\to\infty}\dd x^i\,\varphi^*\partial_i\varphi
-\qquad\text{(por ejemplo, tomemos }\varphi=e^{in\theta}\text{)}.
+n=\frac{1}{2\pi i v^2}\oint_{r\to\infty}\dd x^i\,\varphi^*\partial_i\varphi
+\qquad\text{(por ejemplo, tomemos }\varphi=v e^{in\theta}\text{)}.
 \]
 Si tomamos $\varphi\to v e^{if(\theta)}$, entonces
 \[
@@ -420,9 +399,7 @@ E=\frac{m_V^2}{e^2}\int\dd^2 x\,
          +\frac18\frac{m_H^2}{m_V^2}(|\Psi|^2-1)\right).
 \]
 El mínimo está en $C_i\sim1$, $\Psi\sim1$, con un tamaño $|\vec{y}|\sim1$,
-es decir, $|\vec{x}|\sim1/m_V$.
-% REVISIÓN 21. La estimación con una sola escala supone m_H/m_V de
-% orden uno. En general hay dos longitudes de decaimiento, 1/m_V y 1/m_H.
+es decir, $|\vec{x}|\sim1/m_V$, asumiendo $m_H\sim m_V$.
 
 La energía se comporta como
 $E\sim\frac{m_V^2}{e^2}M\left(\frac{m_H^2}{m_V^2}\right)$,
